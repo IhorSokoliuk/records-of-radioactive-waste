@@ -1,0 +1,2550 @@
+JFDML JFormDesigner: "5.2.1.0.138" Java: "1.8.0_31" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "max(pref;449dlu):grow"
+			"$rowSpecs": "250dlu:grow"
+		} ) {
+			name: "this"
+			"resizable": false
+			"minimumSize": new java.awt.Dimension( 502, 200 )
+			"visible": true
+			"font": &Font0 new java.awt.Font( "Verdana", 0, 12 )
+			"defaultCloseOperation": 3
+			"$sizePolicy": 1
+			"title": "Склад радіоактивних відходів"
+			add( new FormContainer( "javax.swing.JTabbedPane", new FormLayoutManager( class javax.swing.JTabbedPane ) ) {
+				name: "tabbedPane1"
+				"preferredSize": new java.awt.Dimension( 472, 302 )
+				"minimumSize": new java.awt.Dimension( 502, 300 )
+				"font": #Font0
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+					"$columnSpecs": "max(pref;320dlu), labelcompgap, default, labelcompgap, 125dlu:grow"
+					"$rowSpecs": "fill:225dlu:grow"
+				} ) {
+					name: "ЗАВОД"
+					"minimumSize": &Dimension0 new java.awt.Dimension( 500, 200 )
+					"preferredSize": &Dimension1 new java.awt.Dimension( 470, 200 )
+					"font": #Font0
+					"maximumSize": &Dimension2 new java.awt.Dimension( 500, 200 )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						"minimumSize": &Dimension3 new java.awt.Dimension( 700, 400 )
+						"font": #Font0
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "табл0"
+							"minimumSize": &Dimension4 new java.awt.Dimension( 30, 204 )
+							"font": #Font0
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "center:55dlu"
+						"$rowSpecs": "fill:50dlu:grow, linegap, 50dlu:grow, linegap, 50dlu:grow, linegap, fill:50dlu:grow"
+					} ) {
+						name: "panel6"
+						"font": &Font1 new java.awt.Font( "Verdana", 0, 12 )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "default:grow"
+						} ) {
+							name: "panel8"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button4"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация2.gif" )
+								"toolTipText": "Видалити радіоактивний відхід"
+								"minimumSize": new java.awt.Dimension( 50, 50 )
+								"maximumSize": new java.awt.Dimension( 50, 50 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteFromZAVOD", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 3
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "default:grow"
+						} ) {
+							name: "panel9"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button1"
+								"font": #Font0
+								"maximumSize": new java.awt.Dimension( 50, 50 )
+								"minimumSize": &Dimension5 new java.awt.Dimension( 50, 50 )
+								"margin": &Insets0 new java.awt.Insets( 0, 0, 0, 0 )
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация3.gif" )
+								"toolTipText": "Оновити дані про радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "updateInZAVOD", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 5
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "default:grow"
+						} ) {
+							name: "panel7"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button2"
+								"font": #Font0
+								"maximumSize": new java.awt.Dimension( 50, 50 )
+								"minimumSize": &Dimension6 new java.awt.Dimension( 50, 50 )
+								"margin": &Insets1 new java.awt.Insets( 0, 0, 0, 0 )
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация1.gif" )
+								"toolTipText": "Додати радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "insertIntoZAVOD", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:default:grow"
+						} ) {
+							name: "panel2"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button5"
+								"font": #Font0
+								"maximumSize": new java.awt.Dimension( 50, 50 )
+								"minimumSize": new java.awt.Dimension( 50, 50 )
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация4.gif" )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "refreshTableZAVOD", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 3
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "43dlu, labelcompgap, 40dlu:grow, labelcompgap, default, labelcompgap, 37dlu:grow"
+						"$rowSpecs": "default, default, linegap, default, linegap, min, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, fill:default:grow"
+					} ) {
+						name: "panel3"
+						"border": &EmptyBorder0 new javax.swing.border.EmptyBorder( 5, 5, 5, 5 )
+						"font": #Font1
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label2"
+							"text": "Панель пошуку"
+							"icon": new com.jformdesigner.model.SwingIcon( 2, "TextField.darcula.search.icon" )
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridWidth": 7
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "growbutton, labelcompgap, growbutton"
+							"$rowSpecs": "default, linegap, default, linegap, default"
+						} ) {
+							name: "panel4"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox1"
+								"text": "Номер"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 1
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox2"
+								"text": "Категорія відходу"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox3"
+								"text": "Нуклід"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox4"
+								"text": "Кількість"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+								"gridX": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox5"
+								"text": "Дата створення"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 5
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox6"
+								"text": "Примітки"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 5
+							} )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 4
+							"gridWidth": 7
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label1"
+							"text": "Номер:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber1"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label3"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber1"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label4"
+							"text": "Категорія: "
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 10
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox1"
+							"model": new javax.swing.DefaultComboBoxModel {
+								selectedItem: "-"
+								addElement( "-" )
+								addElement( "ТРВ" )
+								addElement( "РРВ" )
+								addElement( "БРВ" )
+								addElement( "ДІВ" )
+							}
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 10
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label5"
+							"text": "Нуклід:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 12
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox2"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 12
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label6"
+							"text": "Кількість:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber2"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label7"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber2"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label8"
+							"text": "Дата:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 16
+						} )
+						add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+							name: "dateChooser1"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 16
+						} )
+						add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+							name: "dateChooser2"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label9"
+							"text": "Сортувати:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox3"
+							"model": new javax.swing.DefaultComboBoxModel {
+								selectedItem: "Номер"
+								addElement( "Номер" )
+								addElement( "Категорія відходу" )
+								addElement( "Нуклід" )
+								addElement( "Кількість" )
+								addElement( "Дата створення" )
+								addElement( "Примітки" )
+							}
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "checkBox16"
+							"text": "По спаданню"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button3"
+							"text": "Очистити поля пошуку"
+							"font": #Font0
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "searchCleanerZAVOD", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 20
+							"gridWidth": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 5
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Завод/постачальник РАВ"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+					"$columnSpecs": "max(pref;320dlu), labelcompgap, default, labelcompgap, 125dlu:grow"
+					"$rowSpecs": "fill:225dlu:grow"
+				} ) {
+					name: "ЗАВОД2"
+					"minimumSize": #Dimension0
+					"preferredSize": #Dimension1
+					"font": #Font0
+					"maximumSize": #Dimension2
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane3"
+						"minimumSize": #Dimension3
+						"font": #Font0
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "табл1"
+							"minimumSize": #Dimension4
+							"font": #Font0
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "center:55dlu"
+						"$rowSpecs": "fill:50dlu:grow, linegap, 50dlu:grow, linegap, 50dlu:grow, linegap, fill:50dlu:grow"
+					} ) {
+						name: "panel10"
+						"font": #Font1
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel11"
+							"font": #Font1
+							"minimumSize": &Dimension7 new java.awt.Dimension( 50, 98 )
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button10"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация2.gif" )
+								"toolTipText": "Видалити радіоактивний відхід"
+								"minimumSize": &Dimension8 new java.awt.Dimension( 50, 50 )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteFromTRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 3
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel12"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button11"
+								"font": #Font0
+								"minimumSize": #Dimension5
+								"margin": #Insets0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация3.gif" )
+								"toolTipText": "Оновити дані про радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "updateInTRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 5
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "55dlu:grow"
+							"$rowSpecs": "fill:60dlu"
+						} ) {
+							name: "panel13"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button12"
+								"font": #Font0
+								"minimumSize": #Dimension6
+								"margin": #Insets1
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация1.gif" )
+								"toolTipText": "Додати радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "insertIntoTRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "55dlu:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel1"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button14"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация4.gif" )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "refreshTableTRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 3
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "55dlu, labelcompgap, 70dlu:grow, labelcompgap, default, labelcompgap, 50dlu:grow"
+						"$rowSpecs": "default, min, linegap, default, linegap, min, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, 10dlu, default, linegap, fill:default:grow, linegap, default"
+					} ) {
+						name: "panel14"
+						"border": #EmptyBorder0
+						"font": #Font1
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label10"
+							"text": "Панель пошуку"
+							"icon": &SwingIcon0 new com.jformdesigner.model.SwingIcon( 2, "TextField.darcula.search.icon" )
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridWidth": 7
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "growbutton, labelcompgap, growbutton"
+							"$rowSpecs": "default, linegap, default, linegap, default, linegap, default"
+						} ) {
+							name: "panel15"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox7"
+								"text": "Номер"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 1
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox8"
+								"text": "Категорія активності"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox9"
+								"text": "Нуклід"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox10"
+								"text": "Кількість"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+								"gridX": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox11"
+								"text": "Активність нукліда"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 5
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox12"
+								"text": "Загальна активність"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 5
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox13"
+								"text": "Дата створення"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 7
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox14"
+								"text": "Примітки"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 7
+							} )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 4
+							"gridWidth": 7
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label11"
+							"text": "Номер:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber3"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label12"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber3"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label13"
+							"text": "Категорія: "
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 10
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox4"
+							"model": &DefaultComboBoxModel0 new javax.swing.DefaultComboBoxModel {
+								selectedItem: "-"
+								addElement( "-" )
+								addElement( "Слабоактивний" )
+								addElement( "Середньоактивний" )
+								addElement( "Сильноактивний" )
+							}
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 10
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label14"
+							"text": "Нуклід:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 12
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox5"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 12
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label15"
+							"text": "Кількість:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber4"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label16"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber4"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label19"
+							"text": "Активність нукліда:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber5"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 16
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label20"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber5"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label21"
+							"text": "Заг. активність:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber6"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 18
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label22"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber6"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label17"
+							"text": "Дата:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 20
+						} )
+						add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+							name: "dateChooser3"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 20
+						} )
+						add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+							name: "dateChooser4"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 20
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label18"
+							"text": "Сортувати:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox6"
+							"model": &DefaultComboBoxModel1 new javax.swing.DefaultComboBoxModel {
+								selectedItem: "Номер"
+								addElement( "Номер" )
+								addElement( "Категорія радіоактивності" )
+								addElement( "Нуклід" )
+								addElement( "Кількість" )
+								addElement( "Активність нукліда" )
+								addElement( "Загальна активність" )
+								addElement( "Дата створення" )
+								addElement( "Примітки" )
+							}
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "checkBox15"
+							"text": "По спаданню"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button13"
+							"text": "Очистити поля пошуку"
+							"font": #Font0
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "searchCleanerTRV", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 24
+							"gridWidth": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 5
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Тверді РАВ"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+					"$columnSpecs": "max(pref;320dlu), labelcompgap, default, labelcompgap, 125dlu:grow"
+					"$rowSpecs": "fill:225dlu:grow"
+				} ) {
+					name: "ЗАВОД3"
+					"minimumSize": #Dimension0
+					"preferredSize": #Dimension1
+					"font": #Font0
+					"maximumSize": #Dimension2
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane4"
+						"minimumSize": #Dimension3
+						"font": #Font0
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "табл2"
+							"minimumSize": #Dimension4
+							"font": #Font0
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "center:55dlu"
+						"$rowSpecs": "fill:50dlu:grow, linegap, 50dlu:grow, linegap, 50dlu:grow, linegap, fill:50dlu:grow"
+					} ) {
+						name: "panel16"
+						"font": #Font1
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel17"
+							"font": #Font1
+							"minimumSize": #Dimension7
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button15"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация2.gif" )
+								"toolTipText": "Видалити радіоактивний відхід"
+								"minimumSize": #Dimension8
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteFromRRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 3
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel18"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button16"
+								"font": #Font0
+								"minimumSize": #Dimension5
+								"margin": #Insets0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация3.gif" )
+								"toolTipText": "Оновити дані про радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "updateInRRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 5
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "55dlu:grow"
+							"$rowSpecs": "fill:60dlu"
+						} ) {
+							name: "panel19"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button17"
+								"font": #Font0
+								"minimumSize": #Dimension6
+								"margin": #Insets1
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация1.gif" )
+								"toolTipText": "Додати радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "insertIntoRRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "55dlu:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel5"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button18"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация4.gif" )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "refreshTableRRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 3
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "55dlu, labelcompgap, 70dlu:grow, labelcompgap, default, labelcompgap, 50dlu:grow"
+						"$rowSpecs": "default, default, linegap, default, linegap, min, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, 10dlu, default, linegap, fill:default:grow, linegap, default"
+					} ) {
+						name: "panel20"
+						"border": #EmptyBorder0
+						"font": #Font1
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label23"
+							"text": "Панель пошуку"
+							"icon": #SwingIcon0
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridWidth": 7
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "growbutton, labelcompgap, growbutton"
+							"$rowSpecs": "default, linegap, default, linegap, default, linegap, default"
+						} ) {
+							name: "panel21"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox17"
+								"text": "Номер"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 1
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox18"
+								"text": "Категорія активності"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox19"
+								"text": "Нуклід"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox20"
+								"text": "Кількість"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+								"gridX": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox21"
+								"text": "Активність нукліда"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 5
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox22"
+								"text": "Загальна активність"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 5
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox23"
+								"text": "Дата створення"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 7
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox24"
+								"text": "Примітки"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 7
+							} )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 4
+							"gridWidth": 7
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label24"
+							"text": "Номер:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber7"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label25"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber7"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label26"
+							"text": "Категорія: "
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 10
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox7"
+							"model": #DefaultComboBoxModel0
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 10
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label27"
+							"text": "Нуклід:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 12
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox8"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 12
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label28"
+							"text": "Кількість:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber8"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label29"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber8"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label30"
+							"text": "Активність нукліда:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber9"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 16
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label31"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber9"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label32"
+							"text": "Заг. активність:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber10"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 18
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label33"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber10"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label34"
+							"text": "Дата:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 20
+						} )
+						add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+							name: "dateChooser5"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 20
+						} )
+						add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+							name: "dateChooser6"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 20
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label35"
+							"text": "Сортувати:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox9"
+							"model": #DefaultComboBoxModel1
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "checkBox25"
+							"text": "По спаданню"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button19"
+							"text": "Очистити поля пошуку"
+							"font": #Font0
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "searchCleanerRRV", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 24
+							"gridWidth": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 5
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Рідкі РАВ"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+					"$columnSpecs": "max(pref;320dlu), labelcompgap, default, labelcompgap, 125dlu:grow"
+					"$rowSpecs": "fill:225dlu:grow"
+				} ) {
+					name: "ЗАВОД4"
+					"minimumSize": #Dimension0
+					"preferredSize": #Dimension1
+					"font": #Font0
+					"maximumSize": #Dimension2
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane5"
+						"minimumSize": #Dimension3
+						"font": #Font0
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "табл3"
+							"minimumSize": #Dimension4
+							"font": #Font0
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "center:55dlu"
+						"$rowSpecs": "fill:50dlu:grow, linegap, 50dlu:grow, linegap, 50dlu:grow, linegap, fill:50dlu:grow"
+					} ) {
+						name: "panel22"
+						"font": #Font1
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel23"
+							"font": #Font1
+							"minimumSize": #Dimension7
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button20"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация2.gif" )
+								"toolTipText": "Видалити радіоактивний відхід"
+								"minimumSize": #Dimension8
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteFromBRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 3
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel24"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button21"
+								"font": #Font0
+								"minimumSize": #Dimension5
+								"margin": #Insets0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация3.gif" )
+								"toolTipText": "Оновити дані про радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "updateInBRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 5
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "55dlu:grow"
+							"$rowSpecs": "fill:60dlu"
+						} ) {
+							name: "panel25"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button22"
+								"font": #Font0
+								"minimumSize": #Dimension6
+								"margin": #Insets1
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация1.gif" )
+								"toolTipText": "Додати радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "insertIntoBRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "55dlu:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel26"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button23"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация4.gif" )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "refreshTableBRV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 3
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "55dlu, labelcompgap, 70dlu:grow, labelcompgap, default, labelcompgap, 50dlu:grow"
+						"$rowSpecs": "default, default, linegap, default, linegap, min, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, 10dlu, default, linegap, fill:default:grow, linegap, default"
+					} ) {
+						name: "panel27"
+						"border": #EmptyBorder0
+						"font": #Font1
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label36"
+							"text": "Панель пошуку"
+							"icon": #SwingIcon0
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridWidth": 7
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "growbutton, labelcompgap, growbutton"
+							"$rowSpecs": "default, linegap, default, linegap, default, linegap, default"
+						} ) {
+							name: "panel28"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox26"
+								"text": "Номер"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 1
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox27"
+								"text": "Категорія активності"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox28"
+								"text": "Нуклід"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox29"
+								"text": "Кількість"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+								"gridX": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox30"
+								"text": "Активність нукліда"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 5
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox31"
+								"text": "Загальна активність"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 5
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox32"
+								"text": "Дата створення"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 7
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox33"
+								"text": "Примітки"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 7
+							} )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 4
+							"gridWidth": 7
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label37"
+							"text": "Номер:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber11"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label38"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber11"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label39"
+							"text": "Категорія: "
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 10
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox10"
+							"model": #DefaultComboBoxModel0
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 10
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label40"
+							"text": "Нуклід:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 12
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox11"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 12
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label41"
+							"text": "Кількість:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber12"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label42"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber12"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label43"
+							"text": "Активність нукліда:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber13"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 16
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label44"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber13"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label45"
+							"text": "Заг. активність:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber14"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 18
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label46"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber14"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label47"
+							"text": "Дата:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 20
+						} )
+						add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+							name: "dateChooser7"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 20
+						} )
+						add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+							name: "dateChooser8"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 20
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label48"
+							"text": "Сортувати:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox12"
+							"model": #DefaultComboBoxModel1
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "checkBox34"
+							"text": "По спаданню"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button24"
+							"text": "Очистити поля пошуку"
+							"font": #Font0
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "searchCleanerBRV", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 24
+							"gridWidth": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 5
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Біологічні РАВ"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+					"$columnSpecs": "max(pref;320dlu), labelcompgap, default, labelcompgap, 125dlu:grow"
+					"$rowSpecs": "fill:225dlu:grow"
+				} ) {
+					name: "ЗАВОД5"
+					"minimumSize": #Dimension0
+					"preferredSize": #Dimension1
+					"font": #Font0
+					"maximumSize": #Dimension2
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane6"
+						"minimumSize": #Dimension3
+						"font": #Font0
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "табл4"
+							"minimumSize": #Dimension4
+							"font": #Font0
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "center:55dlu"
+						"$rowSpecs": "fill:50dlu:grow, linegap, 50dlu:grow, linegap, 50dlu:grow, linegap, fill:50dlu:grow"
+					} ) {
+						name: "panel29"
+						"font": #Font1
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel30"
+							"font": #Font1
+							"minimumSize": #Dimension7
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button25"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация2.gif" )
+								"toolTipText": "Видалити радіоактивний відхід"
+								"minimumSize": #Dimension8
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteFromDIV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 3
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel31"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button26"
+								"font": #Font0
+								"minimumSize": #Dimension5
+								"margin": #Insets0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация3.gif" )
+								"toolTipText": "Оновити дані про радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "updateInDIV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 5
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "55dlu:grow"
+							"$rowSpecs": "fill:60dlu"
+						} ) {
+							name: "panel32"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button27"
+								"font": #Font0
+								"minimumSize": #Dimension6
+								"margin": #Insets1
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация1.gif" )
+								"toolTipText": "Додати радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "insertIntoDIV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "55dlu:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel33"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button28"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация4.gif" )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "refreshTableDIV", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 3
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "55dlu, labelcompgap, 70dlu:grow, labelcompgap, default, labelcompgap, 50dlu:grow"
+						"$rowSpecs": "default, default, linegap, default, linegap, min, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, 10dlu, default, linegap, fill:default:grow, linegap, default"
+					} ) {
+						name: "panel34"
+						"border": #EmptyBorder0
+						"font": #Font1
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label49"
+							"text": "Панель пошуку"
+							"icon": #SwingIcon0
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridWidth": 7
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "growbutton, labelcompgap, growbutton"
+							"$rowSpecs": "default, linegap, default, linegap, default, linegap, default"
+						} ) {
+							name: "panel35"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox35"
+								"text": "Номер"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 1
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox36"
+								"text": "Категорія активності"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox37"
+								"text": "Нуклід"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox38"
+								"text": "Кількість"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+								"gridX": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox39"
+								"text": "Активність нукліда"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 5
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox40"
+								"text": "Загальна активність"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 5
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox41"
+								"text": "Дата створення"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 7
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox42"
+								"text": "Примітки"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 7
+							} )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 4
+							"gridWidth": 7
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label50"
+							"text": "Номер:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber15"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label51"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber15"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label52"
+							"text": "Категорія: "
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 10
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox13"
+							"model": #DefaultComboBoxModel0
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 10
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label53"
+							"text": "Нуклід:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 12
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox14"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 12
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label54"
+							"text": "Кількість:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber16"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label55"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber16"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label56"
+							"text": "Активність нукліда:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber17"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 16
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label57"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber17"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label58"
+							"text": "Заг. активність:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber18"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 18
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label59"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber18"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label60"
+							"text": "Дата:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 20
+						} )
+						add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+							name: "dateChooser9"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 20
+						} )
+						add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+							name: "dateChooser10"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 20
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label61"
+							"text": "Сортувати:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox15"
+							"model": #DefaultComboBoxModel1
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "checkBox43"
+							"text": "По спаданню"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 22
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button29"
+							"text": "Очистити поля пошуку"
+							"font": #Font0
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "searchCleanerDIV", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 24
+							"gridWidth": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 5
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Джерела іонізуючого випромінювання"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+					"$columnSpecs": "max(pref;320dlu), labelcompgap, default, labelcompgap, 125dlu:grow"
+					"$rowSpecs": "fill:225dlu:grow"
+				} ) {
+					name: "ЗАВОД6"
+					"minimumSize": #Dimension0
+					"preferredSize": #Dimension1
+					"font": #Font0
+					"maximumSize": #Dimension2
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane7"
+						"minimumSize": #Dimension3
+						"font": #Font0
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "табл5"
+							"minimumSize": #Dimension4
+							"font": #Font0
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "center:55dlu"
+						"$rowSpecs": "fill:50dlu:grow, linegap, 50dlu:grow, linegap, 50dlu:grow, linegap, fill:50dlu:grow"
+					} ) {
+						name: "panel36"
+						"font": #Font1
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel37"
+							"font": #Font1
+							"minimumSize": #Dimension7
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button30"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация2.gif" )
+								"toolTipText": "Видалити радіоактивний відхід"
+								"minimumSize": #Dimension8
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteFromRADIO", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 3
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "default:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel38"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button31"
+								"font": #Font0
+								"minimumSize": #Dimension5
+								"margin": #Insets0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация3.gif" )
+								"toolTipText": "Оновити дані про радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "updateInRADIO", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 5
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "55dlu:grow"
+							"$rowSpecs": "fill:60dlu"
+						} ) {
+							name: "panel39"
+							"font": #Font1
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button32"
+								"font": #Font0
+								"minimumSize": #Dimension6
+								"margin": #Insets1
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация1.gif" )
+								"toolTipText": "Додати радіоактивний відхід"
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "insertIntoRADIO", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "55dlu:grow"
+							"$rowSpecs": "fill:60dlu:grow"
+						} ) {
+							name: "panel40"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JButton" ) {
+								name: "button33"
+								"font": #Font0
+								"icon": new com.jformdesigner.model.SwingIcon( 0, "/ГЛАВНОЕ_ОКНО/gif/радиация4.gif" )
+								addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "refreshTableRADIO", true ) )
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 3
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "55dlu, labelcompgap, 70dlu:grow, labelcompgap, default, labelcompgap, 50dlu:grow"
+						"$rowSpecs": "default, default, linegap, default, linegap, min, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, linegap, default, 10dlu, default, linegap, fill:default:grow, linegap, default"
+					} ) {
+						name: "panel41"
+						"border": #EmptyBorder0
+						"font": #Font1
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label62"
+							"text": "Панель пошуку"
+							"icon": #SwingIcon0
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridWidth": 7
+						} )
+						add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+							"$columnSpecs": "growbutton, labelcompgap, growbutton"
+							"$rowSpecs": "default, linegap, default, linegap, default"
+						} ) {
+							name: "panel42"
+							"font": #Font0
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox44"
+								"text": "Номер"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 1
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox45"
+								"text": "Назва"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridX": 3
+								"gridY": 1
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox46"
+								"text": "Скорочено"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox47"
+								"text": "Номер порядку"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 3
+								"gridX": 3
+							} )
+							add( new FormComponent( "javax.swing.JCheckBox" ) {
+								name: "checkBox48"
+								"text": "Активність нукліда"
+								"selected": true
+								"font": #Font0
+							}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+								"gridY": 5
+							} )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 4
+							"gridWidth": 7
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label63"
+							"text": "Номер:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber19"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label64"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber19"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 8
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label65"
+							"text": "Назва:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 10
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textField1"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 10
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label66"
+							"text": "Сокорочено:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 12
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textField2"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 12
+							"gridWidth": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label67"
+							"text": "Кількість:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber20"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 14
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label68"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber20"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 14
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label69"
+							"text": "Активність нукліда:"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "firstNumber21"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "textField1ActionPerformed", true ) )
+							addEvent( new FormEvent( "java.awt.event.KeyListener", "keyTyped", "textField1KeyTyped", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 16
+							"gridX": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label70"
+							"text": "-"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "lastNumber21"
+							"font": #Font1
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 16
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label74"
+							"text": "Сортувати:"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 1
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox18"
+							"model": new javax.swing.DefaultComboBoxModel {
+								selectedItem: "Номер"
+								addElement( "Номер" )
+								addElement( "Назва" )
+								addElement( "Скорочено" )
+								addElement( "Номер порядку" )
+								addElement( "Активність нукліда" )
+							}
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JCheckBox" ) {
+							name: "checkBox52"
+							"text": "По спаданню"
+							"font": #Font0
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 7
+							"gridY": 18
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button34"
+							"text": "Очистити поля пошуку"
+							"font": #Font0
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "searchCleanerRADIO", true ) )
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridY": 20
+							"gridWidth": 7
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 5
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Радіонукліди"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+					"$columnSpecs": "default:grow, labelcompgap, default, labelcompgap, default:grow"
+					"$rowSpecs": "fill:default:grow, linegap, fill:default:grow, linegap, fill:default:grow, linegap, fill:default:grow"
+				} ) {
+					name: "panel43"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane2"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "table1"
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseClicked", "table1MouseClicked", true ) )
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridHeight": 7
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button6"
+						"text": "Додати"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "addUSER", true ) )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 3
+						"gridY": 1
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+						"$columnSpecs": "default, labelcompgap, default, labelcompgap, default:grow, labelcompgap, default"
+						"$rowSpecs": "default, linegap, default, linegap, default, linegap, default, linegap, default"
+					} ) {
+						name: "panel44"
+						"border": new javax.swing.border.TitledBorder( "Дані користувача" )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label71"
+							"text": "Login"
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 3
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textField3"
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 3
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label72"
+							"text": "Password"
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 5
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "textField4"
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 5
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label73"
+							"text": "User group"
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 7
+						} )
+						add( new FormComponent( "javax.swing.JComboBox" ) {
+							name: "comboBox16"
+							"model": new javax.swing.DefaultComboBoxModel {
+								selectedItem: "Адмін"
+								addElement( "Адмін" )
+								addElement( "Головний інженер" )
+								addElement( "Працівник" )
+							}
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 5
+							"gridY": 7
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label75"
+							"text": "0"
+						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+							"gridX": 3
+							"gridY": 9
+						} )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 5
+						"gridHeight": 7
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button7"
+						"text": "Видалити"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "deleteUSER", true ) )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 3
+						"gridY": 3
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button8"
+						"text": "Змінити"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "updateUSER", true ) )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 3
+						"gridY": 5
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button9"
+						"text": "Оновити"
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "refreshTableUSER", true ) )
+					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+						"gridX": 3
+						"gridY": 7
+					} )
+				}, new FormLayoutConstraints( null ) {
+					"title": "Користувачі"
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"hAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+				"vAlign": sfield com.jgoodies.forms.layout.CellConstraints FILL
+			} )
+			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "menuBar1"
+				"preferredSize": new java.awt.Dimension( 502, 24 )
+				"font": #Font0
+				"minimumSize": new java.awt.Dimension( 502, 300 )
+				"maximumSize": new java.awt.Dimension( 502, 32769 )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu2"
+					"text": "Файл"
+					"font": #Font0
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem2"
+						"text": "Записати до таблиці початкові дані"
+						"font": #Font1
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem2ActionPerformed", true ) )
+					} )
+					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+						name: "menu4"
+						"text": "Експорт"
+						"font": #Font0
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "menuItem1"
+							"text": "PDF"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem1ActionPerformed", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JMenuItem" ) {
+							name: "menuItem3"
+							"text": "Excel"
+							"font": #Font0
+							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem3ActionPerformed", true ) )
+						} )
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu3"
+					"text": "Видалити всі дані з таблиці"
+					"font": #Font0
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem4"
+						"text": "ЗАВОД"
+						"font": #Font0
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem4ActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem5"
+						"text": "ТРВ"
+						"font": #Font0
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem5ActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem6"
+						"text": "РРВ"
+						"font": #Font0
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem6ActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem7"
+						"text": "БРВ"
+						"font": #Font0
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem7ActionPerformed", true ) )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem8"
+						"text": "ДІВ"
+						"font": #Font0
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem8ActionPerformed", true ) )
+					} )
+				} )
+				add( new FormComponent( "javax.swing.JMenuItem" ) {
+					name: "menuItem9"
+					"text": "Змінити користувача"
+					"font": new java.awt.Font( "Verdana", 0, 12 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem9ActionPerformed", true ) )
+				} )
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 1030, 490 )
+		} )
+	}
+}

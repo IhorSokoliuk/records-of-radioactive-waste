@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/script/createBDcurs.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/script/createNewDBcurs.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/script/insertЗАВОД.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/script/selectБРВ.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/script/selectЗАВОД.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/script/selectТРВ.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/script/trigger.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/login.java" dialect="H2" />
+    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/mainFrame.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/ЗАВОД/insertIntoZavod.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/ЗАВОД/updateInZavod.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/ТРВ/insertIntoTRV.java" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/ТРВ/updateInTRV.java" dialect="SQLite" />
+  </component>
+</project>

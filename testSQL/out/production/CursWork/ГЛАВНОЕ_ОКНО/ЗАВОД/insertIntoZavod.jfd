@@ -1,0 +1,109 @@
+JFDML JFormDesigner: "5.2.1.0.132" Java: "1.8.0_25" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "min:grow"
+			"$rowSpecs": "default:grow"
+		} ) {
+			name: "this"
+			"visible": true
+			"title": "Додавання поля до таблиці Завод"
+			"$sizePolicy": 1
+			"font": &Font0 new java.awt.Font( "Verdana", 0, 12 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "83dlu:grow, labelcompgap, default:grow"
+				"$rowSpecs": "fill:15dlu:grow, linegap, fill:15dlu:grow, linegap, fill:15dlu:grow, linegap, fill:15dlu:grow, linegap, fill:15dlu:grow, linegap, fill:15dlu:grow, linegap, fill:20dlu:grow"
+			} ) {
+				name: "panel1"
+				"border": new javax.swing.border.EmptyBorder( 5, 5, 5, 5 )
+				"font": #Font0
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Категорія відходу"
+					"font": #Font0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox1"
+					"font": #Font0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "Радіоактивний нуклід"
+					"font": #Font0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JComboBox" ) {
+					name: "comboBox2"
+					"font": #Font0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 3
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "Кількість відходів"
+					"font": #Font0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 5
+				} )
+				add( new FormComponent( "javax.swing.JFormattedTextField" ) {
+					name: "formattedTextField1"
+					"font": #Font0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 5
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "Дата виготовлення"
+					"font": #Font0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 7
+				} )
+				add( new FormComponent( "com.toedter.calendar.JDateChooser" ) {
+					name: "dateChooser1"
+					"font": #Font0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 7
+					"gridX": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label5"
+					"text": "Примітки"
+					"font": #Font0
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 9
+				} )
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					"font": #Font0
+					add( new FormComponent( "javax.swing.JTextPane" ) {
+						name: "textPane1"
+						"font": #Font0
+					} )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 9
+					"gridX": 3
+					"gridHeight": 3
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "Додати"
+					"font": #Font0
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 13
+					"gridWidth": 3
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 440, 260 )
+		} )
+	}
+}

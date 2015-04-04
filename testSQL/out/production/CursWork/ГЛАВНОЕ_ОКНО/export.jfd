@@ -1,0 +1,62 @@
+JFDML JFormDesigner: "5.2.1.0.132" Java: "1.8.0_25" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+			"$columnSpecs": "172dlu:grow"
+			"$rowSpecs": "fill:121dlu:grow"
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
+				"$columnSpecs": "default:grow, labelcompgap, default, labelcompgap, default:grow"
+				"$rowSpecs": "default, linegap, default, linegap, default"
+			} ) {
+				name: "panel1"
+				"border": new javax.swing.border.EmptyBorder( 5, 5, 5, 5 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "У який формат будете експортувати?"
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridWidth": 5
+				} )
+				add( new FormComponent( "javax.swing.JRadioButton" ) {
+					name: "radioButton1"
+					"text": "PDF"
+					"$buttonGroup": new FormReference( "buttonGroup1" )
+					"selected": true
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JRadioButton" ) {
+					name: "radioButton2"
+					"text": "Excel"
+					"$buttonGroup": new FormReference( "buttonGroup1" )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridX": 5
+					"gridY": 3
+				} )
+				add( new FormComponent( "javax.swing.JFileChooser" ) {
+					name: "fileChooser1"
+					"acceptAllFileFilterUsed": false
+					"dialogType": 1
+					"font": new java.awt.Font( "Verdana", 0, 12 )
+				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+					"gridY": 5
+					"gridWidth": 5
+				} )
+			}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
+				"gridX": 1
+				"gridY": 1
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 605, 420 )
+		} )
+		add( new FormNonVisual( "javax.swing.ButtonGroup" ) {
+			name: "buttonGroup1"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 310 )
+		} )
+	}
+}

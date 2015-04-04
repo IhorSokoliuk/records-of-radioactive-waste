@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - oblik_rao@localhost" uuid="da31e1b0-7a27-4ece-b09b-b0fc24c895b6">
+    <database-info product="MySQL" version="5.6.22-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.34 ( Revision: jess.balint@oracle.com-20141014163213-wqbwpf1ok2kvo1om )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="oblik_rao"/>
+    <table name="брв" schema="" catalog="oblik_rao" type="TABLE">
+      <column name="Номер" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Категорія активності" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Кількість" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Загальна активність" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Нуклід" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Активність нукліда" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Дата виготовлення" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="Примітки" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Номер"/>
+      <foreign-key name="ключ-брв-категорія" columns="Категорія активності" ref-table="категорія активності" ref-schema="" ref-catalog="oblik_rao" ref-columns="Номер" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="індекс-брв-категорія" unique="false" columns="Категорія активності"/>
+    </table>
+    <table name="дів" schema="" catalog="oblik_rao" type="TABLE">
+      <column name="Номер" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Категорія активності" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Кількість" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Загальна активність" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Нуклід" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Активність нукліда" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Дата виготовлення" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="Примітки" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Номер"/>
+      <foreign-key name="дів-категорія" columns="Категорія активності" ref-table="категорія активності" ref-schema="" ref-catalog="oblik_rao" ref-columns="Номер" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="індекс-дів-категорія" unique="false" columns="Категорія активності"/>
+    </table>
+    <table name="завод" schema="" catalog="oblik_rao" type="TABLE">
+      <column name="Номер" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Категорія відходу" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Нуклід" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Кількість" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Дата виготовлення" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="Примітки" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Номер"/>
+      <foreign-key name="ключ-Завод-Категорія відходу" columns="Категорія відходу" ref-table="категорія відходу" ref-schema="" ref-catalog="oblik_rao" ref-columns="Номер" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="ключ-Завод-Нуклід" columns="Нуклід" ref-table="радіонуклід" ref-schema="" ref-catalog="oblik_rao" ref-columns="Номер" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="індекс-Завод-Категорія-відходу" unique="false" columns="Категорія відходу"/>
+      <index name="індекс-Завод-Нуклід" unique="false" columns="Нуклід"/>
+    </table>
+    <table name="категорія активності" schema="" catalog="oblik_rao" type="TABLE">
+      <column name="Номер" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Категорія активності" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Номер"/>
+      <exported-key name="ключ-брв-категорія" table="брв" schema="" catalog="oblik_rao" columns="Категорія активності"/>
+      <exported-key name="дів-категорія" table="дів" schema="" catalog="oblik_rao" columns="Категорія активності"/>
+      <exported-key name="ключ-ррв-категорія" table="ррв" schema="" catalog="oblik_rao" columns="Категорія активності"/>
+      <exported-key name="ключ-трв-категорія" table="трв" schema="" catalog="oblik_rao" columns="Категорія активності"/>
+    </table>
+    <table name="категорія відходу" schema="" catalog="oblik_rao" type="TABLE">
+      <column name="Номер" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Категорія відходу" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Номер"/>
+      <exported-key name="ключ-Завод-Категорія відходу" table="завод" schema="" catalog="oblik_rao" columns="Категорія відходу"/>
+    </table>
+    <table name="користувач" schema="" catalog="oblik_rao" type="TABLE">
+      <column name="Номер" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Ім&apos;я" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Пароль" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Група" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="Номер"/>
+    </table>
+    <table name="радіонуклід" schema="" catalog="oblik_rao" type="TABLE">
+      <column name="Номер" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Назва" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Скорочено" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Номер порядку" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Активність нукліда" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="Номер"/>
+      <exported-key name="ключ-Завод-Нуклід" table="завод" schema="" catalog="oblik_rao" columns="Нуклід"/>
+    </table>
+    <table name="ррв" schema="" catalog="oblik_rao" type="TABLE">
+      <column name="Номер" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Категорія активності" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Кількість" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Загальна активність" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Нуклід" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Активність нукліда" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Дата виготовлення" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="Примітки" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Номер"/>
+      <foreign-key name="ключ-ррв-категорія" columns="Категорія активності" ref-table="категорія активності" ref-schema="" ref-catalog="oblik_rao" ref-columns="Номер" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="індекс-ррв-категорія" unique="false" columns="Категорія активності"/>
+    </table>
+    <table name="трв" schema="" catalog="oblik_rao" type="TABLE">
+      <column name="Номер" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Категорія активності" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Кількість" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Загальна активність" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Нуклід" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Активність нукліда" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Дата виготовлення" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="Примітки" sqlType="TINYTEXT" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="Номер"/>
+      <foreign-key name="ключ-трв-категорія" columns="Категорія активності" ref-table="категорія активності" ref-schema="" ref-catalog="oblik_rao" ref-columns="Номер" update-rule="0" delete-rule="0" deferrability="2"/>
+      <index name="індекс-трв-категорія" unique="false" columns="Категорія активності"/>
+    </table>
+  </data-source>
+</component>
