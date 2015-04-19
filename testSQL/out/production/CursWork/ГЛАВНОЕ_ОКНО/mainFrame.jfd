@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "5.2.1.0.138" Java: "1.8.0_31" encoding: "UTF-8"
+JFDML JFormDesigner: "5.2.1.0.138" Java: "1.8.0_40" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -2539,6 +2539,7 @@ new FormModel {
 					name: "menuItem9"
 					"text": "Змінити користувача"
 					"font": new java.awt.Font( "Verdana", 0, 12 )
+					"horizontalAlignment": 2
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem9ActionPerformed", true ) )
 				} )
 			}

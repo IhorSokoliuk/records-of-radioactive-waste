@@ -10,6 +10,7 @@ import java.sql.*;
 import javax.swing.*;
 import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
+import oracle.jrockit.jfr.JFR;
 
 /**
  * @author Ololo
@@ -72,6 +73,8 @@ public class login extends JFrame {
     }
 
     private void button1ActionPerformed(ActionEvent e){
+
+
         open();
         int group = 0;
         try {
@@ -86,13 +89,16 @@ public class login extends JFrame {
             if(group == 0) {throw new RuntimeException("Нет такого пользователя");}
             else
             {
+                this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 this.dispose();
                 M.userGroup = group;
                 M.userName = textField1.getText();
                 textField1.setText("");
                 textField2.setText("");
                 M.setProperties();
+                M.hello();
                 M.enable(true);
+                M.transferFocusUpCycle();
             }
 
         } catch (Exception e1) {
@@ -100,6 +106,11 @@ public class login extends JFrame {
             JOptionPane.showMessageDialog(null, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         close();
+    }
+
+    private void thisWindowClosed(WindowEvent e) {
+        M.enable(true);
+        M.transferFocusUpCycle();
     }
 
     private void initComponents() {
@@ -115,6 +126,12 @@ public class login extends JFrame {
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                thisWindowClosed(e);
+            }
+        });
         Container contentPane = getContentPane();
         contentPane.setLayout(new FormLayout(
             "default, $lcgap, 54dlu, $lcgap, 109dlu, $lcgap, default",

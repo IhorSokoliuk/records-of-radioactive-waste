@@ -128,6 +128,9 @@ public class mainFrame extends JFrame {
         }
         tabbedPane1.revalidate();
         tabbedPane1.repaint();
+    }
+
+    public void hello(){
         JOptionPane.showMessageDialog(null, userName, "Welcome", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -381,10 +384,7 @@ public class mainFrame extends JFrame {
 
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
             this.табл0.setModel(model);
-            refreshTableBRV(e);
-            refreshTableRRV(e);
-            refreshTableDIV(e);
-            refreshTableTRV(e);
+
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(null, exception.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
         }
@@ -2339,6 +2339,7 @@ public class mainFrame extends JFrame {
             //---- menuItem9 ----
             menuItem9.setText("\u0417\u043c\u0456\u043d\u0438\u0442\u0438 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430");
             menuItem9.setFont(new Font("Verdana", Font.PLAIN, 12));
+            menuItem9.setHorizontalAlignment(SwingConstants.LEFT);
             menuItem9.addActionListener(e -> menuItem9ActionPerformed(e));
             menuBar1.add(menuItem9);
         }
