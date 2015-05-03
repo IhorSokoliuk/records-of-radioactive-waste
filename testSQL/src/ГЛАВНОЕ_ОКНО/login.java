@@ -10,7 +10,6 @@ import java.sql.*;
 import javax.swing.*;
 import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
-import oracle.jrockit.jfr.JFR;
 
 /**
  * @author Ololo
@@ -73,8 +72,6 @@ public class login extends JFrame {
     }
 
     private void button1ActionPerformed(ActionEvent e){
-
-
         open();
         int group = 0;
         try {
@@ -100,9 +97,7 @@ public class login extends JFrame {
                 M.enable(true);
                 M.transferFocusUpCycle();
             }
-
         } catch (Exception e1) {
-
             JOptionPane.showMessageDialog(null, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         close();

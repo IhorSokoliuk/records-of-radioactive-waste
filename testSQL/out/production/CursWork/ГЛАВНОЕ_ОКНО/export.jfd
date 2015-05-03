@@ -1,16 +1,17 @@
-JFDML JFormDesigner: "5.2.1.0.132" Java: "1.8.0_25" encoding: "UTF-8"
+JFDML JFormDesigner: "5.2.1.0.138" Java: "1.8.0_40" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
-			"$columnSpecs": "172dlu:grow"
-			"$rowSpecs": "fill:121dlu:grow"
+			"$columnSpecs": "max(default;333dlu):grow"
+			"$rowSpecs": "fill:max(default;237dlu):grow"
 		} ) {
 			name: "this"
+			"title": "Експорт даних у файл"
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
-				"$columnSpecs": "default:grow, labelcompgap, default, labelcompgap, default:grow"
-				"$rowSpecs": "default, linegap, default, linegap, default"
+				"$columnSpecs": "max(default;158dlu):grow, labelcompgap, default, labelcompgap, 145dlu:grow"
+				"$rowSpecs": "default, linegap, default, linegap, fill:max(default;201dlu):grow"
 			} ) {
 				name: "panel1"
 				"border": new javax.swing.border.EmptyBorder( 5, 5, 5, 5 )
@@ -25,6 +26,7 @@ new FormModel {
 					"text": "PDF"
 					"$buttonGroup": new FormReference( "buttonGroup1" )
 					"selected": true
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "radioButton1ActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 					"gridY": 3
 				} )
@@ -32,6 +34,7 @@ new FormModel {
 					name: "radioButton2"
 					"text": "Excel"
 					"$buttonGroup": new FormReference( "buttonGroup1" )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "radioButton2ActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 					"gridX": 5
 					"gridY": 3
@@ -41,6 +44,7 @@ new FormModel {
 					"acceptAllFileFilterUsed": false
 					"dialogType": 1
 					"font": new java.awt.Font( "Verdana", 0, 12 )
+					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "fileChooser1ActionPerformed", true ) )
 				}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 					"gridY": 5
 					"gridWidth": 5

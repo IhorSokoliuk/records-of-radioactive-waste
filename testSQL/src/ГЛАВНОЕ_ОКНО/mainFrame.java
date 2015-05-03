@@ -5,19 +5,7 @@ import javax.swing.border.*;
 import com.ibatis.common.jdbc.ScriptRunner;
 import com.jgoodies.forms.factories.CC;
 import com.jgoodies.forms.layout.FormLayout;
-import com.lowagie.text.Document;
-import com.lowagie.text.Element;
-import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfPCell;
-import com.lowagie.text.pdf.PdfPTable;
-import com.lowagie.text.pdf.PdfWriter;
 import com.toedter.calendar.JDateChooser;
-import jxl.Workbook;
-import jxl.write.Label;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
 import net.proteanit.sql.DbUtils;
 import ГЛАВНОЕ_ОКНО.БРВ.insertIntoBRV;
 import ГЛАВНОЕ_ОКНО.БРВ.updateInBRV;
@@ -37,12 +25,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -70,6 +55,7 @@ public class mainFrame extends JFrame {
     public mainFrame() throws Exception {
         initComponents();
         open();
+        log = new login(this);
         updateComboBox(new ActionEvent(comboBox1, ActionEvent.ACTION_PERFORMED, ""));
         refreshTableTRV(new ActionEvent(button5, ActionEvent.ACTION_PERFORMED, ""));
         refreshTableRRV(new ActionEvent(button14, ActionEvent.ACTION_PERFORMED, ""));
@@ -96,7 +82,6 @@ public class mainFrame extends JFrame {
         buttons.add(button30);
         buttons.add(button31);
         buttons.add(button32);
-        log = new login(this);
         this.enable(false);
     }
 
@@ -156,79 +141,6 @@ public class mainFrame extends JFrame {
             e1.printStackTrace();
             JOptionPane.showMessageDialog(null, e1.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    private void menuItem1ActionPerformed(ActionEvent e) {
-        try {
-            String FILE = "Таблиці радіоактивних відходів.pdf";
-            Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(FILE));
-
-            document.open();
-
-            document.addTitle("Таблиці радіоактивних відходів");
-            document.addSubject("Звіт");
-            document.addKeywords("завод, ТРВ, БРВ, РРВ, ДІВ, радіоактивність, радіація");
-            document.addAuthor("Соколюк Ігор");
-            document.addCreator("Студент групи ТІ-21, 3 курс");
-
-            addTable(document, табл0.getModel(), "Завод");
-            addTable(document, табл1.getModel(), "ТРВ");
-            addTable(document, табл2.getModel(), "РРВ");
-            addTable(document, табл3.getModel(), "БРВ");
-            addTable(document, табл4.getModel(), "ДІВ");
-            addTable(document, табл5.getModel(), "Радіонукліди");
-
-            document.close();
-            JOptionPane.showMessageDialog(null, "Успішно експортовано в PDF-файл", "Успіх!", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void addEmptyLine(Paragraph paragraph, int number) {
-        for (int i = 0; i < number; i++) {
-            paragraph.add(new Paragraph(" "));
-        }
-    }
-
-    private void addTable(Document document, TableModel table, String name) throws Exception {
-        Paragraph enter1 = new Paragraph();
-        Paragraph enter2 = new Paragraph();
-        addEmptyLine(enter1, 2);
-        addEmptyLine(enter2, 1);
-        BaseFont bf = BaseFont.createFont("fonts\\verdanab.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-        Paragraph title = new Paragraph(new Phrase(name, new com.lowagie.text.Font(bf, 10)));
-        title.setAlignment(Element.ALIGN_CENTER);
-        document.add(title);
-        document.add(enter2);
-        document.add(createTable(table));
-        document.add(enter1);
-
-    }
-
-    private Paragraph createTable(TableModel table1) throws Exception {
-        PdfPTable table = new PdfPTable(table1.getColumnCount());
-        Paragraph par = new Paragraph();
-
-        PdfPCell c1;
-        BaseFont bf1 = BaseFont.createFont("fonts\\verdana.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-        BaseFont bf2 = BaseFont.createFont("fonts\\verdanab.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
-        for (int i = 0; i < table1.getColumnCount(); i++) {
-            c1 = new PdfPCell(new Phrase(table1.getColumnName(i), new com.lowagie.text.Font(bf2, 7)));
-            c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-            c1.setBackgroundColor(java.awt.Color.lightGray);
-            table.addCell(c1);
-        }
-        table.setHeaderRows(1);
-        for (int j = 0; j < table1.getRowCount(); j++) {
-            for (int i = 0; i < table1.getColumnCount(); i++) {
-                table.addCell(new Phrase(String.valueOf(table1.getValueAt(j, i)), new com.lowagie.text.Font(bf1, 7)));
-            }
-        }
-
-        par.add(table);
-        return par;
     }
 
     private void updateInZAVOD(ActionEvent e) {
@@ -319,7 +231,7 @@ public class mainFrame extends JFrame {
             if (comboBox2.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Завод`.`Нуклід` = \"" + comboBox2.getSelectedItem().toString() + "\"\n";
+                que += "`Завод`.`Нуклід` = '" + comboBox2.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -490,7 +402,7 @@ public class mainFrame extends JFrame {
             if (comboBox5.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Назва` = \"" + comboBox5.getSelectedItem().toString() + "\"\n";
+                que += "`Радіонуклід`.`Назва` = '" + comboBox5.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -690,41 +602,6 @@ public class mainFrame extends JFrame {
         return JFrame.EXIT_ON_CLOSE;
     }
 
-    private void menuItem3ActionPerformed(ActionEvent e) {
-        try {
-
-            WritableWorkbook workbook = Workbook.createWorkbook(new File("result.xls"));
-
-            writeToExcel(workbook, табл0.getModel(), "Завод", 0);
-            writeToExcel(workbook, табл1.getModel(), "ТРВ", 1);
-            writeToExcel(workbook, табл2.getModel(), "РРВ", 2);
-            writeToExcel(workbook, табл3.getModel(), "БРВ", 3);
-            writeToExcel(workbook, табл4.getModel(), "ДІВ", 4);
-            writeToExcel(workbook, табл5.getModel(), "Раіоактивні нукліди", 5);
-
-            workbook.write();
-            workbook.close();
-            JOptionPane.showMessageDialog(null, "Успішно експортовано в Excel-файл", "Успіх!", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private void writeToExcel(WritableWorkbook workbook, TableModel model, String name, int num) throws Exception {
-        WritableSheet sheet = workbook.createSheet(name, num);
-        for (int i = 0; i < model.getColumnCount(); i++) {
-            Label column = new Label(i, 0, model.getColumnName(i));
-            sheet.addCell(column);
-        }
-        for (int i = 0; i < model.getRowCount(); i++) {
-            for (int j = 0; j < model.getColumnCount(); j++) {
-                Label row = new Label(j, i + 1,
-                        model.getValueAt(i, j).toString());
-                sheet.addCell(row);
-            }
-        }
-    }
-
     private void deleteFromRRV(ActionEvent e) {
         try {
             int[] i = табл2.getSelectedRows();
@@ -805,7 +682,7 @@ public class mainFrame extends JFrame {
             if (comboBox8.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Назва` = \"" + comboBox8.getSelectedItem().toString() + "\"\n";
+                que += "`Радіонуклід`.`Назва` = '" + comboBox8.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -962,7 +839,7 @@ public class mainFrame extends JFrame {
             if (comboBox11.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Назва` = \"" + comboBox11.getSelectedItem().toString() + "\"\n";
+                que += "`Радіонуклід`.`Назва` = '" + comboBox11.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -1183,7 +1060,7 @@ public class mainFrame extends JFrame {
             if (comboBox14.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Назва` = \"" + comboBox14.getSelectedItem().toString() + "\"\n";
+                que += "`Радіонуклід`.`Назва` = '" + comboBox14.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -1323,7 +1200,7 @@ public class mainFrame extends JFrame {
             if (!textField1.getText().isEmpty()) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Назва` = \"" + textField1.getText() + "\"\n";
+                que += "`Радіонуклід`.`Назва` = '" + textField1.getText() + "'\n";
                 where = true;
             }
 
@@ -1543,6 +1420,9 @@ public class mainFrame extends JFrame {
     }
 
     private void addUSER(ActionEvent e) {
+        if(textField3.getText() != "" && textField4.getText() != ""){
+            JOptionPane.showMessageDialog(null, "Нужно для начала ввести имя", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
         try {
             String query = " INSERT INTO користувач (`Ім'я`, `Пароль`, `Група`)"
                     + " VALUES (?, ?, ?)";
@@ -1583,7 +1463,6 @@ public class mainFrame extends JFrame {
             preparedStmt.setString(1, textField3.getText());
             preparedStmt.setString(2, textField4.getText());
             preparedStmt.setInt(3, (comboBox16.getSelectedIndex() + 1));
-            preparedStmt.setInt(4, Integer.parseInt(label75.getText()));
             preparedStmt.execute();
             preparedStmt.close();
             //close();
@@ -1618,19 +1497,28 @@ public class mainFrame extends JFrame {
     }
 
     private void table1MouseClicked(MouseEvent e) {
-        label75.setText(table1.getValueAt(table1.getSelectedRow(), 0).toString());
         textField3.setText(table1.getValueAt(table1.getSelectedRow(), 1).toString());
         textField4.setText(table1.getValueAt(table1.getSelectedRow(), 2).toString());
         comboBox16.setSelectedIndex(Integer.parseInt(table1.getValueAt(table1.getSelectedRow(), 3).toString())-1);
+    }
+
+    private void menuItem1ActionPerformed(ActionEvent e) {
+        ArrayList<JTable> t = new ArrayList<JTable>();
+        t.add(табл0);
+        t.add(табл1);
+        t.add(табл2);
+        t.add(табл3);
+        t.add(табл4);
+        t.add(табл5);
+        export ex = new export(t);
+        ex.setVisible(true);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     private JMenuBar menuBar1;
     private JMenu menu2;
     private JMenuItem menuItem2;
-    private JMenu menu4;
     private JMenuItem menuItem1;
-    private JMenuItem menuItem3;
     private JMenu menu3;
     private JMenuItem menuItem4;
     private JMenuItem menuItem5;
@@ -1641,7 +1529,7 @@ public class mainFrame extends JFrame {
     private JTabbedPane tabbedPane1;
     private JPanel ЗАВОД;
     private JScrollPane scrollPane1;
-    private JTable табл0;
+    public JTable табл0;
     private JPanel panel6;
     private JPanel panel8;
     private JButton button4;
@@ -1681,7 +1569,7 @@ public class mainFrame extends JFrame {
     private JButton button3;
     private JPanel ЗАВОД2;
     private JScrollPane scrollPane3;
-    private JTable табл1;
+    public JTable табл1;
     private JPanel panel10;
     private JPanel panel11;
     private JButton button10;
@@ -1731,7 +1619,7 @@ public class mainFrame extends JFrame {
     private JButton button13;
     private JPanel ЗАВОД3;
     private JScrollPane scrollPane4;
-    private JTable табл2;
+    public JTable табл2;
     private JPanel panel16;
     private JPanel panel17;
     private JButton button15;
@@ -1781,7 +1669,7 @@ public class mainFrame extends JFrame {
     private JButton button19;
     private JPanel ЗАВОД4;
     private JScrollPane scrollPane5;
-    private JTable табл3;
+    public JTable табл3;
     private JPanel panel22;
     private JPanel panel23;
     private JButton button20;
@@ -1831,7 +1719,7 @@ public class mainFrame extends JFrame {
     private JButton button24;
     private JPanel ЗАВОД5;
     private JScrollPane scrollPane6;
-    private JTable табл4;
+    public JTable табл4;
     private JPanel panel29;
     private JPanel panel30;
     private JButton button25;
@@ -1881,7 +1769,7 @@ public class mainFrame extends JFrame {
     private JButton button29;
     private JPanel ЗАВОД6;
     private JScrollPane scrollPane7;
-    private JTable табл5;
+    public JTable табл5;
     private JPanel panel36;
     private JPanel panel37;
     private JButton button30;
@@ -1930,7 +1818,6 @@ public class mainFrame extends JFrame {
     private JTextField textField4;
     private JLabel label73;
     private JComboBox<String> comboBox16;
-    private JLabel label75;
     private JButton button7;
     private JButton button8;
     private JButton button9;
@@ -1941,9 +1828,7 @@ public class mainFrame extends JFrame {
         menuBar1 = new JMenuBar();
         menu2 = new JMenu();
         menuItem2 = new JMenuItem();
-        menu4 = new JMenu();
         menuItem1 = new JMenuItem();
-        menuItem3 = new JMenuItem();
         menu3 = new JMenu();
         menuItem4 = new JMenuItem();
         menuItem5 = new JMenuItem();
@@ -2243,7 +2128,6 @@ public class mainFrame extends JFrame {
         textField4 = new JTextField();
         label73 = new JLabel();
         comboBox16 = new JComboBox<>();
-        label75 = new JLabel();
         button7 = new JButton();
         button8 = new JButton();
         button9 = new JButton();
@@ -2278,24 +2162,11 @@ public class mainFrame extends JFrame {
                 menuItem2.addActionListener(e -> menuItem2ActionPerformed(e));
                 menu2.add(menuItem2);
 
-                //======== menu4 ========
-                {
-                    menu4.setText("\u0415\u043a\u0441\u043f\u043e\u0440\u0442");
-                    menu4.setFont(new Font("Verdana", Font.PLAIN, 12));
-
-                    //---- menuItem1 ----
-                    menuItem1.setText("PDF");
-                    menuItem1.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    menuItem1.addActionListener(e -> menuItem1ActionPerformed(e));
-                    menu4.add(menuItem1);
-
-                    //---- menuItem3 ----
-                    menuItem3.setText("Excel");
-                    menuItem3.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    menuItem3.addActionListener(e -> menuItem3ActionPerformed(e));
-                    menu4.add(menuItem3);
-                }
-                menu2.add(menu4);
+                //---- menuItem1 ----
+                menuItem1.setText("\u0415\u043a\u0441\u043f\u043e\u0440\u0442");
+                menuItem1.setFont(new Font("Verdana", Font.PLAIN, 12));
+                menuItem1.addActionListener(e -> menuItem1ActionPerformed(e));
+                menu2.add(menuItem1);
             }
             menuBar1.add(menu2);
 
@@ -4311,10 +4182,6 @@ public class mainFrame extends JFrame {
                         "\u041f\u0440\u0430\u0446\u0456\u0432\u043d\u0438\u043a"
                     }));
                     panel44.add(comboBox16, CC.xy(5, 7));
-
-                    //---- label75 ----
-                    label75.setText("0");
-                    panel44.add(label75, CC.xy(3, 9));
                 }
                 panel43.add(panel44, CC.xywh(5, 1, 1, 7));
 

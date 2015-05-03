@@ -37,6 +37,9 @@ new FormModel {
 							name: "табл0"
 							"minimumSize": &Dimension4 new java.awt.Dimension( 30, 204 )
 							"font": #Font0
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
 						} )
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
@@ -383,6 +386,9 @@ new FormModel {
 							name: "табл1"
 							"minimumSize": #Dimension4
 							"font": #Font0
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
 						} )
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
@@ -808,6 +814,9 @@ new FormModel {
 							name: "табл2"
 							"minimumSize": #Dimension4
 							"font": #Font0
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
 						} )
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
@@ -1217,6 +1226,9 @@ new FormModel {
 							name: "табл3"
 							"minimumSize": #Dimension4
 							"font": #Font0
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
 						} )
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
@@ -1624,6 +1636,9 @@ new FormModel {
 							name: "табл4"
 							"minimumSize": #Dimension4
 							"font": #Font0
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
 						} )
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
@@ -2033,6 +2048,9 @@ new FormModel {
 							name: "табл5"
 							"minimumSize": #Dimension4
 							"font": #Font0
+							auxiliary() {
+								"JavaCodeGenerator.variableModifiers": 1
+							}
 						} )
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) )
 					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jgoodies.forms.layout.FormLayout ) {
@@ -2424,13 +2442,6 @@ new FormModel {
 							"gridX": 5
 							"gridY": 7
 						} )
-						add( new FormComponent( "javax.swing.JLabel" ) {
-							name: "label75"
-							"text": "0"
-						}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
-							"gridX": 3
-							"gridY": 9
-						} )
 					}, new FormLayoutConstraints( class com.jgoodies.forms.layout.CellConstraints ) {
 						"gridX": 5
 						"gridHeight": 7
@@ -2482,22 +2493,11 @@ new FormModel {
 						"font": #Font1
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem2ActionPerformed", true ) )
 					} )
-					add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
-						name: "menu4"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem1"
 						"text": "Експорт"
-						"font": #Font0
-						add( new FormComponent( "javax.swing.JMenuItem" ) {
-							name: "menuItem1"
-							"text": "PDF"
-							"font": #Font1
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem1ActionPerformed", true ) )
-						} )
-						add( new FormComponent( "javax.swing.JMenuItem" ) {
-							name: "menuItem3"
-							"text": "Excel"
-							"font": #Font0
-							addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem3ActionPerformed", true ) )
-						} )
+						"font": new java.awt.Font( "Verdana", 0, 12 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "menuItem1ActionPerformed", true ) )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
