@@ -1,24 +1,36 @@
-package –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û;
+package √À¿¬ÕŒ≈_Œ ÕŒ;
 
 import java.awt.event.*;
 import javax.swing.border.*;
 import com.ibatis.common.jdbc.ScriptRunner;
 import com.jgoodies.forms.factories.CC;
 import com.jgoodies.forms.layout.FormLayout;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.pdf.BaseFont;
+import com.lowagie.text.pdf.PdfPTable;
 import com.toedter.calendar.JDateChooser;
 import net.proteanit.sql.DbUtils;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–ë–†–í.insertIntoBRV;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–ë–†–í.updateInBRV;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–î–Ü–í.insertIntoDIV;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–î–Ü–í.updateInDIV;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–ó–ê–í–û–î.insertIntoZavod;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–ó–ê–í–û–î.updateInZavod;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–†–ê–î–Ü–û–ê–ö–¢–ò–í–ù–Ü_–ù–£–ö–õ–Ü–î–ò.insertIntoRadio;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–†–ê–î–Ü–û–ê–ö–¢–ò–í–ù–Ü_–ù–£–ö–õ–Ü–î–ò.updateInRadio;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–†–†–í.insertIntoRRV;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–†–†–í.updateInRRV;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–¢–†–í.insertIntoTRV;
-import –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û.–¢–†–í.updateInTRV;
+import √À¿¬ÕŒ≈_Œ ÕŒ.¡–¬.insertIntoBRV;
+import √À¿¬ÕŒ≈_Œ ÕŒ.¡–¬.updateInBRV;
+import √À¿¬ÕŒ≈_Œ ÕŒ.ƒ≤¬.insertIntoDIV;
+import √À¿¬ÕŒ≈_Œ ÕŒ.ƒ≤¬.updateInDIV;
+import √À¿¬ÕŒ≈_Œ ÕŒ.«¿¬Œƒ.insertIntoZavod;
+import √À¿¬ÕŒ≈_Œ ÕŒ.«¿¬Œƒ.updateInZavod;
+import √À¿¬ÕŒ≈_Œ ÕŒ.–¿ƒ≤Œ¿ “»¬Õ≤_Õ” À≤ƒ».insertIntoRadio;
+import √À¿¬ÕŒ≈_Œ ÕŒ.–¿ƒ≤Œ¿ “»¬Õ≤_Õ” À≤ƒ».updateInRadio;
+import √À¿¬ÕŒ≈_Œ ÕŒ.––¬.insertIntoRRV;
+import √À¿¬ÕŒ≈_Œ ÕŒ.––¬.updateInRRV;
+import √À¿¬ÕŒ≈_Œ ÕŒ.“–¬.insertIntoTRV;
+import √À¿¬ÕŒ≈_Œ ÕŒ.“–¬.updateInTRV;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.general.PieDataset;
+import org.jfree.ui.ApplicationFrame;
+import org.jfree.ui.RefineryUtilities;
+import org.jfree.util.Rotation;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -51,6 +63,7 @@ public class mainFrame extends JFrame {
     public int userGroup;
     public String userName;
     private login log;
+    private diagram diag;
 
     public mainFrame() throws Exception {
         initComponents();
@@ -91,7 +104,7 @@ public class mainFrame extends JFrame {
             for (JButton but : buttons)
                 but.setVisible(true);
             if(tabbedPane1.getTabCount() == 6)
-                tabbedPane1.addTab("–ö–æ—Ä–∏—Å—Ç—É–≤–∞—á—ñ", panel43);
+                tabbedPane1.addTab(" ÓËÒÚÛ‚‡˜≥", panel43);
             panel43.setVisible(true);
         }
         if(userGroup == 2)
@@ -125,29 +138,29 @@ public class mainFrame extends JFrame {
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.execute();
             preparedStmt.close();
-            JOptionPane.showMessageDialog(null, "–î–∞–Ω—ñ –∑ —Ç–∞–±–ª–∏—Ü—ñ " + string + " —É—Å–ø—ñ—à–Ω–æ –≤–∏–¥–∞–ª–µ–Ω—ñ!", "–£–°–ü–Ü–•!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ƒ‡Ì≥ Á Ú‡·ÎËˆ≥ " + string + " ÛÒÔ≥¯ÌÓ ‚Ë‰‡ÎÂÌ≥!", "”—œ≤’!", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (SQLException e1) {
             e1.printStackTrace();
-            JOptionPane.showMessageDialog(null, e1.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e1.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void menuItem2ActionPerformed(ActionEvent e) {
         try {
             ScriptRunner runner = new ScriptRunner(connect, false, false);
-            runner.runScript(new BufferedReader(new FileReader("script/insert–ó–ê–í–û–î.sql")));
+            runner.runScript(new BufferedReader(new FileReader("script/insert«¿¬Œƒ.sql")));
         } catch (Exception e1) {
             e1.printStackTrace();
-            JOptionPane.showMessageDialog(null, e1.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e1.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void updateInZAVOD(ActionEvent e) {
-        if (—Ç–∞–±–ª0.getSelectedRowCount() == 1)
-            new updateInZavod(Integer.parseInt(—Ç–∞–±–ª0.getValueAt(—Ç–∞–±–ª0.getSelectedRow(), 0).toString()));
+        if (Ú‡·Î0.getSelectedRowCount() == 1)
+            new updateInZavod(Integer.parseInt(Ú‡·Î0.getValueAt(Ú‡·Î0.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "–ü–æ—Ç—Ä—ñ–±–Ω–æ –æ–±—Ä–∞—Ç–∏ –æ–¥–∏–Ω –∑–∞–ø–∏—Å –∑ —Ç–∞–±–ª–∏—Ü—ñ", "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "œÓÚ≥·ÌÓ Ó·‡ÚË Ó‰ËÌ Á‡ÔËÒ Á Ú‡·ÎËˆ≥", "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
     }
 
     private void searchCleanerZAVOD(ActionEvent e) {
@@ -171,18 +184,18 @@ public class mainFrame extends JFrame {
 
     private void deleteFromZAVOD(ActionEvent e) {
         try {
-            int[] i = —Ç–∞–±–ª0.getSelectedRows();
+            int[] i = Ú‡·Î0.getSelectedRows();
             String que;
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM –ó–∞–≤–æ–¥ WHERE –ù–æ–º–µ—Ä = " + Integer.parseInt(—Ç–∞–±–ª0.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM «‡‚Ó‰ WHERE ÕÓÏÂ = " + Integer.parseInt(Ú‡·Î0.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             refreshTableZAVOD(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -190,48 +203,48 @@ public class mainFrame extends JFrame {
         try {
             String que = "SELECT ";
             if (checkBox1.isSelected())
-                que += "`–ó–∞–≤–æ–¥`.`–ù–æ–º–µ—Ä`, ";
+                que += "`«‡‚Ó‰`.`ÕÓÏÂ`, ";
             if (checkBox2.isSelected())
-                que += "`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –≤—ñ–¥—Ö–æ–¥—É`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –≤—ñ–¥—Ö–æ–¥—É`, ";
+                que += "` ‡ÚÂ„Ó≥ˇ ‚≥‰ıÓ‰Û`.` ‡ÚÂ„Ó≥ˇ ‚≥‰ıÓ‰Û`, ";
             if (checkBox3.isSelected())
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`, ";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`, ";
             if (checkBox4.isSelected())
-                que += "`–ó–∞–≤–æ–¥`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å`, ";
+                que += "`«‡‚Ó‰`.` ≥Î¸Í≥ÒÚ¸`, ";
             if (checkBox5.isSelected())
-                que += "`–ó–∞–≤–æ–¥`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è`, ";
+                que += "`«‡‚Ó‰`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ`, ";
             if (checkBox6.isSelected())
-                que += "`–ó–∞–≤–æ–¥`.`–ü—Ä–∏–º—ñ—Ç–∫–∏`, ";
+                que += "`«‡‚Ó‰`.`œËÏ≥ÚÍË`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `–ó–∞–≤–æ–¥`\n";
+            que += " FROM `«‡‚Ó‰`\n";
 
-            que += "INNER JOIN `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –≤—ñ–¥—Ö–æ–¥—É`\n" +
-                    "ON `–ó–∞–≤–æ–¥`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –≤—ñ–¥—Ö–æ–¥—É` = `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –≤—ñ–¥—Ö–æ–¥—É`.`–ù–æ–º–µ—Ä`\n" +
-                    "INNER JOIN `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`\n" +
-                    "ON `–ó–∞–≤–æ–¥`.`–ù—É–∫–ª—ñ–¥` = `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä`\n";
+            que += "INNER JOIN ` ‡ÚÂ„Ó≥ˇ ‚≥‰ıÓ‰Û`\n" +
+                    "ON `«‡‚Ó‰`.` ‡ÚÂ„Ó≥ˇ ‚≥‰ıÓ‰Û` = ` ‡ÚÂ„Ó≥ˇ ‚≥‰ıÓ‰Û`.`ÕÓÏÂ`\n" +
+                    "INNER JOIN `–‡‰≥ÓÌÛÍÎ≥‰`\n" +
+                    "ON `«‡‚Ó‰`.`ÕÛÍÎ≥‰` = `–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ`\n";
 
             boolean where = false;
 
             if (!firstNumber1.getText().isEmpty()) {
                 if (!lastNumber1.getText().isEmpty()) {
-                    que += "WHERE `–ó–∞–≤–æ–¥`.`–ù–æ–º–µ—Ä` >= \"" + firstNumber1.getText() + "\"\n";
+                    que += "WHERE `«‡‚Ó‰`.`ÕÓÏÂ` >= \"" + firstNumber1.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–ó–∞–≤–æ–¥`.`–ù–æ–º–µ—Ä` <= \"" + lastNumber1.getText() + "\"\n";
+                    que += "`«‡‚Ó‰`.`ÕÓÏÂ` <= \"" + lastNumber1.getText() + "\"\n";
                 } else
-                    que += "WHERE `–ó–∞–≤–æ–¥`.`–ù–æ–º–µ—Ä` = \"" + firstNumber1.getText() + "\"\n";
+                    que += "WHERE `«‡‚Ó‰`.`ÕÓÏÂ` = \"" + firstNumber1.getText() + "\"\n";
                 where = true;
             }
 
             if (comboBox1.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –≤—ñ–¥—Ö–æ–¥—É`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –≤—ñ–¥—Ö–æ–¥—É` = \"" + comboBox1.getSelectedItem().toString() + "\"\n";
+                que += "` ‡ÚÂ„Ó≥ˇ ‚≥‰ıÓ‰Û`.` ‡ÚÂ„Ó≥ˇ ‚≥‰ıÓ‰Û` = \"" + comboBox1.getSelectedItem().toString() + "\"\n";
                 where = true;
             }
 
             if (comboBox2.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–ó–∞–≤–æ–¥`.`–ù—É–∫–ª—ñ–¥` = '" + comboBox2.getSelectedItem().toString() + "'\n";
+                que += "`«‡‚Ó‰`.`ÕÛÍÎ≥‰` = '" + comboBox2.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -239,11 +252,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber2.getText().isEmpty()) {
-                    que += "`–ó–∞–≤–æ–¥`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` >= \"" + firstNumber2.getText() + "\"\n";
+                    que += "`«‡‚Ó‰`.` ≥Î¸Í≥ÒÚ¸` >= \"" + firstNumber2.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–ó–∞–≤–æ–¥`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` <= \"" + lastNumber2.getText() + "\"\n";
+                    que += "`«‡‚Ó‰`.` ≥Î¸Í≥ÒÚ¸` <= \"" + lastNumber2.getText() + "\"\n";
                 } else
-                    que += "`–ó–∞–≤–æ–¥`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` = \"" + firstNumber2.getText() + "\"\n";
+                    que += "`«‡‚Ó‰`.` ≥Î¸Í≥ÒÚ¸` = \"" + firstNumber2.getText() + "\"\n";
                 where = true;
             }
 
@@ -256,32 +269,32 @@ public class mainFrame extends JFrame {
                 else que += "AND ";
                 if (dateChooser2.getDate() != null) {
                     date2 = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser2.getDate()));
-                    que += "`–ó–∞–≤–æ–¥`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` >= \"" + date1 + "\"\n";
+                    que += "`«‡‚Ó‰`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` >= \"" + date1 + "\"\n";
                     que += "AND ";
-                    que += "`–ó–∞–≤–æ–¥`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` <= \"" + date2 + "\"\n";
+                    que += "`«‡‚Ó‰`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` <= \"" + date2 + "\"\n";
                 } else
-                    que += "`–ó–∞–≤–æ–¥`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` = \"" + date1 + "\"\n";
+                    que += "`«‡‚Ó‰`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` = \"" + date1 + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox3.getSelectedIndex()) {
                 case 0:
-                    que += " `–ó–∞–≤–æ–¥`.`–ù–æ–º–µ—Ä`";
+                    que += " `«‡‚Ó‰`.`ÕÓÏÂ`";
                     break;
                 case 1:
-                    que += " `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –≤—ñ–¥—Ö–æ–¥—É`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –≤—ñ–¥—Ö–æ–¥—É`";
+                    que += " ` ‡ÚÂ„Ó≥ˇ ‚≥‰ıÓ‰Û`.` ‡ÚÂ„Ó≥ˇ ‚≥‰ıÓ‰Û`";
                     break;
                 case 2:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`";
                     break;
                 case 3:
-                    que += " `–ó–∞–≤–æ–¥`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å`";
+                    que += " `«‡‚Ó‰`.` ≥Î¸Í≥ÒÚ¸`";
                     break;
                 case 4:
-                    que += " `–ó–∞–≤–æ–¥`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è`";
+                    que += " `«‡‚Ó‰`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ`";
                     break;
                 case 5:
-                    que += " `–ó–∞–≤–æ–¥`.`–ü—Ä–∏–º—ñ—Ç–∫–∏`";
+                    que += " `«‡‚Ó‰`.`œËÏ≥ÚÍË`";
                     break;
             }
 
@@ -295,17 +308,17 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.—Ç–∞–±–ª0.setModel(model);
+            this.Ú‡·Î0.setModel(model);
 
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exception.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void updateComboBox(ActionEvent e) {
         try {
             resultSet = statement
-                    .executeQuery("SELECT * FROM —Ä–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥");
+                    .executeQuery("SELECT * FROM ‡‰≥ÓÌÛÍÎ≥‰");
             comboBox2.addItem("-");
             comboBox5.addItem("-");
             comboBox8.addItem("-");
@@ -320,32 +333,32 @@ public class mainFrame extends JFrame {
                 comboBox14.addItem(str);
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void menuItem4ActionPerformed(ActionEvent e) {
-        if (JOptionPane.showConfirmDialog(null, "–í–∏ –≤–ø–µ–≤–µ–Ω–Ω—ñ, —â–æ –±–∞–∂–∞—î—Ç–µ –≤–∏–¥–∞–ª–∏—Ç–∏ –≤—Å—ñ –¥–∞–Ω—ñ –∑ —Ç–∞–±–ª–∏—Ü—ñ " + menuItem4.getText() + "?", "–£–≤–∞–≥–∞!", JOptionPane.YES_NO_OPTION) == 0)
+        if (JOptionPane.showConfirmDialog(null, "¬Ë ‚ÔÂ‚ÂÌÌ≥, ˘Ó ·‡Ê‡∫ÚÂ ‚Ë‰‡ÎËÚË ‚Ò≥ ‰‡Ì≥ Á Ú‡·ÎËˆ≥ " + menuItem4.getText() + "?", "”‚‡„‡!", JOptionPane.YES_NO_OPTION) == 0)
             truncateTable(menuItem4.getText());
     }
 
     private void menuItem5ActionPerformed(ActionEvent e) {
-        if (JOptionPane.showConfirmDialog(null, "–í–∏ –≤–ø–µ–≤–µ–Ω–Ω—ñ, —â–æ –±–∞–∂–∞—î—Ç–µ –≤–∏–¥–∞–ª–∏—Ç–∏ –≤—Å—ñ –¥–∞–Ω—ñ –∑ —Ç–∞–±–ª–∏—Ü—ñ " + menuItem5.getText() + "?", "–£–≤–∞–≥–∞!", JOptionPane.YES_NO_OPTION) == 0)
+        if (JOptionPane.showConfirmDialog(null, "¬Ë ‚ÔÂ‚ÂÌÌ≥, ˘Ó ·‡Ê‡∫ÚÂ ‚Ë‰‡ÎËÚË ‚Ò≥ ‰‡Ì≥ Á Ú‡·ÎËˆ≥ " + menuItem5.getText() + "?", "”‚‡„‡!", JOptionPane.YES_NO_OPTION) == 0)
             truncateTable(menuItem5.getText());
     }
 
     private void menuItem6ActionPerformed(ActionEvent e) {
-        if (JOptionPane.showConfirmDialog(null, "–í–∏ –≤–ø–µ–≤–µ–Ω–Ω—ñ, —â–æ –±–∞–∂–∞—î—Ç–µ –≤–∏–¥–∞–ª–∏—Ç–∏ –≤—Å—ñ –¥–∞–Ω—ñ –∑ —Ç–∞–±–ª–∏—Ü—ñ " + menuItem6.getText() + "?", "–£–≤–∞–≥–∞!", JOptionPane.YES_NO_OPTION) == 0)
+        if (JOptionPane.showConfirmDialog(null, "¬Ë ‚ÔÂ‚ÂÌÌ≥, ˘Ó ·‡Ê‡∫ÚÂ ‚Ë‰‡ÎËÚË ‚Ò≥ ‰‡Ì≥ Á Ú‡·ÎËˆ≥ " + menuItem6.getText() + "?", "”‚‡„‡!", JOptionPane.YES_NO_OPTION) == 0)
             truncateTable(menuItem6.getText());
     }
 
     private void menuItem7ActionPerformed(ActionEvent e) {
-        if (JOptionPane.showConfirmDialog(null, "–í–∏ –≤–ø–µ–≤–µ–Ω–Ω—ñ, —â–æ –±–∞–∂–∞—î—Ç–µ –≤–∏–¥–∞–ª–∏—Ç–∏ –≤—Å—ñ –¥–∞–Ω—ñ –∑ —Ç–∞–±–ª–∏—Ü—ñ " + menuItem7.getText() + "?", "–£–≤–∞–≥–∞!", JOptionPane.YES_NO_OPTION) == 0)
+        if (JOptionPane.showConfirmDialog(null, "¬Ë ‚ÔÂ‚ÂÌÌ≥, ˘Ó ·‡Ê‡∫ÚÂ ‚Ë‰‡ÎËÚË ‚Ò≥ ‰‡Ì≥ Á Ú‡·ÎËˆ≥ " + menuItem7.getText() + "?", "”‚‡„‡!", JOptionPane.YES_NO_OPTION) == 0)
             truncateTable(menuItem7.getText());
     }
 
     private void menuItem8ActionPerformed(ActionEvent e) {
-        if (JOptionPane.showConfirmDialog(null, "–í–∏ –≤–ø–µ–≤–µ–Ω–Ω—ñ, —â–æ –±–∞–∂–∞—î—Ç–µ –≤–∏–¥–∞–ª–∏—Ç–∏ –≤—Å—ñ –¥–∞–Ω—ñ –∑ —Ç–∞–±–ª–∏—Ü—ñ " + menuItem8.getText() + "?", "–£–≤–∞–≥–∞!", JOptionPane.YES_NO_OPTION) == 0)
+        if (JOptionPane.showConfirmDialog(null, "¬Ë ‚ÔÂ‚ÂÌÌ≥, ˘Ó ·‡Ê‡∫ÚÂ ‚Ë‰‡ÎËÚË ‚Ò≥ ‰‡Ì≥ Á Ú‡·ÎËˆ≥ " + menuItem8.getText() + "?", "”‚‡„‡!", JOptionPane.YES_NO_OPTION) == 0)
             truncateTable(menuItem8.getText());
     }
 
@@ -358,51 +371,51 @@ public class mainFrame extends JFrame {
             //open();
             String que = "SELECT ";
             if (checkBox7.isSelected())
-                que += "`–¢–†–í`.`–ù–æ–º–µ—Ä`, ";
+                que += "`“–¬`.`ÕÓÏÂ`, ";
             if (checkBox8.isSelected())
-                que += "`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`, ";
+                que += "` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`, ";
             if (checkBox9.isSelected())
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`, ";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`, ";
             if (checkBox10.isSelected())
-                que += "`–¢–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å`, ";
+                que += "`“–¬`.` ≥Î¸Í≥ÒÚ¸`, ";
             if (checkBox11.isSelected())
-                que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞`, ";
+                que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡`, ";
             if (checkBox12.isSelected())
-                que += "`–¢–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å`, ";
+                que += "`“–¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸`, ";
             if (checkBox13.isSelected())
-                que += "`–¢–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è`, ";
+                que += "`“–¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ`, ";
             if (checkBox14.isSelected())
-                que += "`–¢–†–í`.`–ü—Ä–∏–º—ñ—Ç–∫–∏`, ";
+                que += "`“–¬`.`œËÏ≥ÚÍË`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `–¢–†–í`\n";
+            que += " FROM `“–¬`\n";
 
-            que += "inner join `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`\n" +
-                    "on `–¢–†–í`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ` = `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ù–æ–º–µ—Ä`\n" +
-                    "inner join `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`\n" +
-                    "on `–¢–†–í`.`–ù—É–∫–ª—ñ–¥` = `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä`\n";
+            que += "inner join ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`\n" +
+                    "on `“–¬`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥` = ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.`ÕÓÏÂ`\n" +
+                    "inner join `–‡‰≥ÓÌÛÍÎ≥‰`\n" +
+                    "on `“–¬`.`ÕÛÍÎ≥‰` = `–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ`\n";
 
             boolean where = false;
             if (!firstNumber3.getText().isEmpty()) {
                 if (!lastNumber3.getText().isEmpty()) {
-                    que += "WHERE `–¢–†–í`.`–ù–æ–º–µ—Ä` >= \"" + firstNumber3.getText() + "\"\n";
+                    que += "WHERE `“–¬`.`ÕÓÏÂ` >= \"" + firstNumber3.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–¢–†–í`.`–ù–æ–º–µ—Ä` <= \"" + lastNumber3.getText() + "\"\n";
+                    que += "`“–¬`.`ÕÓÏÂ` <= \"" + lastNumber3.getText() + "\"\n";
                 } else
-                    que += "–¢–†–í `–ó–∞–≤–æ–¥`.`–ù–æ–º–µ—Ä` = \"" + firstNumber3.getText() + "\"\n";
+                    que += "“–¬ `«‡‚Ó‰`.`ÕÓÏÂ` = \"" + firstNumber3.getText() + "\"\n";
                 where = true;
             }
 
             if (comboBox4.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ` = \"" + comboBox4.getSelectedItem().toString() + "\"\n";
+                que += "` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥` = \"" + comboBox4.getSelectedItem().toString() + "\"\n";
                 where = true;
             }
 
             if (comboBox5.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞` = '" + comboBox5.getSelectedItem().toString() + "'\n";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡` = '" + comboBox5.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -410,11 +423,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber4.getText().isEmpty()) {
-                    que += "`–¢–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` >= \"" + firstNumber4.getText() + "\"\n";
+                    que += "`“–¬`.` ≥Î¸Í≥ÒÚ¸` >= \"" + firstNumber4.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–¢–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` <= \"" + lastNumber4.getText() + "\"\n";
+                    que += "`“–¬`.` ≥Î¸Í≥ÒÚ¸` <= \"" + lastNumber4.getText() + "\"\n";
                 } else
-                    que += "`–¢–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` = \"" + firstNumber4.getText() + "\"\n";
+                    que += "`“–¬`.` ≥Î¸Í≥ÒÚ¸` = \"" + firstNumber4.getText() + "\"\n";
                 where = true;
             }
 
@@ -422,11 +435,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber5.getText().isEmpty()) {
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` >= \"" + firstNumber5.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` >= \"" + firstNumber5.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` <= \"" + lastNumber5.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` <= \"" + lastNumber5.getText() + "\"\n";
                 } else
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` = \"" + firstNumber5.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` = \"" + firstNumber5.getText() + "\"\n";
                 where = true;
             }
 
@@ -434,11 +447,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber6.getText().isEmpty()) {
-                    que += "`–¢–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` >= \"" + firstNumber6.getText() + "\"\n";
+                    que += "`“–¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` >= \"" + firstNumber6.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–¢–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` <= \"" + lastNumber6.getText() + "\"\n";
+                    que += "`“–¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` <= \"" + lastNumber6.getText() + "\"\n";
                 } else
-                    que += "`–¢–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` = \"" + firstNumber6.getText() + "\"\n";
+                    que += "`“–¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` = \"" + firstNumber6.getText() + "\"\n";
                 where = true;
             }
 
@@ -452,38 +465,38 @@ public class mainFrame extends JFrame {
                 else que += "AND ";
                 if (dateChooser4.getDate() != null) {
                     date2 = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser4.getDate()));
-                    que += "`–¢–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` >= \"" + date1 + "\"\n";
+                    que += "`“–¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` >= \"" + date1 + "\"\n";
                     que += "AND ";
-                    que += "`–¢–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` <= \"" + date2 + "\"\n";
+                    que += "`“–¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` <= \"" + date2 + "\"\n";
                 } else
-                    que += "`–¢–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` = \"" + date1 + "\"\n";
+                    que += "`“–¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` = \"" + date1 + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox6.getSelectedIndex()) {
                 case 0:
-                    que += " `–¢–†–í`.`–ù–æ–º–µ—Ä`";
+                    que += " `“–¬`.`ÕÓÏÂ`";
                     break;
                 case 1:
-                    que += " `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`";
+                    que += " ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`";
                     break;
                 case 2:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`";
                     break;
                 case 3:
-                    que += " `–¢–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å`";
+                    que += " `“–¬`.` ≥Î¸Í≥ÒÚ¸`";
                     break;
                 case 4:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡`";
                     break;
                 case 5:
-                    que += " `–¢–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å`";
+                    que += " `“–¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸`";
                     break;
                 case 6:
-                    que += " `–¢–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è`";
+                    que += " `“–¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ`";
                     break;
                 case 7:
-                    que += " `–¢–†–í`.`–ü—Ä–∏–º—ñ—Ç–∫–∏`";
+                    que += " `“–¬`.`œËÏ≥ÚÍË`";
                     break;
             }
 
@@ -497,44 +510,44 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.—Ç–∞–±–ª1.setModel(model);
+            this.Ú‡·Î1.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void deleteFromTRV(ActionEvent e) {
         try {
-            int[] i = —Ç–∞–±–ª1.getSelectedRows();
+            int[] i = Ú‡·Î1.getSelectedRows();
             String que;
             //open();
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM –¢–†–í WHERE –ù–æ–º–µ—Ä = " + Integer.parseInt(—Ç–∞–±–ª1.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM “–¬ WHERE ÕÓÏÂ = " + Integer.parseInt(Ú‡·Î1.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             //close();
             refreshTableTRV(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
 
     private void updateInTRV(ActionEvent e) {
-        if (—Ç–∞–±–ª1.getSelectedRowCount() == 1)
-            new updateInTRV(Integer.parseInt(—Ç–∞–±–ª1.getValueAt(—Ç–∞–±–ª1.getSelectedRow(), 0).toString()));
+        if (Ú‡·Î1.getSelectedRowCount() == 1)
+            new updateInTRV(Integer.parseInt(Ú‡·Î1.getValueAt(Ú‡·Î1.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "–ü–æ—Ç—Ä—ñ–±–Ω–æ –æ–±—Ä–∞—Ç–∏ –æ–¥–∏–Ω –∑–∞–ø–∏—Å –∑ —Ç–∞–±–ª–∏—Ü—ñ", "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "œÓÚ≥·ÌÓ Ó·‡ÚË Ó‰ËÌ Á‡ÔËÒ Á Ú‡·ÎËˆ≥", "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
     }
 
     private void searchCleanerTRV(ActionEvent e) {
@@ -573,7 +586,7 @@ public class mainFrame extends JFrame {
             connect = DriverManager.getConnection(url + dbName, userName, password);
             System.out.println("Connection opened!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
 
         }
         statement = connect.createStatement();
@@ -597,27 +610,27 @@ public class mainFrame extends JFrame {
             System.out.println("all closed!");
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
         return JFrame.EXIT_ON_CLOSE;
     }
 
     private void deleteFromRRV(ActionEvent e) {
         try {
-            int[] i = —Ç–∞–±–ª2.getSelectedRows();
+            int[] i = Ú‡·Î2.getSelectedRows();
             String que;
             //open();
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM –†–†–í WHERE –ù–æ–º–µ—Ä = " + Integer.parseInt(—Ç–∞–±–ª2.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM ––¬ WHERE ÕÓÏÂ = " + Integer.parseInt(Ú‡·Î2.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             //close();
             refreshTableRRV(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
@@ -627,10 +640,10 @@ public class mainFrame extends JFrame {
     }
 
     private void updateInRRV(ActionEvent e) {
-        if (—Ç–∞–±–ª2.getSelectedRowCount() == 1)
-            new updateInRRV(Integer.parseInt(—Ç–∞–±–ª2.getValueAt(—Ç–∞–±–ª2.getSelectedRow(), 0).toString()));
+        if (Ú‡·Î2.getSelectedRowCount() == 1)
+            new updateInRRV(Integer.parseInt(Ú‡·Î2.getValueAt(Ú‡·Î2.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "–ü–æ—Ç—Ä—ñ–±–Ω–æ –æ–±—Ä–∞—Ç–∏ –æ–¥–∏–Ω –∑–∞–ø–∏—Å –∑ —Ç–∞–±–ª–∏—Ü—ñ", "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "œÓÚ≥·ÌÓ Ó·‡ÚË Ó‰ËÌ Á‡ÔËÒ Á Ú‡·ÎËˆ≥", "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
     }
 
     private void refreshTableRRV(ActionEvent e) {
@@ -638,51 +651,51 @@ public class mainFrame extends JFrame {
             //open();
             String que = "SELECT ";
             if (checkBox17.isSelected())
-                que += "`–†–†–í`.`–ù–æ–º–µ—Ä`, ";
+                que += "`––¬`.`ÕÓÏÂ`, ";
             if (checkBox18.isSelected())
-                que += "`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`, ";
+                que += "` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`, ";
             if (checkBox19.isSelected())
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`, ";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`, ";
             if (checkBox20.isSelected())
-                que += "`–†–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å`, ";
+                que += "`––¬`.` ≥Î¸Í≥ÒÚ¸`, ";
             if (checkBox21.isSelected())
-                que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞`, ";
+                que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡`, ";
             if (checkBox22.isSelected())
-                que += "`–†–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å`, ";
+                que += "`––¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸`, ";
             if (checkBox23.isSelected())
-                que += "`–†–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è`, ";
+                que += "`––¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ`, ";
             if (checkBox24.isSelected())
-                que += "`–†–†–í`.`–ü—Ä–∏–º—ñ—Ç–∫–∏`, ";
+                que += "`––¬`.`œËÏ≥ÚÍË`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `–†–†–í`\n";
+            que += " FROM `––¬`\n";
 
-            que += "inner join `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`\n" +
-                    "on `–†–†–í`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ` = `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ù–æ–º–µ—Ä`\n" +
-                    "inner join `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`\n" +
-                    "on `–†–†–í`.`–ù—É–∫–ª—ñ–¥` = `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä`\n";
+            que += "inner join ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`\n" +
+                    "on `––¬`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥` = ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.`ÕÓÏÂ`\n" +
+                    "inner join `–‡‰≥ÓÌÛÍÎ≥‰`\n" +
+                    "on `––¬`.`ÕÛÍÎ≥‰` = `–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ`\n";
 
             boolean where = false;
             if (!firstNumber7.getText().isEmpty()) {
                 if (!lastNumber7.getText().isEmpty()) {
-                    que += "WHERE `–†–†–í`.`–ù–æ–º–µ—Ä` >= \"" + firstNumber7.getText() + "\"\n";
+                    que += "WHERE `––¬`.`ÕÓÏÂ` >= \"" + firstNumber7.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–†–†–í`.`–ù–æ–º–µ—Ä` <= \"" + lastNumber7.getText() + "\"\n";
+                    que += "`––¬`.`ÕÓÏÂ` <= \"" + lastNumber7.getText() + "\"\n";
                 } else
-                    que += "–†–†–í `–ó–∞–≤–æ–¥`.`–ù–æ–º–µ—Ä` = \"" + firstNumber7.getText() + "\"\n";
+                    que += "––¬ `«‡‚Ó‰`.`ÕÓÏÂ` = \"" + firstNumber7.getText() + "\"\n";
                 where = true;
             }
 
             if (comboBox7.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ` = \"" + comboBox7.getSelectedItem().toString() + "\"\n";
+                que += "` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥` = \"" + comboBox7.getSelectedItem().toString() + "\"\n";
                 where = true;
             }
 
             if (comboBox8.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞` = '" + comboBox8.getSelectedItem().toString() + "'\n";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡` = '" + comboBox8.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -690,11 +703,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber8.getText().isEmpty()) {
-                    que += "`–†–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` >= \"" + firstNumber8.getText() + "\"\n";
+                    que += "`––¬`.` ≥Î¸Í≥ÒÚ¸` >= \"" + firstNumber8.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–†–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` <= \"" + lastNumber8.getText() + "\"\n";
+                    que += "`––¬`.` ≥Î¸Í≥ÒÚ¸` <= \"" + lastNumber8.getText() + "\"\n";
                 } else
-                    que += "`–†–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` = \"" + firstNumber8.getText() + "\"\n";
+                    que += "`––¬`.` ≥Î¸Í≥ÒÚ¸` = \"" + firstNumber8.getText() + "\"\n";
                 where = true;
             }
 
@@ -702,11 +715,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber9.getText().isEmpty()) {
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` >= \"" + firstNumber9.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` >= \"" + firstNumber9.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` <= \"" + lastNumber9.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` <= \"" + lastNumber9.getText() + "\"\n";
                 } else
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` = \"" + firstNumber9.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` = \"" + firstNumber9.getText() + "\"\n";
                 where = true;
             }
 
@@ -714,11 +727,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber10.getText().isEmpty()) {
-                    que += "`–†–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` >= \"" + firstNumber10.getText() + "\"\n";
+                    que += "`––¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` >= \"" + firstNumber10.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–†–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` <= \"" + lastNumber10.getText() + "\"\n";
+                    que += "`––¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` <= \"" + lastNumber10.getText() + "\"\n";
                 } else
-                    que += "`–†–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` = \"" + firstNumber10.getText() + "\"\n";
+                    que += "`––¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` = \"" + firstNumber10.getText() + "\"\n";
                 where = true;
             }
 
@@ -732,38 +745,38 @@ public class mainFrame extends JFrame {
                 else que += "AND ";
                 if (dateChooser6.getDate() != null) {
                     date2 = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser6.getDate()));
-                    que += "`–†–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` >= \"" + date1 + "\"\n";
+                    que += "`––¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` >= \"" + date1 + "\"\n";
                     que += "AND ";
-                    que += "`–†–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` <= \"" + date2 + "\"\n";
+                    que += "`––¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` <= \"" + date2 + "\"\n";
                 } else
-                    que += "`–†–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` = \"" + date1 + "\"\n";
+                    que += "`––¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` = \"" + date1 + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox9.getSelectedIndex()) {
                 case 0:
-                    que += " `–†–†–í`.`–ù–æ–º–µ—Ä`";
+                    que += " `––¬`.`ÕÓÏÂ`";
                     break;
                 case 1:
-                    que += " `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`";
+                    que += " ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`";
                     break;
                 case 2:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`";
                     break;
                 case 3:
-                    que += " `–†–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å`";
+                    que += " `––¬`.` ≥Î¸Í≥ÒÚ¸`";
                     break;
                 case 4:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡`";
                     break;
                 case 5:
-                    que += " `–†–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å`";
+                    que += " `––¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸`";
                     break;
                 case 6:
-                    que += " `–†–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è`";
+                    que += " `––¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ`";
                     break;
                 case 7:
-                    que += " `–†–†–í`.`–ü—Ä–∏–º—ñ—Ç–∫–∏`";
+                    que += " `––¬`.`œËÏ≥ÚÍË`";
                     break;
             }
 
@@ -777,16 +790,16 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.—Ç–∞–±–ª2.setModel(model);
+            this.Ú‡·Î2.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -795,51 +808,51 @@ public class mainFrame extends JFrame {
             //open();
             String que = "SELECT ";
             if (checkBox26.isSelected())
-                que += "`–ë–†–í`.`–ù–æ–º–µ—Ä`, ";
+                que += "`¡–¬`.`ÕÓÏÂ`, ";
             if (checkBox27.isSelected())
-                que += "`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`, ";
+                que += "` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`, ";
             if (checkBox28.isSelected())
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`, ";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`, ";
             if (checkBox29.isSelected())
-                que += "`–ë–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å`, ";
+                que += "`¡–¬`.` ≥Î¸Í≥ÒÚ¸`, ";
             if (checkBox30.isSelected())
-                que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞`, ";
+                que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡`, ";
             if (checkBox31.isSelected())
-                que += "`–ë–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å`, ";
+                que += "`¡–¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸`, ";
             if (checkBox32.isSelected())
-                que += "`–ë–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è`, ";
+                que += "`¡–¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ`, ";
             if (checkBox33.isSelected())
-                que += "`–ë–†–í`.`–ü—Ä–∏–º—ñ—Ç–∫–∏`, ";
+                que += "`¡–¬`.`œËÏ≥ÚÍË`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `–ë–†–í`\n";
+            que += " FROM `¡–¬`\n";
 
-            que += "inner join `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`\n" +
-                    "on `–ë–†–í`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ` = `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ù–æ–º–µ—Ä`\n" +
-                    "inner join `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`\n" +
-                    "on `–ë–†–í`.`–ù—É–∫–ª—ñ–¥` = `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä`\n";
+            que += "inner join ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`\n" +
+                    "on `¡–¬`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥` = ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.`ÕÓÏÂ`\n" +
+                    "inner join `–‡‰≥ÓÌÛÍÎ≥‰`\n" +
+                    "on `¡–¬`.`ÕÛÍÎ≥‰` = `–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ`\n";
 
             boolean where = false;
             if (!firstNumber11.getText().isEmpty()) {
                 if (!lastNumber11.getText().isEmpty()) {
-                    que += "WHERE `–ë–†–í`.`–ù–æ–º–µ—Ä` >= \"" + firstNumber11.getText() + "\"\n";
+                    que += "WHERE `¡–¬`.`ÕÓÏÂ` >= \"" + firstNumber11.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–ë–†–í`.`–ù–æ–º–µ—Ä` <= \"" + lastNumber11.getText() + "\"\n";
+                    que += "`¡–¬`.`ÕÓÏÂ` <= \"" + lastNumber11.getText() + "\"\n";
                 } else
-                    que += "–ë–†–í `–ó–∞–≤–æ–¥`.`–ù–æ–º–µ—Ä` = \"" + firstNumber11.getText() + "\"\n";
+                    que += "¡–¬ `«‡‚Ó‰`.`ÕÓÏÂ` = \"" + firstNumber11.getText() + "\"\n";
                 where = true;
             }
 
             if (comboBox10.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ` = \"" + comboBox10.getSelectedItem().toString() + "\"\n";
+                que += "` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥` = \"" + comboBox10.getSelectedItem().toString() + "\"\n";
                 where = true;
             }
 
             if (comboBox11.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞` = '" + comboBox11.getSelectedItem().toString() + "'\n";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡` = '" + comboBox11.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -847,11 +860,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber12.getText().isEmpty()) {
-                    que += "`–ë–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` >= \"" + firstNumber12.getText() + "\"\n";
+                    que += "`¡–¬`.` ≥Î¸Í≥ÒÚ¸` >= \"" + firstNumber12.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–ë–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` <= \"" + lastNumber12.getText() + "\"\n";
+                    que += "`¡–¬`.` ≥Î¸Í≥ÒÚ¸` <= \"" + lastNumber12.getText() + "\"\n";
                 } else
-                    que += "`–ë–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` = \"" + firstNumber12.getText() + "\"\n";
+                    que += "`¡–¬`.` ≥Î¸Í≥ÒÚ¸` = \"" + firstNumber12.getText() + "\"\n";
                 where = true;
             }
 
@@ -859,11 +872,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber13.getText().isEmpty()) {
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` >= \"" + firstNumber13.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` >= \"" + firstNumber13.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` <= \"" + lastNumber13.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` <= \"" + lastNumber13.getText() + "\"\n";
                 } else
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` = \"" + firstNumber13.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` = \"" + firstNumber13.getText() + "\"\n";
                 where = true;
             }
 
@@ -871,11 +884,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber14.getText().isEmpty()) {
-                    que += "`–ë–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` >= \"" + firstNumber14.getText() + "\"\n";
+                    que += "`¡–¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` >= \"" + firstNumber14.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–ë–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` <= \"" + lastNumber14.getText() + "\"\n";
+                    que += "`¡–¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` <= \"" + lastNumber14.getText() + "\"\n";
                 } else
-                    que += "`–ë–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` = \"" + firstNumber14.getText() + "\"\n";
+                    que += "`¡–¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` = \"" + firstNumber14.getText() + "\"\n";
                 where = true;
             }
 
@@ -889,38 +902,38 @@ public class mainFrame extends JFrame {
                 else que += "AND ";
                 if (dateChooser8.getDate() != null) {
                     date2 = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser8.getDate()));
-                    que += "`–ë–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` >= \"" + date1 + "\"\n";
+                    que += "`¡–¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` >= \"" + date1 + "\"\n";
                     que += "AND ";
-                    que += "`–ë–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` <= \"" + date2 + "\"\n";
+                    que += "`¡–¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` <= \"" + date2 + "\"\n";
                 } else
-                    que += "`–ë–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` = \"" + date1 + "\"\n";
+                    que += "`¡–¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` = \"" + date1 + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox12.getSelectedIndex()) {
                 case 0:
-                    que += " `–ë–†–í`.`–ù–æ–º–µ—Ä`";
+                    que += " `¡–¬`.`ÕÓÏÂ`";
                     break;
                 case 1:
-                    que += " `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`";
+                    que += " ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`";
                     break;
                 case 2:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`";
                     break;
                 case 3:
-                    que += " `–ë–†–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å`";
+                    que += " `¡–¬`.` ≥Î¸Í≥ÒÚ¸`";
                     break;
                 case 4:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡`";
                     break;
                 case 5:
-                    que += " `–ë–†–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å`";
+                    que += " `¡–¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸`";
                     break;
                 case 6:
-                    que += " `–ë–†–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è`";
+                    que += " `¡–¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ`";
                     break;
                 case 7:
-                    que += " `–ë–†–í`.`–ü—Ä–∏–º—ñ—Ç–∫–∏`";
+                    que += " `¡–¬`.`œËÏ≥ÚÍË`";
                     break;
             }
 
@@ -934,43 +947,43 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.—Ç–∞–±–ª3.setModel(model);
+            this.Ú‡·Î3.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void updateInBRV(ActionEvent e) {
-        if (—Ç–∞–±–ª3.getSelectedRowCount() == 1)
-            new updateInBRV(Integer.parseInt(—Ç–∞–±–ª3.getValueAt(—Ç–∞–±–ª3.getSelectedRow(), 0).toString()));
+        if (Ú‡·Î3.getSelectedRowCount() == 1)
+            new updateInBRV(Integer.parseInt(Ú‡·Î3.getValueAt(Ú‡·Î3.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "–ü–æ—Ç—Ä—ñ–±–Ω–æ –æ–±—Ä–∞—Ç–∏ –æ–¥–∏–Ω –∑–∞–ø–∏—Å –∑ —Ç–∞–±–ª–∏—Ü—ñ", "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "œÓÚ≥·ÌÓ Ó·‡ÚË Ó‰ËÌ Á‡ÔËÒ Á Ú‡·ÎËˆ≥", "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
 
     }
 
     private void deleteFromBRV(ActionEvent e) {
         try {
-            int[] i = —Ç–∞–±–ª3.getSelectedRows();
+            int[] i = Ú‡·Î3.getSelectedRows();
             String que;
             //open();
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM –ë–†–í WHERE –ù–æ–º–µ—Ä = " + Integer.parseInt(—Ç–∞–±–ª3.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM ¡–¬ WHERE ÕÓÏÂ = " + Integer.parseInt(Ú‡·Î3.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             //close();
             refreshTableBRV(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
@@ -985,29 +998,29 @@ public class mainFrame extends JFrame {
 
     private void deleteFromDIV(ActionEvent e) {
         try {
-            int[] i = —Ç–∞–±–ª4.getSelectedRows();
+            int[] i = Ú‡·Î4.getSelectedRows();
             String que;
             //open();
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM –¢–†–í WHERE –ù–æ–º–µ—Ä = " + Integer.parseInt(—Ç–∞–±–ª4.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM “–¬ WHERE ÕÓÏÂ = " + Integer.parseInt(Ú‡·Î4.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             //close();
             refreshTableDIV(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
 
     private void updateInDIV(ActionEvent e) {
-        if (—Ç–∞–±–ª4.getSelectedRowCount() == 1)
-            new updateInDIV(Integer.parseInt(—Ç–∞–±–ª4.getValueAt(—Ç–∞–±–ª4.getSelectedRow(), 0).toString()));
+        if (Ú‡·Î4.getSelectedRowCount() == 1)
+            new updateInDIV(Integer.parseInt(Ú‡·Î4.getValueAt(Ú‡·Î4.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "–ü–æ—Ç—Ä—ñ–±–Ω–æ –æ–±—Ä–∞—Ç–∏ –æ–¥–∏–Ω –∑–∞–ø–∏—Å –∑ —Ç–∞–±–ª–∏—Ü—ñ", "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "œÓÚ≥·ÌÓ Ó·‡ÚË Ó‰ËÌ Á‡ÔËÒ Á Ú‡·ÎËˆ≥", "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
 
     }
 
@@ -1016,51 +1029,51 @@ public class mainFrame extends JFrame {
             //open();
             String que = "SELECT ";
             if (checkBox35.isSelected())
-                que += "`–î–Ü–í`.`–ù–æ–º–µ—Ä`, ";
+                que += "`ƒ≤¬`.`ÕÓÏÂ`, ";
             if (checkBox36.isSelected())
-                que += "`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`, ";
+                que += "` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`, ";
             if (checkBox37.isSelected())
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`, ";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`, ";
             if (checkBox38.isSelected())
-                que += "`–î–Ü–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å`, ";
+                que += "`ƒ≤¬`.` ≥Î¸Í≥ÒÚ¸`, ";
             if (checkBox39.isSelected())
-                que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞`, ";
+                que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡`, ";
             if (checkBox40.isSelected())
-                que += "`–î–Ü–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å`, ";
+                que += "`ƒ≤¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸`, ";
             if (checkBox41.isSelected())
-                que += "`–î–Ü–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è`, ";
+                que += "`ƒ≤¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ`, ";
             if (checkBox42.isSelected())
-                que += "`–î–Ü–í`.`–ü—Ä–∏–º—ñ—Ç–∫–∏`, ";
+                que += "`ƒ≤¬`.`œËÏ≥ÚÍË`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `–î–Ü–í`\n";
+            que += " FROM `ƒ≤¬`\n";
 
-            que += "inner join `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`\n" +
-                    "on `–î–Ü–í`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ` = `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ù–æ–º–µ—Ä`\n" +
-                    "inner join `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`\n" +
-                    "on `–î–Ü–í`.`–ù—É–∫–ª—ñ–¥` = `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä`\n";
+            que += "inner join ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`\n" +
+                    "on `ƒ≤¬`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥` = ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.`ÕÓÏÂ`\n" +
+                    "inner join `–‡‰≥ÓÌÛÍÎ≥‰`\n" +
+                    "on `ƒ≤¬`.`ÕÛÍÎ≥‰` = `–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ`\n";
 
             boolean where = false;
             if (!firstNumber15.getText().isEmpty()) {
                 if (!lastNumber15.getText().isEmpty()) {
-                    que += "WHERE `–î–Ü–í`.`–ù–æ–º–µ—Ä` >= \"" + firstNumber15.getText() + "\"\n";
+                    que += "WHERE `ƒ≤¬`.`ÕÓÏÂ` >= \"" + firstNumber15.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–î–Ü–í`.`–ù–æ–º–µ—Ä` <= \"" + lastNumber15.getText() + "\"\n";
+                    que += "`ƒ≤¬`.`ÕÓÏÂ` <= \"" + lastNumber15.getText() + "\"\n";
                 } else
-                    que += "–î–Ü–í `–ó–∞–≤–æ–¥`.`–ù–æ–º–µ—Ä` = \"" + firstNumber15.getText() + "\"\n";
+                    que += "ƒ≤¬ `«‡‚Ó‰`.`ÕÓÏÂ` = \"" + firstNumber15.getText() + "\"\n";
                 where = true;
             }
 
             if (comboBox13.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ` = \"" + comboBox13.getSelectedItem().toString() + "\"\n";
+                que += "` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥` = \"" + comboBox13.getSelectedItem().toString() + "\"\n";
                 where = true;
             }
 
             if (comboBox14.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞` = '" + comboBox14.getSelectedItem().toString() + "'\n";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡` = '" + comboBox14.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -1068,11 +1081,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber16.getText().isEmpty()) {
-                    que += "`–î–Ü–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` >= \"" + firstNumber16.getText() + "\"\n";
+                    que += "`ƒ≤¬`.` ≥Î¸Í≥ÒÚ¸` >= \"" + firstNumber16.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–î–Ü–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` <= \"" + lastNumber16.getText() + "\"\n";
+                    que += "`ƒ≤¬`.` ≥Î¸Í≥ÒÚ¸` <= \"" + lastNumber16.getText() + "\"\n";
                 } else
-                    que += "`–î–Ü–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å` = \"" + firstNumber16.getText() + "\"\n";
+                    que += "`ƒ≤¬`.` ≥Î¸Í≥ÒÚ¸` = \"" + firstNumber16.getText() + "\"\n";
                 where = true;
             }
 
@@ -1080,11 +1093,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber17.getText().isEmpty()) {
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` >= \"" + firstNumber17.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` >= \"" + firstNumber17.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` <= \"" + lastNumber17.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` <= \"" + lastNumber17.getText() + "\"\n";
                 } else
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` = \"" + firstNumber17.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` = \"" + firstNumber17.getText() + "\"\n";
                 where = true;
             }
 
@@ -1092,11 +1105,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber18.getText().isEmpty()) {
-                    que += "`–î–Ü–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` >= \"" + firstNumber18.getText() + "\"\n";
+                    que += "`ƒ≤¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` >= \"" + firstNumber18.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–î–Ü–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` <= \"" + lastNumber18.getText() + "\"\n";
+                    que += "`ƒ≤¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` <= \"" + lastNumber18.getText() + "\"\n";
                 } else
-                    que += "`–î–Ü–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å` = \"" + firstNumber18.getText() + "\"\n";
+                    que += "`ƒ≤¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸` = \"" + firstNumber18.getText() + "\"\n";
                 where = true;
             }
 
@@ -1110,38 +1123,38 @@ public class mainFrame extends JFrame {
                 else que += "AND ";
                 if (dateChooser10.getDate() != null) {
                     date2 = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser10.getDate()));
-                    que += "`–î–Ü–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` >= \"" + date1 + "\"\n";
+                    que += "`ƒ≤¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` >= \"" + date1 + "\"\n";
                     que += "AND ";
-                    que += "`–î–Ü–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` <= \"" + date2 + "\"\n";
+                    que += "`ƒ≤¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` <= \"" + date2 + "\"\n";
                 } else
-                    que += "`–î–Ü–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è` = \"" + date1 + "\"\n";
+                    que += "`ƒ≤¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ` = \"" + date1 + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox15.getSelectedIndex()) {
                 case 0:
-                    que += " `–î–Ü–í`.`–ù–æ–º–µ—Ä`";
+                    que += " `ƒ≤¬`.`ÕÓÏÂ`";
                     break;
                 case 1:
-                    que += " `–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`.`–ö–∞—Ç–µ–≥–æ—Ä—ñ—è –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ`";
+                    que += " ` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`.` ‡ÚÂ„Ó≥ˇ ‡ÍÚË‚ÌÓÒÚ≥`";
                     break;
                 case 2:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`";
                     break;
                 case 3:
-                    que += " `–î–Ü–í`.`–ö—ñ–ª—å–∫—ñ—Å—Ç—å`";
+                    que += " `ƒ≤¬`.` ≥Î¸Í≥ÒÚ¸`";
                     break;
                 case 4:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡`";
                     break;
                 case 5:
-                    que += " `–î–Ü–í`.`–ó–∞–≥–∞–ª—å–Ω–∞ –∞–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å`";
+                    que += " `ƒ≤¬`.`«‡„‡Î¸Ì‡ ‡ÍÚË‚Ì≥ÒÚ¸`";
                     break;
                 case 6:
-                    que += " `–î–Ü–í`.`–î–∞—Ç–∞ –≤–∏–≥–æ—Ç–æ–≤–ª–µ–Ω–Ω—è`";
+                    que += " `ƒ≤¬`.`ƒ‡Ú‡ ‚Ë„ÓÚÓ‚ÎÂÌÌˇ`";
                     break;
                 case 7:
-                    que += " `–î–Ü–í`.`–ü—Ä–∏–º—ñ—Ç–∫–∏`";
+                    que += " `ƒ≤¬`.`œËÏ≥ÚÍË`";
                     break;
             }
 
@@ -1155,16 +1168,16 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.—Ç–∞–±–ª4.setModel(model);
+            this.Ú‡·Î4.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -1173,26 +1186,26 @@ public class mainFrame extends JFrame {
             //open();
             String que = "SELECT ";
             if (checkBox44.isSelected())
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä`, ";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ`, ";
             if (checkBox45.isSelected())
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`, ";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`, ";
             if (checkBox46.isSelected())
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–°–∫–æ—Ä–æ—á–µ–Ω–æ`, ";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`—ÍÓÓ˜ÂÌÓ`, ";
             if (checkBox47.isSelected())
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä –ø–æ—Ä—è–¥–∫—É`, ";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ ÔÓˇ‰ÍÛ`, ";
             if (checkBox48.isSelected())
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞`, ";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`\n";
+            que += " FROM `–‡‰≥ÓÌÛÍÎ≥‰`\n";
 
             boolean where = false;
             if (!firstNumber19.getText().isEmpty()) {
                 if (!lastNumber19.getText().isEmpty()) {
-                    que += "WHERE `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä` >= \"" + firstNumber19.getText() + "\"\n";
+                    que += "WHERE `–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ` >= \"" + firstNumber19.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä` <= \"" + lastNumber19.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ` <= \"" + lastNumber19.getText() + "\"\n";
                 } else
-                    que += "WHERE `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä` = \"" + firstNumber19.getText() + "\"\n";
+                    que += "WHERE `–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ` = \"" + firstNumber19.getText() + "\"\n";
                 where = true;
             }
 
@@ -1200,14 +1213,14 @@ public class mainFrame extends JFrame {
             if (!textField1.getText().isEmpty()) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞` = '" + textField1.getText() + "'\n";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡` = '" + textField1.getText() + "'\n";
                 where = true;
             }
 
             if (!textField2.getText().isEmpty()) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–°–∫–æ—Ä–æ—á–µ–Ω–æ` = \"" + textField2.getText() + "\"\n";
+                que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`—ÍÓÓ˜ÂÌÓ` = \"" + textField2.getText() + "\"\n";
                 where = true;
             }
 
@@ -1215,11 +1228,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber20.getText().isEmpty()) {
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä –ø–æ—Ä—è–¥–∫—É` >= \"" + firstNumber20.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ ÔÓˇ‰ÍÛ` >= \"" + firstNumber20.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä –ø–æ—Ä—è–¥–∫—É` <= \"" + lastNumber20.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ ÔÓˇ‰ÍÛ` <= \"" + lastNumber20.getText() + "\"\n";
                 } else
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä –ø–æ—Ä—è–¥–∫—É` = \"" + firstNumber20.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ ÔÓˇ‰ÍÛ` = \"" + firstNumber20.getText() + "\"\n";
                 where = true;
             }
 
@@ -1227,29 +1240,29 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber21.getText().isEmpty()) {
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` >= \"" + firstNumber21.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` >= \"" + firstNumber21.getText() + "\"\n";
                     que += "AND ";
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` <= \"" + lastNumber21.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` <= \"" + lastNumber21.getText() + "\"\n";
                 } else
-                    que += "`–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞` = \"" + firstNumber21.getText() + "\"\n";
+                    que += "`–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡` = \"" + firstNumber21.getText() + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox18.getSelectedIndex()) {
                 case 0:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ`";
                     break;
                 case 1:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–∞–∑–≤–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`Õ‡Á‚‡`";
                     break;
                 case 2:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–°–∫–æ—Ä–æ—á–µ–Ω–æ`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`—ÍÓÓ˜ÂÌÓ`";
                     break;
                 case 3:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ù–æ–º–µ—Ä –ø–æ—Ä—è–¥–∫—É`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`ÕÓÏÂ ÔÓˇ‰ÍÛ`";
                     break;
                 case 4:
-                    que += " `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥`.`–ê–∫—Ç–∏–≤–Ω—ñ—Å—Ç—å –Ω—É–∫–ª—ñ–¥–∞`";
+                    que += " `–‡‰≥ÓÌÛÍÎ≥‰`.`¿ÍÚË‚Ì≥ÒÚ¸ ÌÛÍÎ≥‰‡`";
                     break;
             }
 
@@ -1263,33 +1276,33 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.—Ç–∞–±–ª5.setModel(model);
+            this.Ú‡·Î5.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void deleteFromRADIO(ActionEvent e) {
         try {
-            int[] i = —Ç–∞–±–ª5.getSelectedRows();
+            int[] i = Ú‡·Î5.getSelectedRows();
             String que;
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM `–†–∞–¥—ñ–æ–Ω—É–∫–ª—ñ–¥` WHERE –ù–æ–º–µ—Ä = " + Integer.parseInt(—Ç–∞–±–ª5.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM `–‡‰≥ÓÌÛÍÎ≥‰` WHERE ÕÓÏÂ = " + Integer.parseInt(Ú‡·Î5.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             refreshTableRADIO(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
@@ -1299,10 +1312,10 @@ public class mainFrame extends JFrame {
     }
 
     private void updateInRADIO(ActionEvent e) {
-        if (—Ç–∞–±–ª5.getSelectedRowCount() == 1)
-            new updateInRadio(Integer.parseInt(—Ç–∞–±–ª5.getValueAt(—Ç–∞–±–ª5.getSelectedRow(), 0).toString()));
+        if (Ú‡·Î5.getSelectedRowCount() == 1)
+            new updateInRadio(Integer.parseInt(Ú‡·Î5.getValueAt(Ú‡·Î5.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "–ü–æ—Ç—Ä—ñ–±–Ω–æ –æ–±—Ä–∞—Ç–∏ –æ–¥–∏–Ω –∑–∞–ø–∏—Å –∑ —Ç–∞–±–ª–∏—Ü—ñ", "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "œÓÚ≥·ÌÓ Ó·‡ÚË Ó‰ËÌ Á‡ÔËÒ Á Ú‡·ÎËˆ≥", "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
     }
 
     private void searchCleanerRADIO(ActionEvent e) {
@@ -1421,10 +1434,10 @@ public class mainFrame extends JFrame {
 
     private void addUSER(ActionEvent e) {
         if(textField3.getText() != "" && textField4.getText() != ""){
-            JOptionPane.showMessageDialog(null, "–ù—É–∂–Ω–æ –¥–ª—è –Ω–∞—á–∞–ª–∞ –≤–≤–µ—Å—Ç–∏ –∏–º—è", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ÕÛÊÌÓ ‰Îˇ Ì‡˜‡Î‡ ‚‚ÂÒÚË ËÏˇ", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         try {
-            String query = " INSERT INTO –∫–æ—Ä–∏—Å—Ç—É–≤–∞—á (`–Ü–º'—è`, `–ü–∞—Ä–æ–ª—å`, `–ì—Ä—É–ø–∞`)"
+            String query = " INSERT INTO ÍÓËÒÚÛ‚‡˜ (`≤Ï'ˇ`, `œ‡ÓÎ¸`, `√ÛÔ‡`)"
                     + " VALUES (?, ?, ?)";
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setString(1, textField3.getText());
@@ -1434,7 +1447,7 @@ public class mainFrame extends JFrame {
             preparedStmt.close();
         } catch (Exception exeption) {
             exeption.printStackTrace();
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "–û–®–ò–ë–ö–ê!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "Œÿ»¡ ¿!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -1445,20 +1458,20 @@ public class mainFrame extends JFrame {
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM `–∫–æ—Ä–∏—Å—Ç—É–≤–∞—á` WHERE –ù–æ–º–µ—Ä = " + Integer.parseInt(table1.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM `ÍÓËÒÚÛ‚‡˜` WHERE ÕÓÏÂ = " + Integer.parseInt(table1.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             refreshTableUSER(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
 
     private void updateUSER(ActionEvent e) {
         try {
-            String query = " UPDATE –∫–æ—Ä–∏—Å—Ç—É–≤–∞—á SET `–Ü–º'—è` = ?, `–ü–∞—Ä–æ–ª—å` = ?, `–ì—Ä—É–ø–∞` = ? WHERE `–ù–æ–º–µ—Ä` = ?";
+            String query = " UPDATE ÍÓËÒÚÛ‚‡˜ SET `≤Ï'ˇ` = ?, `œ‡ÓÎ¸` = ?, `√ÛÔ‡` = ? WHERE `ÕÓÏÂ` = ?";
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setString(1, textField3.getText());
             preparedStmt.setString(2, textField4.getText());
@@ -1468,7 +1481,7 @@ public class mainFrame extends JFrame {
             //close();
         } catch (Exception exeption) {
             exeption.printStackTrace();
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "–û–®–ò–ë–ö–ê!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "Œÿ»¡ ¿!", JOptionPane.ERROR_MESSAGE);
             //close();
         }
     }
@@ -1476,23 +1489,23 @@ public class mainFrame extends JFrame {
     private void refreshTableUSER(ActionEvent e) {
         try {
             open();
-            String que = "select * from oblik_rao.–∫–æ—Ä–∏—Å—Ç—É–≤–∞—á;";
+            String que = "select * from oblik_rao.ÍÓËÒÚÛ‚‡˜;";
 
             System.out.println(que);
             resultSet = statement
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
             this.table1.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- –û–ß–ï–ù–¨ –ë–õ–ï–ê–¢–¨ –í–ê–ñ–ù–û!!!!! ------------------------
+            ----------------------- Œ◊≈Õ‹ ¡À≈¿“‹ ¬¿∆ÕŒ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "–ü–æ–º–∏–ª–∫–∞!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "œÓÏËÎÍ‡!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -1504,14 +1517,40 @@ public class mainFrame extends JFrame {
 
     private void menuItem1ActionPerformed(ActionEvent e) {
         ArrayList<JTable> t = new ArrayList<JTable>();
-        t.add(—Ç–∞–±–ª0);
-        t.add(—Ç–∞–±–ª1);
-        t.add(—Ç–∞–±–ª2);
-        t.add(—Ç–∞–±–ª3);
-        t.add(—Ç–∞–±–ª4);
-        t.add(—Ç–∞–±–ª5);
+        t.add(Ú‡·Î0);
+        t.add(Ú‡·Î1);
+        t.add(Ú‡·Î2);
+        t.add(Ú‡·Î3);
+        t.add(Ú‡·Î4);
+        t.add(Ú‡·Î5);
         export ex = new export(t);
         ex.setVisible(true);
+    }
+
+
+
+    private void menuItem3ActionPerformed(ActionEvent e) {
+        Double Trao = 0.0;
+        Double Rrao = 0.0;
+        Double Brao = 0.0;
+        Double Div = 0.0;
+        for(int i = 0; i < Ú‡·Î1.getRowCount(); i++){
+            Trao += Float.valueOf(Ú‡·Î1.getValueAt(i, 5).toString());
+        }
+        for(int i = 0; i < Ú‡·Î2.getRowCount(); i++){
+            Rrao += Float.valueOf(Ú‡·Î2.getValueAt(i, 5).toString());
+        }
+        for(int i = 0; i < Ú‡·Î3.getRowCount(); i++){
+            Brao += Float.valueOf(Ú‡·Î3.getValueAt(i, 5).toString());
+        }
+        for(int i = 0; i < Ú‡·Î4.getRowCount(); i++){
+            Div += Float.valueOf(Ú‡·Î4.getValueAt(i, 5).toString());
+        }
+       diag = new diagram("ƒ≥‡„‡Ï‡",Trao, Rrao, Brao, Div);
+        diag.pack();
+        RefineryUtilities.centerFrameOnScreen(diag);
+        diag.setVisible(true);
+
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -1519,6 +1558,7 @@ public class mainFrame extends JFrame {
     private JMenu menu2;
     private JMenuItem menuItem2;
     private JMenuItem menuItem1;
+    private JMenuItem menuItem3;
     private JMenu menu3;
     private JMenuItem menuItem4;
     private JMenuItem menuItem5;
@@ -1527,9 +1567,9 @@ public class mainFrame extends JFrame {
     private JMenuItem menuItem8;
     private JMenuItem menuItem9;
     private JTabbedPane tabbedPane1;
-    private JPanel –ó–ê–í–û–î;
+    private JPanel «¿¬Œƒ;
     private JScrollPane scrollPane1;
-    public JTable —Ç–∞–±–ª0;
+    public JTable Ú‡·Î0;
     private JPanel panel6;
     private JPanel panel8;
     private JButton button4;
@@ -1567,9 +1607,9 @@ public class mainFrame extends JFrame {
     private JComboBox<String> comboBox3;
     private JCheckBox checkBox16;
     private JButton button3;
-    private JPanel –ó–ê–í–û–î2;
+    private JPanel «¿¬Œƒ2;
     private JScrollPane scrollPane3;
-    public JTable —Ç–∞–±–ª1;
+    public JTable Ú‡·Î1;
     private JPanel panel10;
     private JPanel panel11;
     private JButton button10;
@@ -1617,9 +1657,9 @@ public class mainFrame extends JFrame {
     private JComboBox<String> comboBox6;
     private JCheckBox checkBox15;
     private JButton button13;
-    private JPanel –ó–ê–í–û–î3;
+    private JPanel «¿¬Œƒ3;
     private JScrollPane scrollPane4;
-    public JTable —Ç–∞–±–ª2;
+    public JTable Ú‡·Î2;
     private JPanel panel16;
     private JPanel panel17;
     private JButton button15;
@@ -1667,9 +1707,9 @@ public class mainFrame extends JFrame {
     private JComboBox<String> comboBox9;
     private JCheckBox checkBox25;
     private JButton button19;
-    private JPanel –ó–ê–í–û–î4;
+    private JPanel «¿¬Œƒ4;
     private JScrollPane scrollPane5;
-    public JTable —Ç–∞–±–ª3;
+    public JTable Ú‡·Î3;
     private JPanel panel22;
     private JPanel panel23;
     private JButton button20;
@@ -1717,9 +1757,9 @@ public class mainFrame extends JFrame {
     private JComboBox<String> comboBox12;
     private JCheckBox checkBox34;
     private JButton button24;
-    private JPanel –ó–ê–í–û–î5;
+    private JPanel «¿¬Œƒ5;
     private JScrollPane scrollPane6;
-    public JTable —Ç–∞–±–ª4;
+    public JTable Ú‡·Î4;
     private JPanel panel29;
     private JPanel panel30;
     private JButton button25;
@@ -1767,9 +1807,9 @@ public class mainFrame extends JFrame {
     private JComboBox<String> comboBox15;
     private JCheckBox checkBox43;
     private JButton button29;
-    private JPanel –ó–ê–í–û–î6;
+    private JPanel «¿¬Œƒ6;
     private JScrollPane scrollPane7;
-    public JTable —Ç–∞–±–ª5;
+    public JTable Ú‡·Î5;
     private JPanel panel36;
     private JPanel panel37;
     private JButton button30;
@@ -1829,6 +1869,7 @@ public class mainFrame extends JFrame {
         menu2 = new JMenu();
         menuItem2 = new JMenuItem();
         menuItem1 = new JMenuItem();
+        menuItem3 = new JMenuItem();
         menu3 = new JMenu();
         menuItem4 = new JMenuItem();
         menuItem5 = new JMenuItem();
@@ -1837,9 +1878,9 @@ public class mainFrame extends JFrame {
         menuItem8 = new JMenuItem();
         menuItem9 = new JMenuItem();
         tabbedPane1 = new JTabbedPane();
-        –ó–ê–í–û–î = new JPanel();
+        «¿¬Œƒ = new JPanel();
         scrollPane1 = new JScrollPane();
-        —Ç–∞–±–ª0 = new JTable();
+        Ú‡·Î0 = new JTable();
         panel6 = new JPanel();
         panel8 = new JPanel();
         button4 = new JButton();
@@ -1877,9 +1918,9 @@ public class mainFrame extends JFrame {
         comboBox3 = new JComboBox<>();
         checkBox16 = new JCheckBox();
         button3 = new JButton();
-        –ó–ê–í–û–î2 = new JPanel();
+        «¿¬Œƒ2 = new JPanel();
         scrollPane3 = new JScrollPane();
-        —Ç–∞–±–ª1 = new JTable();
+        Ú‡·Î1 = new JTable();
         panel10 = new JPanel();
         panel11 = new JPanel();
         button10 = new JButton();
@@ -1927,9 +1968,9 @@ public class mainFrame extends JFrame {
         comboBox6 = new JComboBox<>();
         checkBox15 = new JCheckBox();
         button13 = new JButton();
-        –ó–ê–í–û–î3 = new JPanel();
+        «¿¬Œƒ3 = new JPanel();
         scrollPane4 = new JScrollPane();
-        —Ç–∞–±–ª2 = new JTable();
+        Ú‡·Î2 = new JTable();
         panel16 = new JPanel();
         panel17 = new JPanel();
         button15 = new JButton();
@@ -1977,9 +2018,9 @@ public class mainFrame extends JFrame {
         comboBox9 = new JComboBox<>();
         checkBox25 = new JCheckBox();
         button19 = new JButton();
-        –ó–ê–í–û–î4 = new JPanel();
+        «¿¬Œƒ4 = new JPanel();
         scrollPane5 = new JScrollPane();
-        —Ç–∞–±–ª3 = new JTable();
+        Ú‡·Î3 = new JTable();
         panel22 = new JPanel();
         panel23 = new JPanel();
         button20 = new JButton();
@@ -2027,9 +2068,9 @@ public class mainFrame extends JFrame {
         comboBox12 = new JComboBox<>();
         checkBox34 = new JCheckBox();
         button24 = new JButton();
-        –ó–ê–í–û–î5 = new JPanel();
+        «¿¬Œƒ5 = new JPanel();
         scrollPane6 = new JScrollPane();
-        —Ç–∞–±–ª4 = new JTable();
+        Ú‡·Î4 = new JTable();
         panel29 = new JPanel();
         panel30 = new JPanel();
         button25 = new JButton();
@@ -2077,9 +2118,9 @@ public class mainFrame extends JFrame {
         comboBox15 = new JComboBox<>();
         checkBox43 = new JCheckBox();
         button29 = new JButton();
-        –ó–ê–í–û–î6 = new JPanel();
+        «¿¬Œƒ6 = new JPanel();
         scrollPane7 = new JScrollPane();
-        —Ç–∞–±–ª5 = new JTable();
+        Ú‡·Î5 = new JTable();
         panel36 = new JPanel();
         panel37 = new JPanel();
         button30 = new JButton();
@@ -2167,6 +2208,11 @@ public class mainFrame extends JFrame {
                 menuItem1.setFont(new Font("Verdana", Font.PLAIN, 12));
                 menuItem1.addActionListener(e -> menuItem1ActionPerformed(e));
                 menu2.add(menuItem1);
+
+                //---- menuItem3 ----
+                menuItem3.setText("text");
+                menuItem3.addActionListener(e -> menuItem3ActionPerformed(e));
+                menu2.add(menuItem3);
             }
             menuBar1.add(menu2);
 
@@ -2222,13 +2268,13 @@ public class mainFrame extends JFrame {
             tabbedPane1.setMinimumSize(new Dimension(502, 300));
             tabbedPane1.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-            //======== –ó–ê–í–û–î ========
+            //======== «¿¬Œƒ ========
             {
-                –ó–ê–í–û–î.setMinimumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î.setPreferredSize(new Dimension(470, 200));
-                –ó–ê–í–û–î.setFont(new Font("Verdana", Font.PLAIN, 12));
-                –ó–ê–í–û–î.setMaximumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î.setLayout(new FormLayout(
+                «¿¬Œƒ.setMinimumSize(new Dimension(500, 200));
+                «¿¬Œƒ.setPreferredSize(new Dimension(470, 200));
+                «¿¬Œƒ.setFont(new Font("Verdana", Font.PLAIN, 12));
+                «¿¬Œƒ.setMaximumSize(new Dimension(500, 200));
+                «¿¬Œƒ.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -2237,12 +2283,12 @@ public class mainFrame extends JFrame {
                     scrollPane1.setMinimumSize(new Dimension(700, 400));
                     scrollPane1.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- —Ç–∞–±–ª0 ----
-                    —Ç–∞–±–ª0.setMinimumSize(new Dimension(30, 204));
-                    —Ç–∞–±–ª0.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane1.setViewportView(—Ç–∞–±–ª0);
+                    //---- Ú‡·Î0 ----
+                    Ú‡·Î0.setMinimumSize(new Dimension(30, 204));
+                    Ú‡·Î0.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane1.setViewportView(Ú‡·Î0);
                 }
-                –ó–ê–í–û–î.add(scrollPane1, CC.xy(1, 1));
+                «¿¬Œƒ.add(scrollPane1, CC.xy(1, 1));
 
                 //======== panel6 ========
                 {
@@ -2324,7 +2370,7 @@ public class mainFrame extends JFrame {
                     }
                     panel6.add(panel2, CC.xy(1, 7));
                 }
-                –ó–ê–í–û–î.add(panel6, CC.xy(3, 1));
+                «¿¬Œƒ.add(panel6, CC.xy(3, 1));
 
                 //======== panel3 ========
                 {
@@ -2494,17 +2540,17 @@ public class mainFrame extends JFrame {
                     button3.addActionListener(e -> searchCleanerZAVOD(e));
                     panel3.add(button3, CC.xywh(1, 20, 7, 1));
                 }
-                –ó–ê–í–û–î.add(panel3, CC.xy(5, 1));
+                «¿¬Œƒ.add(panel3, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0417\u0430\u0432\u043e\u0434/\u043f\u043e\u0441\u0442\u0430\u0447\u0430\u043b\u044c\u043d\u0438\u043a \u0420\u0410\u0412", –ó–ê–í–û–î);
+            tabbedPane1.addTab("\u0417\u0430\u0432\u043e\u0434/\u043f\u043e\u0441\u0442\u0430\u0447\u0430\u043b\u044c\u043d\u0438\u043a \u0420\u0410\u0412", «¿¬Œƒ);
 
-            //======== –ó–ê–í–û–î2 ========
+            //======== «¿¬Œƒ2 ========
             {
-                –ó–ê–í–û–î2.setMinimumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î2.setPreferredSize(new Dimension(470, 200));
-                –ó–ê–í–û–î2.setFont(new Font("Verdana", Font.PLAIN, 12));
-                –ó–ê–í–û–î2.setMaximumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î2.setLayout(new FormLayout(
+                «¿¬Œƒ2.setMinimumSize(new Dimension(500, 200));
+                «¿¬Œƒ2.setPreferredSize(new Dimension(470, 200));
+                «¿¬Œƒ2.setFont(new Font("Verdana", Font.PLAIN, 12));
+                «¿¬Œƒ2.setMaximumSize(new Dimension(500, 200));
+                «¿¬Œƒ2.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -2513,12 +2559,12 @@ public class mainFrame extends JFrame {
                     scrollPane3.setMinimumSize(new Dimension(700, 400));
                     scrollPane3.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- —Ç–∞–±–ª1 ----
-                    —Ç–∞–±–ª1.setMinimumSize(new Dimension(30, 204));
-                    —Ç–∞–±–ª1.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane3.setViewportView(—Ç–∞–±–ª1);
+                    //---- Ú‡·Î1 ----
+                    Ú‡·Î1.setMinimumSize(new Dimension(30, 204));
+                    Ú‡·Î1.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane3.setViewportView(Ú‡·Î1);
                 }
-                –ó–ê–í–û–î2.add(scrollPane3, CC.xy(1, 1));
+                «¿¬Œƒ2.add(scrollPane3, CC.xy(1, 1));
 
                 //======== panel10 ========
                 {
@@ -2596,7 +2642,7 @@ public class mainFrame extends JFrame {
                     }
                     panel10.add(panel1, CC.xy(1, 7));
                 }
-                –ó–ê–í–û–î2.add(panel10, CC.xy(3, 1));
+                «¿¬Œƒ2.add(panel10, CC.xy(3, 1));
 
                 //======== panel14 ========
                 {
@@ -2836,17 +2882,17 @@ public class mainFrame extends JFrame {
                     button13.addActionListener(e -> searchCleanerTRV(e));
                     panel14.add(button13, CC.xywh(1, 24, 7, 1));
                 }
-                –ó–ê–í–û–î2.add(panel14, CC.xy(5, 1));
+                «¿¬Œƒ2.add(panel14, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0422\u0432\u0435\u0440\u0434\u0456 \u0420\u0410\u0412", –ó–ê–í–û–î2);
+            tabbedPane1.addTab("\u0422\u0432\u0435\u0440\u0434\u0456 \u0420\u0410\u0412", «¿¬Œƒ2);
 
-            //======== –ó–ê–í–û–î3 ========
+            //======== «¿¬Œƒ3 ========
             {
-                –ó–ê–í–û–î3.setMinimumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î3.setPreferredSize(new Dimension(470, 200));
-                –ó–ê–í–û–î3.setFont(new Font("Verdana", Font.PLAIN, 12));
-                –ó–ê–í–û–î3.setMaximumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î3.setLayout(new FormLayout(
+                «¿¬Œƒ3.setMinimumSize(new Dimension(500, 200));
+                «¿¬Œƒ3.setPreferredSize(new Dimension(470, 200));
+                «¿¬Œƒ3.setFont(new Font("Verdana", Font.PLAIN, 12));
+                «¿¬Œƒ3.setMaximumSize(new Dimension(500, 200));
+                «¿¬Œƒ3.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -2855,12 +2901,12 @@ public class mainFrame extends JFrame {
                     scrollPane4.setMinimumSize(new Dimension(700, 400));
                     scrollPane4.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- —Ç–∞–±–ª2 ----
-                    —Ç–∞–±–ª2.setMinimumSize(new Dimension(30, 204));
-                    —Ç–∞–±–ª2.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane4.setViewportView(—Ç–∞–±–ª2);
+                    //---- Ú‡·Î2 ----
+                    Ú‡·Î2.setMinimumSize(new Dimension(30, 204));
+                    Ú‡·Î2.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane4.setViewportView(Ú‡·Î2);
                 }
-                –ó–ê–í–û–î3.add(scrollPane4, CC.xy(1, 1));
+                «¿¬Œƒ3.add(scrollPane4, CC.xy(1, 1));
 
                 //======== panel16 ========
                 {
@@ -2938,7 +2984,7 @@ public class mainFrame extends JFrame {
                     }
                     panel16.add(panel5, CC.xy(1, 7));
                 }
-                –ó–ê–í–û–î3.add(panel16, CC.xy(3, 1));
+                «¿¬Œƒ3.add(panel16, CC.xy(3, 1));
 
                 //======== panel20 ========
                 {
@@ -3178,17 +3224,17 @@ public class mainFrame extends JFrame {
                     button19.addActionListener(e -> searchCleanerRRV(e));
                     panel20.add(button19, CC.xywh(1, 24, 7, 1));
                 }
-                –ó–ê–í–û–î3.add(panel20, CC.xy(5, 1));
+                «¿¬Œƒ3.add(panel20, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0420\u0456\u0434\u043a\u0456 \u0420\u0410\u0412", –ó–ê–í–û–î3);
+            tabbedPane1.addTab("\u0420\u0456\u0434\u043a\u0456 \u0420\u0410\u0412", «¿¬Œƒ3);
 
-            //======== –ó–ê–í–û–î4 ========
+            //======== «¿¬Œƒ4 ========
             {
-                –ó–ê–í–û–î4.setMinimumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î4.setPreferredSize(new Dimension(470, 200));
-                –ó–ê–í–û–î4.setFont(new Font("Verdana", Font.PLAIN, 12));
-                –ó–ê–í–û–î4.setMaximumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î4.setLayout(new FormLayout(
+                «¿¬Œƒ4.setMinimumSize(new Dimension(500, 200));
+                «¿¬Œƒ4.setPreferredSize(new Dimension(470, 200));
+                «¿¬Œƒ4.setFont(new Font("Verdana", Font.PLAIN, 12));
+                «¿¬Œƒ4.setMaximumSize(new Dimension(500, 200));
+                «¿¬Œƒ4.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -3197,12 +3243,12 @@ public class mainFrame extends JFrame {
                     scrollPane5.setMinimumSize(new Dimension(700, 400));
                     scrollPane5.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- —Ç–∞–±–ª3 ----
-                    —Ç–∞–±–ª3.setMinimumSize(new Dimension(30, 204));
-                    —Ç–∞–±–ª3.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane5.setViewportView(—Ç–∞–±–ª3);
+                    //---- Ú‡·Î3 ----
+                    Ú‡·Î3.setMinimumSize(new Dimension(30, 204));
+                    Ú‡·Î3.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane5.setViewportView(Ú‡·Î3);
                 }
-                –ó–ê–í–û–î4.add(scrollPane5, CC.xy(1, 1));
+                «¿¬Œƒ4.add(scrollPane5, CC.xy(1, 1));
 
                 //======== panel22 ========
                 {
@@ -3280,7 +3326,7 @@ public class mainFrame extends JFrame {
                     }
                     panel22.add(panel26, CC.xy(1, 7));
                 }
-                –ó–ê–í–û–î4.add(panel22, CC.xy(3, 1));
+                «¿¬Œƒ4.add(panel22, CC.xy(3, 1));
 
                 //======== panel27 ========
                 {
@@ -3513,17 +3559,17 @@ public class mainFrame extends JFrame {
                     button24.addActionListener(e -> searchCleanerBRV(e));
                     panel27.add(button24, CC.xywh(1, 24, 7, 1));
                 }
-                –ó–ê–í–û–î4.add(panel27, CC.xy(5, 1));
+                «¿¬Œƒ4.add(panel27, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0411\u0456\u043e\u043b\u043e\u0433\u0456\u0447\u043d\u0456 \u0420\u0410\u0412", –ó–ê–í–û–î4);
+            tabbedPane1.addTab("\u0411\u0456\u043e\u043b\u043e\u0433\u0456\u0447\u043d\u0456 \u0420\u0410\u0412", «¿¬Œƒ4);
 
-            //======== –ó–ê–í–û–î5 ========
+            //======== «¿¬Œƒ5 ========
             {
-                –ó–ê–í–û–î5.setMinimumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î5.setPreferredSize(new Dimension(470, 200));
-                –ó–ê–í–û–î5.setFont(new Font("Verdana", Font.PLAIN, 12));
-                –ó–ê–í–û–î5.setMaximumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î5.setLayout(new FormLayout(
+                «¿¬Œƒ5.setMinimumSize(new Dimension(500, 200));
+                «¿¬Œƒ5.setPreferredSize(new Dimension(470, 200));
+                «¿¬Œƒ5.setFont(new Font("Verdana", Font.PLAIN, 12));
+                «¿¬Œƒ5.setMaximumSize(new Dimension(500, 200));
+                «¿¬Œƒ5.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -3532,12 +3578,12 @@ public class mainFrame extends JFrame {
                     scrollPane6.setMinimumSize(new Dimension(700, 400));
                     scrollPane6.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- —Ç–∞–±–ª4 ----
-                    —Ç–∞–±–ª4.setMinimumSize(new Dimension(30, 204));
-                    —Ç–∞–±–ª4.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane6.setViewportView(—Ç–∞–±–ª4);
+                    //---- Ú‡·Î4 ----
+                    Ú‡·Î4.setMinimumSize(new Dimension(30, 204));
+                    Ú‡·Î4.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane6.setViewportView(Ú‡·Î4);
                 }
-                –ó–ê–í–û–î5.add(scrollPane6, CC.xy(1, 1));
+                «¿¬Œƒ5.add(scrollPane6, CC.xy(1, 1));
 
                 //======== panel29 ========
                 {
@@ -3615,7 +3661,7 @@ public class mainFrame extends JFrame {
                     }
                     panel29.add(panel33, CC.xy(1, 7));
                 }
-                –ó–ê–í–û–î5.add(panel29, CC.xy(3, 1));
+                «¿¬Œƒ5.add(panel29, CC.xy(3, 1));
 
                 //======== panel34 ========
                 {
@@ -3855,17 +3901,17 @@ public class mainFrame extends JFrame {
                     button29.addActionListener(e -> searchCleanerDIV(e));
                     panel34.add(button29, CC.xywh(1, 24, 7, 1));
                 }
-                –ó–ê–í–û–î5.add(panel34, CC.xy(5, 1));
+                «¿¬Œƒ5.add(panel34, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0414\u0436\u0435\u0440\u0435\u043b\u0430 \u0456\u043e\u043d\u0456\u0437\u0443\u044e\u0447\u043e\u0433\u043e \u0432\u0438\u043f\u0440\u043e\u043c\u0456\u043d\u044e\u0432\u0430\u043d\u043d\u044f", –ó–ê–í–û–î5);
+            tabbedPane1.addTab("\u0414\u0436\u0435\u0440\u0435\u043b\u0430 \u0456\u043e\u043d\u0456\u0437\u0443\u044e\u0447\u043e\u0433\u043e \u0432\u0438\u043f\u0440\u043e\u043c\u0456\u043d\u044e\u0432\u0430\u043d\u043d\u044f", «¿¬Œƒ5);
 
-            //======== –ó–ê–í–û–î6 ========
+            //======== «¿¬Œƒ6 ========
             {
-                –ó–ê–í–û–î6.setMinimumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î6.setPreferredSize(new Dimension(470, 200));
-                –ó–ê–í–û–î6.setFont(new Font("Verdana", Font.PLAIN, 12));
-                –ó–ê–í–û–î6.setMaximumSize(new Dimension(500, 200));
-                –ó–ê–í–û–î6.setLayout(new FormLayout(
+                «¿¬Œƒ6.setMinimumSize(new Dimension(500, 200));
+                «¿¬Œƒ6.setPreferredSize(new Dimension(470, 200));
+                «¿¬Œƒ6.setFont(new Font("Verdana", Font.PLAIN, 12));
+                «¿¬Œƒ6.setMaximumSize(new Dimension(500, 200));
+                «¿¬Œƒ6.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -3874,12 +3920,12 @@ public class mainFrame extends JFrame {
                     scrollPane7.setMinimumSize(new Dimension(700, 400));
                     scrollPane7.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- —Ç–∞–±–ª5 ----
-                    —Ç–∞–±–ª5.setMinimumSize(new Dimension(30, 204));
-                    —Ç–∞–±–ª5.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane7.setViewportView(—Ç–∞–±–ª5);
+                    //---- Ú‡·Î5 ----
+                    Ú‡·Î5.setMinimumSize(new Dimension(30, 204));
+                    Ú‡·Î5.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane7.setViewportView(Ú‡·Î5);
                 }
-                –ó–ê–í–û–î6.add(scrollPane7, CC.xy(1, 1));
+                «¿¬Œƒ6.add(scrollPane7, CC.xy(1, 1));
 
                 //======== panel36 ========
                 {
@@ -3957,7 +4003,7 @@ public class mainFrame extends JFrame {
                     }
                     panel36.add(panel40, CC.xy(1, 7));
                 }
-                –ó–ê–í–û–î6.add(panel36, CC.xy(3, 1));
+                «¿¬Œƒ6.add(panel36, CC.xy(3, 1));
 
                 //======== panel41 ========
                 {
@@ -4125,9 +4171,9 @@ public class mainFrame extends JFrame {
                     button34.addActionListener(e -> searchCleanerRADIO(e));
                     panel41.add(button34, CC.xywh(1, 20, 7, 1));
                 }
-                –ó–ê–í–û–î6.add(panel41, CC.xy(5, 1));
+                «¿¬Œƒ6.add(panel41, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0420\u0430\u0434\u0456\u043e\u043d\u0443\u043a\u043b\u0456\u0434\u0438", –ó–ê–í–û–î6);
+            tabbedPane1.addTab("\u0420\u0430\u0434\u0456\u043e\u043d\u0443\u043a\u043b\u0456\u0434\u0438", «¿¬Œƒ6);
 
             //======== panel43 ========
             {

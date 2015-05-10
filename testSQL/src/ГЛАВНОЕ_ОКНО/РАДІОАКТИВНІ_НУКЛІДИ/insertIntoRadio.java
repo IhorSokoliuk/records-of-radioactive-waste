@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Sun Nov 30 17:12:18 EET 2014
  */
 
-package Р“Р›РђР’РќРћР•_РћРљРќРћ.Р РђР”Р†РћРђРљРўРР’РќР†_РќРЈРљР›Р†Р”Р;
+package ГЛАВНОЕ_ОКНО.РАДІОАКТИВНІ_НУКЛІДИ;
 
 import com.jgoodies.forms.factories.CC;
 import com.jgoodies.forms.layout.FormLayout;
@@ -64,7 +64,7 @@ public class insertIntoRadio extends JFrame {
 
     private void button1ActionPerformed(ActionEvent e) {
         try {
-            String query = " INSERT INTO Р Р°РґС–РѕРЅСѓРєР»С–Рґ (`РќР°Р·РІР°`, `РЎРєРѕСЂРѕС‡РµРЅРѕ`, `РќРѕРјРµСЂ РїРѕСЂСЏРґРєСѓ`, `РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`)"
+            String query = " INSERT INTO Радіонуклід (`Назва`, `Скорочено`, `Номер порядку`, `Активність нукліда`)"
                     + " VALUES (?, ?, ?, ?)";
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setString(1, textField1.getText());
@@ -77,7 +77,7 @@ public class insertIntoRadio extends JFrame {
             //close();
         } catch (Exception exeption) {
             exeption.printStackTrace();
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РћРЁРР‘РљРђ!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
             //close();
         }
     }

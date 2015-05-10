@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Mon Mar 23 09:24:15 EET 2015
  */
 
-package Р“Р›РђР’РќРћР•_РћРљРќРћ;
+package ГЛАВНОЕ_ОКНО;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -42,7 +42,7 @@ public class login extends JFrame {
             System.out.println("Connection opened!");
             statement = connect.createStatement();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
 
         }
 
@@ -66,24 +66,43 @@ public class login extends JFrame {
             System.out.println("all closed!");
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
         }
         return JFrame.EXIT_ON_CLOSE;
     }
 
     private void button1ActionPerformed(ActionEvent e){
+        logingo();
+    }
+
+    private void thisWindowClosed(WindowEvent e) {
+        M.enable(true);
+        M.transferFocusUpCycle();
+    }
+
+    private void passwordField1KeyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_ENTER){
+            logingo();
+        }
+    }
+
+    private void logingo(){
         open();
         int group = 0;
         try {
-            String que = "SELECT `РљРѕСЂРёСЃС‚СѓРІР°С‡`.`Р“СЂСѓРїР°` FROM `РљРѕСЂРёСЃС‚СѓРІР°С‡` WHERE `РљРѕСЂРёСЃС‚СѓРІР°С‡`.`Р†Рј'СЏ` = \"" + textField1.getText() + "\"AND `РљРѕСЂРёСЃС‚СѓРІР°С‡`.`РџР°СЂРѕР»СЊ` = \"" + textField2.getText() + "\";";
+            String str = "";
+            for(char c : passwordField1.getPassword()){
+                str += c;
+            }
+            String que = "SELECT `Користувач`.`Група` FROM `Користувач` WHERE `Користувач`.`Ім'я` = \"" + textField1.getText() + "\"AND `Користувач`.`Пароль` = \"" + str + "\";";
             resultSet = statement.executeQuery(que);
             while (resultSet.next())
-                group = resultSet.getInt("Р“СЂСѓРїР°");
+                group = resultSet.getInt("Група");
         } catch (SQLException e1){
             JOptionPane.showMessageDialog(null, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         try {
-            if(group == 0) {throw new RuntimeException("РќРµС‚ С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ");}
+            if(group == 0) {throw new RuntimeException("Нет такого пользователя");}
             else
             {
                 this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -91,7 +110,7 @@ public class login extends JFrame {
                 M.userGroup = group;
                 M.userName = textField1.getText();
                 textField1.setText("");
-                textField2.setText("");
+                passwordField1.setText("");
                 M.setProperties();
                 M.hello();
                 M.enable(true);
@@ -102,18 +121,12 @@ public class login extends JFrame {
         }
         close();
     }
-
-    private void thisWindowClosed(WindowEvent e) {
-        M.enable(true);
-        M.transferFocusUpCycle();
-    }
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         label1 = new JLabel();
         textField1 = new JTextField();
         label2 = new JLabel();
-        textField2 = new JTextField();
+        passwordField1 = new JPasswordField();
         button1 = new JButton();
 
         //======== this ========
@@ -140,7 +153,15 @@ public class login extends JFrame {
         //---- label2 ----
         label2.setText("\u041f\u0430\u0440\u043e\u043b\u044c");
         contentPane.add(label2, CC.xy(3, 5));
-        contentPane.add(textField2, CC.xy(5, 5));
+
+        //---- passwordField1 ----
+        passwordField1.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                passwordField1KeyPressed(e);
+            }
+        });
+        contentPane.add(passwordField1, CC.xy(5, 5));
 
         //---- button1 ----
         button1.setText("\u0412\u0445\u043e\u0434");
@@ -155,7 +176,7 @@ public class login extends JFrame {
     private JLabel label1;
     private JTextField textField1;
     private JLabel label2;
-    private JTextField textField2;
+    private JPasswordField passwordField1;
     private JButton button1;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

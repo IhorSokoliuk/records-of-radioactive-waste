@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Sun Dec 14 00:01:55 EET 2014
  */
 
-package Р“Р›РђР’РќРћР•_РћРљРќРћ.Р—РђР’РћР”;
+package ГЛАВНОЕ_ОКНО.ЗАВОД;
 
 import com.jgoodies.forms.factories.CC;
 import com.jgoodies.forms.layout.FormLayout;
@@ -46,17 +46,17 @@ public class updateInZavod extends JFrame {
 
     private void selectRow(int nomer) {
         try {
-            String query = "SELECT * FROM Р—Р°РІРѕРґ WHERE РќРѕРјРµСЂ = " + nomer;
+            String query = "SELECT * FROM Завод WHERE Номер = " + nomer;
             statement = connect.createStatement();
             resultSet = statement.executeQuery(query);
             int Kat = 0;
             int Nukl = 0;
             while (resultSet.next()) {
-                Kat = resultSet.getInt("РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ") - 1;
-                Nukl = resultSet.getInt("РќСѓРєР»С–Рґ") - 1;
-                formattedTextField1.setText(String.valueOf(resultSet.getInt("РљС–Р»СЊРєС–СЃС‚СЊ")));
-                textPane1.setText(resultSet.getString("РџСЂРёРјС–С‚РєРё"));
-                dateChooser1.setDate(resultSet.getDate("Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ"));
+                Kat = resultSet.getInt("Категорія відходу") - 1;
+                Nukl = resultSet.getInt("Нуклід") - 1;
+                formattedTextField1.setText(String.valueOf(resultSet.getInt("Кількість")));
+                textPane1.setText(resultSet.getString("Примітки"));
+                dateChooser1.setDate(resultSet.getDate("Дата виготовлення"));
             }
             getKategory(Kat);
             getNuklid(Nukl);
@@ -108,7 +108,7 @@ public class updateInZavod extends JFrame {
             //open();
 
             resultSet = statement
-                    .executeQuery("SELECT * FROM `РєР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ`");
+                    .executeQuery("SELECT * FROM `категорія відходу`");
             while (resultSet.next()) {
                 comboBox1.addItem(resultSet.getString(2));
             }
@@ -123,7 +123,7 @@ public class updateInZavod extends JFrame {
             //open();
 
             resultSet = statement
-                    .executeQuery("SELECT * FROM СЂР°РґС–РѕРЅСѓРєР»С–Рґ");
+                    .executeQuery("SELECT * FROM радіонуклід");
             while (resultSet.next()) {
                 String str = resultSet.getString(2) + " [ " + resultSet.getString(3) + ", " + resultSet.getString(4) + " ]";
                 comboBox2.addItem(str);
@@ -142,7 +142,7 @@ public class updateInZavod extends JFrame {
             if (dateChooser1.getDate().compareTo(Calendar.getInstance().getTime()) <= 0)
                 date = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser1.getDate()));
             else
-                throw new DateTimeException("\nРќРµР»СЊР·СЏ РїСѓС‚РёС€РµСЃС‚РІРѕРІР°С‚СЊ РІ Р±СѓРґСѓС‰РµРµ!\nР”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ СЂР°Рґ. РѕС‚С…РѕРґР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РѕР±СЉСЏРІР»РµРЅРЅР° РІ РїСЂРѕС€Р»РѕРј!");
+                throw new DateTimeException("\nНельзя путишествовать в будущее!\nДата добавления рад. отхода должна быть объявленна в прошлом!");
 
             //open();
 
@@ -152,7 +152,7 @@ public class updateInZavod extends JFrame {
             // date
             // textPane1.getText()
 
-            String query = " UPDATE Р·Р°РІРѕРґ SET `РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ` = ?, `РќСѓРєР»С–Рґ` = ?, `РљС–Р»СЊРєС–СЃС‚СЊ` = ?, `Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` = ?, `РџСЂРёРјС–С‚РєРё` = ? WHERE `РќРѕРјРµСЂ` = ?";
+            String query = " UPDATE завод SET `Категорія відходу` = ?, `Нуклід` = ?, `Кількість` = ?, `Дата виготовлення` = ?, `Примітки` = ? WHERE `Номер` = ?";
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setInt(1, (comboBox1.getSelectedIndex() + 1));
             preparedStmt.setInt(2, (1 + comboBox2.getSelectedIndex()));
@@ -166,7 +166,7 @@ public class updateInZavod extends JFrame {
             //close();
         } catch (Exception exeption) {
             exeption.printStackTrace();
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РћРЁРР‘РљРђ!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
             //close();
         }
     }
