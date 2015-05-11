@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="windows-1251">
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/diagram.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/export.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/login.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/mainFrame.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/БРВ/insertIntoBRV.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/БРВ/updateInBRV.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/ДІВ/insertIntoDIV.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/ДІВ/updateInDIV.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/ЗАВОД/insertIntoZavod.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/ЗАВОД/updateInZavod.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/РАДІОАКТИВНІ_НУКЛІДИ/insertIntoRadio.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/РАДІОАКТИВНІ_НУКЛІДИ/updateInRadio.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/РРВ/insertIntoRRV.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/РРВ/updateInRRV.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/ТРВ/insertIntoTRV.java" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/ТРВ/updateInTRV.java" charset="windows-1251" />
-    <file url="PROJECT" charset="windows-1251" />
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/src/ГЛАВНОЕ_ОКНО/mainFrame.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

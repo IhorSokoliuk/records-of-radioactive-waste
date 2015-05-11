@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Sun Dec 14 00:01:55 EET 2014
  */
 
-package ГЛАВНОЕ_ОКНО.ТРВ;
+package Р“Р›РђР’РќРћР•_РћРљРќРћ.РўР Р’;
 
 import com.jgoodies.forms.factories.CC;
 import com.jgoodies.forms.layout.FormLayout;
@@ -46,19 +46,19 @@ public class updateInTRV extends JFrame {
 
     private void selectRow(int nomer) {
         try {
-            String query = "SELECT * FROM ТРВ WHERE Номер = " + nomer;
+            String query = "SELECT * FROM РўР Р’ WHERE РќРѕРјРµСЂ = " + nomer;
             statement = connect.createStatement();
             resultSet = statement.executeQuery(query);
             int Kat = 0;
             int Nukl = 0;
             while (resultSet.next()) {
-                Kat = resultSet.getInt("Категорія активності") - 1;
-                Nukl = resultSet.getInt("Нуклід") - 1;
-                formattedTextField1.setText(String.valueOf(resultSet.getInt("Кількість")));
-                formattedTextField2.setText(String.valueOf(resultSet.getInt("Активність нукліда")));
-                formattedTextField3.setText(String.valueOf(resultSet.getInt("Загальна активність")));
-                textPane1.setText(resultSet.getString("Примітки"));
-                dateChooser1.setDate(resultSet.getDate("Дата виготовлення"));
+                Kat = resultSet.getInt("РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–") - 1;
+                Nukl = resultSet.getInt("РќСѓРєР»С–Рґ") - 1;
+                formattedTextField1.setText(String.valueOf(resultSet.getInt("РљС–Р»СЊРєС–СЃС‚СЊ")));
+                formattedTextField2.setText(String.valueOf(resultSet.getInt("РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°")));
+                formattedTextField3.setText(String.valueOf(resultSet.getInt("Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ")));
+                textPane1.setText(resultSet.getString("РџСЂРёРјС–С‚РєРё"));
+                dateChooser1.setDate(resultSet.getDate("Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ"));
             }
             getKategory(Kat);
             getNuklid(Nukl);
@@ -110,7 +110,7 @@ public class updateInTRV extends JFrame {
             //open();
 
             resultSet = statement
-                    .executeQuery("SELECT * FROM `категорія активності`");
+                    .executeQuery("SELECT * FROM `РєР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`");
             while (resultSet.next()) {
                 comboBox1.addItem(resultSet.getString(2));
             }
@@ -125,7 +125,7 @@ public class updateInTRV extends JFrame {
             //open();
 
             resultSet = statement
-                    .executeQuery("SELECT * FROM радіонуклід");
+                    .executeQuery("SELECT * FROM СЂР°РґС–РѕРЅСѓРєР»С–Рґ");
             while (resultSet.next()) {
                 String str = resultSet.getString(2) + " [ " + resultSet.getString(3) + ", " + resultSet.getString(4) + " ]";
                 comboBox2.addItem(str);
@@ -144,7 +144,7 @@ public class updateInTRV extends JFrame {
             if (dateChooser1.getDate().compareTo(Calendar.getInstance().getTime()) <= 0)
                 date = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser1.getDate()));
             else
-                throw new DateTimeException("\nНельзя путишествовать в будущее!\nДата добавления рад. отхода должна быть объявленна в прошлом!");
+                throw new DateTimeException("\nРќРµР»СЊР·СЏ РїСѓС‚РёС€РµСЃС‚РІРѕРІР°С‚СЊ РІ Р±СѓРґСѓС‰РµРµ!\nР”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ СЂР°Рґ. РѕС‚С…РѕРґР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РѕР±СЉСЏРІР»РµРЅРЅР° РІ РїСЂРѕС€Р»РѕРј!");
 
             //open();
 
@@ -154,7 +154,7 @@ public class updateInTRV extends JFrame {
             // date
             // textPane1.getText()
 
-            String query = " UPDATE ТРВ SET `Категорія активності` = ?, `Нуклід` = ?, `Кількість` = ?, `Активність нукліда` = ?, `Загальна активність` = ?, `Дата виготовлення` = ?, `Примітки` = ? WHERE `Номер` = ?";
+            String query = " UPDATE РўР Р’ SET `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–` = ?, `РќСѓРєР»С–Рґ` = ?, `РљС–Р»СЊРєС–СЃС‚СЊ` = ?, `РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` = ?, `Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` = ?, `Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` = ?, `РџСЂРёРјС–С‚РєРё` = ? WHERE `РќРѕРјРµСЂ` = ?";
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setInt(1, (comboBox1.getSelectedIndex() + 1));
             preparedStmt.setInt(2, (1 + comboBox2.getSelectedIndex()));
@@ -170,7 +170,7 @@ public class updateInTRV extends JFrame {
             //close();
         } catch (Exception exeption) {
             exeption.printStackTrace();
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РћРЁРР‘РљРђ!", JOptionPane.ERROR_MESSAGE);
             //close();
         }
     }

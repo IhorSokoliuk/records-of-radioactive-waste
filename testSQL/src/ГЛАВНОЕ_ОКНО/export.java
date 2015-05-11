@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Mon Dec 15 03:29:26 EET 2014
  */
 
-package ГЛАВНОЕ_ОКНО;
+package Р“Р›РђР’РќРћР•_РћРљРќРћ;
 
 import java.awt.*;
 import java.awt.Font;
@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.TableModel;
-import javax.swing.text.TableView;
 
 import com.jgoodies.forms.factories.*;
 import com.jgoodies.forms.layout.*;
@@ -42,7 +41,7 @@ public class export extends JFrame {
         this.tblv = tblv;
         fileChooser1.setFileFilter(new myFileFilter(".pdf", "PDF-files"));
         fileChooser1.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-        fileChooser1.setApproveButtonText("Сохранить");
+        fileChooser1.setApproveButtonText("РЎРѕС…СЂР°РЅРёС‚СЊ");
         fileChooser1.setDialogType(JFileChooser.SAVE_DIALOG);
     }
 
@@ -53,23 +52,23 @@ public class export extends JFrame {
 
             document.open();
 
-            document.addTitle("Таблиці радіоактивних відходів");
-            document.addSubject("Звіт");
-            document.addKeywords("завод, ТРВ, БРВ, РРВ, ДІВ, радіоактивність, радіація");
-            document.addAuthor("Соколюк Ігор");
-            document.addCreator("Студент групи ТІ-21, 3 курс");
+            document.addTitle("РўР°Р±Р»РёС†С– СЂР°РґС–РѕР°РєС‚РёРІРЅРёС… РІС–РґС…РѕРґС–РІ");
+            document.addSubject("Р—РІС–С‚");
+            document.addKeywords("Р·Р°РІРѕРґ, РўР Р’, Р‘Р Р’, Р Р Р’, Р”Р†Р’, СЂР°РґС–РѕР°РєС‚РёРІРЅС–СЃС‚СЊ, СЂР°РґС–Р°С†С–СЏ");
+            document.addAuthor("РЎРѕРєРѕР»СЋРє Р†РіРѕСЂ");
+            document.addCreator("РЎС‚СѓРґРµРЅС‚ РіСЂСѓРїРё РўР†-21, 3 РєСѓСЂСЃ");
 
-            addTable(document, tblv.get(0).getModel(), "Завод");
-            addTable(document, tblv.get(1).getModel(), "ТРВ");
-            addTable(document, tblv.get(2).getModel(), "РРВ");
-            addTable(document, tblv.get(3).getModel(), "БРВ");
-            addTable(document, tblv.get(4).getModel(), "ДІВ");
-            addTable(document, tblv.get(5).getModel(), "Радіонукліди");
+            addTable(document, tblv.get(0).getModel(), "Р—Р°РІРѕРґ");
+            addTable(document, tblv.get(1).getModel(), "РўР Р’");
+            addTable(document, tblv.get(2).getModel(), "Р Р Р’");
+            addTable(document, tblv.get(3).getModel(), "Р‘Р Р’");
+            addTable(document, tblv.get(4).getModel(), "Р”Р†Р’");
+            addTable(document, tblv.get(5).getModel(), "Р Р°РґС–РѕРЅСѓРєР»С–РґРё");
 
             document.close();
-            JOptionPane.showMessageDialog(null, "Успішно експортовано в PDF-файл", "Успіх!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "РЈСЃРїС–С€РЅРѕ РµРєСЃРїРѕСЂС‚РѕРІР°РЅРѕ РІ PDF-С„Р°Р№Р»", "РЈСЃРїС–С…!", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -123,16 +122,16 @@ public class export extends JFrame {
 
             WritableWorkbook workbook = Workbook.createWorkbook(new File(path));
 
-            writeToExcel(workbook, tblv.get(0).getModel(), "Завод", 0);
-            writeToExcel(workbook, tblv.get(1).getModel(), "ТРВ", 1);
-            writeToExcel(workbook, tblv.get(2).getModel(), "РРВ", 2);
-            writeToExcel(workbook, tblv.get(3).getModel(), "БРВ", 3);
-            writeToExcel(workbook, tblv.get(4).getModel(), "ДІВ", 4);
-            writeToExcel(workbook, tblv.get(5).getModel(), "Раіоактивні нукліди", 5);
+            writeToExcel(workbook, tblv.get(0).getModel(), "Р—Р°РІРѕРґ", 0);
+            writeToExcel(workbook, tblv.get(1).getModel(), "РўР Р’", 1);
+            writeToExcel(workbook, tblv.get(2).getModel(), "Р Р Р’", 2);
+            writeToExcel(workbook, tblv.get(3).getModel(), "Р‘Р Р’", 3);
+            writeToExcel(workbook, tblv.get(4).getModel(), "Р”Р†Р’", 4);
+            writeToExcel(workbook, tblv.get(5).getModel(), "Р Р°С–РѕР°РєС‚РёРІРЅС– РЅСѓРєР»С–РґРё", 5);
 
             workbook.write();
             workbook.close();
-            JOptionPane.showMessageDialog(null, "Успішно експортовано в Excel-файл", "Успіх!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "РЈСЃРїС–С€РЅРѕ РµРєСЃРїРѕСЂС‚РѕРІР°РЅРѕ РІ Excel-С„Р°Р№Р»", "РЈСЃРїС–С…!", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -190,7 +189,7 @@ public class export extends JFrame {
             this.ext = ext;
             this.description = description;
         }
-        //В этом методе может быть любая проверка файла
+        //Р’ СЌС‚РѕРј РјРµС‚РѕРґРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р»СЋР±Р°СЏ РїСЂРѕРІРµСЂРєР° С„Р°Р№Р»Р°
         public boolean accept(File f) {
             if(f != null) {
                 if(f.isDirectory()) {

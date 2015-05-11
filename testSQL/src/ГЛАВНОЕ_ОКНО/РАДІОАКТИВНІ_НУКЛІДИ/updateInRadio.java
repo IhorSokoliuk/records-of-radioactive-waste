@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Sun Dec 14 00:01:55 EET 2014
  */
 
-package ГЛАВНОЕ_ОКНО.РАДІОАКТИВНІ_НУКЛІДИ;
+package Р“Р›РђР’РќРћР•_РћРљРќРћ.Р РђР”Р†РћРђРљРўРР’РќР†_РќРЈРљР›Р†Р”Р;
 
 import com.jgoodies.forms.factories.CC;
 import com.jgoodies.forms.layout.FormLayout;
@@ -39,14 +39,14 @@ public class updateInRadio extends JFrame {
 
     private void selectRow(int nomer) {
         try {
-            String query = "SELECT * FROM радіонуклід WHERE Номер = " + nomer;
+            String query = "SELECT * FROM СЂР°РґС–РѕРЅСѓРєР»С–Рґ WHERE РќРѕРјРµСЂ = " + nomer;
             statement = connect.createStatement();
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                textField1.setText(String.valueOf(resultSet.getString("Назва")));
-                textField2.setText(String.valueOf(resultSet.getString("Скорочено")));
-                textField3.setText(String.valueOf(resultSet.getInt("Номер порядку")));
-                textField4.setText(String.valueOf(resultSet.getInt("Активність нукліда")));
+                textField1.setText(String.valueOf(resultSet.getString("РќР°Р·РІР°")));
+                textField2.setText(String.valueOf(resultSet.getString("РЎРєРѕСЂРѕС‡РµРЅРѕ")));
+                textField3.setText(String.valueOf(resultSet.getInt("РќРѕРјРµСЂ РїРѕСЂСЏРґРєСѓ")));
+                textField4.setText(String.valueOf(resultSet.getInt("РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°")));
             }
         } catch (Exception e) {
         }
@@ -93,7 +93,7 @@ public class updateInRadio extends JFrame {
 
     private void button1ActionPerformed(ActionEvent e) {
         try {
-            String query = " UPDATE Радіонуклід SET `Назва` = ?, `Скорочено` = ?, `Номер порядку` = ?, `Активність нукліда` = ? WHERE `Номер` = ?";
+            String query = " UPDATE Р Р°РґС–РѕРЅСѓРєР»С–Рґ SET `РќР°Р·РІР°` = ?, `РЎРєРѕСЂРѕС‡РµРЅРѕ` = ?, `РќРѕРјРµСЂ РїРѕСЂСЏРґРєСѓ` = ?, `РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` = ? WHERE `РќРѕРјРµСЂ` = ?";
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setString(1, textField1.getText());
             preparedStmt.setString(2, textField2.getText());
@@ -106,7 +106,7 @@ public class updateInRadio extends JFrame {
             //close();
         } catch (Exception exeption) {
             exeption.printStackTrace();
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РћРЁРР‘РљРђ!", JOptionPane.ERROR_MESSAGE);
             //close();
         }
     }

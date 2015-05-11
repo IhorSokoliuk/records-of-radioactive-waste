@@ -1,36 +1,25 @@
-package ГЛАВНОЕ_ОКНО;
+package Р“Р›РђР’РќРћР•_РћРљРќРћ;
 
 import java.awt.event.*;
 import javax.swing.border.*;
 import com.ibatis.common.jdbc.ScriptRunner;
 import com.jgoodies.forms.factories.CC;
 import com.jgoodies.forms.layout.FormLayout;
-import com.lowagie.text.Phrase;
-import com.lowagie.text.pdf.BaseFont;
-import com.lowagie.text.pdf.PdfPTable;
 import com.toedter.calendar.JDateChooser;
 import net.proteanit.sql.DbUtils;
-import ГЛАВНОЕ_ОКНО.БРВ.insertIntoBRV;
-import ГЛАВНОЕ_ОКНО.БРВ.updateInBRV;
-import ГЛАВНОЕ_ОКНО.ДІВ.insertIntoDIV;
-import ГЛАВНОЕ_ОКНО.ДІВ.updateInDIV;
-import ГЛАВНОЕ_ОКНО.ЗАВОД.insertIntoZavod;
-import ГЛАВНОЕ_ОКНО.ЗАВОД.updateInZavod;
-import ГЛАВНОЕ_ОКНО.РАДІОАКТИВНІ_НУКЛІДИ.insertIntoRadio;
-import ГЛАВНОЕ_ОКНО.РАДІОАКТИВНІ_НУКЛІДИ.updateInRadio;
-import ГЛАВНОЕ_ОКНО.РРВ.insertIntoRRV;
-import ГЛАВНОЕ_ОКНО.РРВ.updateInRRV;
-import ГЛАВНОЕ_ОКНО.ТРВ.insertIntoTRV;
-import ГЛАВНОЕ_ОКНО.ТРВ.updateInTRV;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot3D;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
-import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
-import org.jfree.util.Rotation;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.Р‘Р Р’.insertIntoBRV;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.Р‘Р Р’.updateInBRV;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.Р”Р†Р’.insertIntoDIV;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.Р”Р†Р’.updateInDIV;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.Р—РђР’РћР”.insertIntoZavod;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.Р—РђР’РћР”.updateInZavod;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.Р РђР”Р†РћРђРљРўРР’РќР†_РќРЈРљР›Р†Р”Р.insertIntoRadio;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.Р РђР”Р†РћРђРљРўРР’РќР†_РќРЈРљР›Р†Р”Р.updateInRadio;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.Р Р Р’.insertIntoRRV;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.Р Р Р’.updateInRRV;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.РўР Р’.insertIntoTRV;
+import Р“Р›РђР’РќРћР•_РћРљРќРћ.РўР Р’.updateInTRV;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -63,7 +52,6 @@ public class mainFrame extends JFrame {
     public int userGroup;
     public String userName;
     private login log;
-    private diagram diag;
 
     public mainFrame() throws Exception {
         initComponents();
@@ -104,7 +92,7 @@ public class mainFrame extends JFrame {
             for (JButton but : buttons)
                 but.setVisible(true);
             if(tabbedPane1.getTabCount() == 6)
-                tabbedPane1.addTab("Користувачі", panel43);
+                tabbedPane1.addTab("РљРѕСЂРёСЃС‚СѓРІР°С‡С–", panel43);
             panel43.setVisible(true);
         }
         if(userGroup == 2)
@@ -138,29 +126,29 @@ public class mainFrame extends JFrame {
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.execute();
             preparedStmt.close();
-            JOptionPane.showMessageDialog(null, "Дані з таблиці " + string + " успішно видалені!", "УСПІХ!", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Р”Р°РЅС– Р· С‚Р°Р±Р»РёС†С– " + string + " СѓСЃРїС–С€РЅРѕ РІРёРґР°Р»РµРЅС–!", "РЈРЎРџР†РҐ!", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (SQLException e1) {
             e1.printStackTrace();
-            JOptionPane.showMessageDialog(null, e1.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e1.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void menuItem2ActionPerformed(ActionEvent e) {
         try {
             ScriptRunner runner = new ScriptRunner(connect, false, false);
-            runner.runScript(new BufferedReader(new FileReader("script/insertЗАВОД.sql")));
+            runner.runScript(new BufferedReader(new FileReader("script/insertР—РђР’РћР”.sql")));
         } catch (Exception e1) {
             e1.printStackTrace();
-            JOptionPane.showMessageDialog(null, e1.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e1.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void updateInZAVOD(ActionEvent e) {
-        if (табл0.getSelectedRowCount() == 1)
-            new updateInZavod(Integer.parseInt(табл0.getValueAt(табл0.getSelectedRow(), 0).toString()));
+        if (С‚Р°Р±Р»0.getSelectedRowCount() == 1)
+            new updateInZavod(Integer.parseInt(С‚Р°Р±Р»0.getValueAt(С‚Р°Р±Р»0.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "Потрібно обрати один запис з таблиці", "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "РџРѕС‚СЂС–Р±РЅРѕ РѕР±СЂР°С‚Рё РѕРґРёРЅ Р·Р°РїРёСЃ Р· С‚Р°Р±Р»РёС†С–", "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
     }
 
     private void searchCleanerZAVOD(ActionEvent e) {
@@ -184,18 +172,18 @@ public class mainFrame extends JFrame {
 
     private void deleteFromZAVOD(ActionEvent e) {
         try {
-            int[] i = табл0.getSelectedRows();
+            int[] i = С‚Р°Р±Р»0.getSelectedRows();
             String que;
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM Завод WHERE Номер = " + Integer.parseInt(табл0.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM Р—Р°РІРѕРґ WHERE РќРѕРјРµСЂ = " + Integer.parseInt(С‚Р°Р±Р»0.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             refreshTableZAVOD(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -203,48 +191,48 @@ public class mainFrame extends JFrame {
         try {
             String que = "SELECT ";
             if (checkBox1.isSelected())
-                que += "`Завод`.`Номер`, ";
+                que += "`Р—Р°РІРѕРґ`.`РќРѕРјРµСЂ`, ";
             if (checkBox2.isSelected())
-                que += "`Категорія відходу`.`Категорія відходу`, ";
+                que += "`РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ`.`РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ`, ";
             if (checkBox3.isSelected())
-                que += "`Радіонуклід`.`Назва`, ";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`, ";
             if (checkBox4.isSelected())
-                que += "`Завод`.`Кількість`, ";
+                que += "`Р—Р°РІРѕРґ`.`РљС–Р»СЊРєС–СЃС‚СЊ`, ";
             if (checkBox5.isSelected())
-                que += "`Завод`.`Дата виготовлення`, ";
+                que += "`Р—Р°РІРѕРґ`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`, ";
             if (checkBox6.isSelected())
-                que += "`Завод`.`Примітки`, ";
+                que += "`Р—Р°РІРѕРґ`.`РџСЂРёРјС–С‚РєРё`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `Завод`\n";
+            que += " FROM `Р—Р°РІРѕРґ`\n";
 
-            que += "INNER JOIN `Категорія відходу`\n" +
-                    "ON `Завод`.`Категорія відходу` = `Категорія відходу`.`Номер`\n" +
-                    "INNER JOIN `Радіонуклід`\n" +
-                    "ON `Завод`.`Нуклід` = `Радіонуклід`.`Номер`\n";
+            que += "INNER JOIN `РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ`\n" +
+                    "ON `Р—Р°РІРѕРґ`.`РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ` = `РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ`.`РќРѕРјРµСЂ`\n" +
+                    "INNER JOIN `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`\n" +
+                    "ON `Р—Р°РІРѕРґ`.`РќСѓРєР»С–Рґ` = `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ`\n";
 
             boolean where = false;
 
             if (!firstNumber1.getText().isEmpty()) {
                 if (!lastNumber1.getText().isEmpty()) {
-                    que += "WHERE `Завод`.`Номер` >= \"" + firstNumber1.getText() + "\"\n";
+                    que += "WHERE `Р—Р°РІРѕРґ`.`РќРѕРјРµСЂ` >= \"" + firstNumber1.getText() + "\"\n";
                     que += "AND ";
-                    que += "`Завод`.`Номер` <= \"" + lastNumber1.getText() + "\"\n";
+                    que += "`Р—Р°РІРѕРґ`.`РќРѕРјРµСЂ` <= \"" + lastNumber1.getText() + "\"\n";
                 } else
-                    que += "WHERE `Завод`.`Номер` = \"" + firstNumber1.getText() + "\"\n";
+                    que += "WHERE `Р—Р°РІРѕРґ`.`РќРѕРјРµСЂ` = \"" + firstNumber1.getText() + "\"\n";
                 where = true;
             }
 
             if (comboBox1.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Категорія відходу`.`Категорія відходу` = \"" + comboBox1.getSelectedItem().toString() + "\"\n";
+                que += "`РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ`.`РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ` = \"" + comboBox1.getSelectedItem().toString() + "\"\n";
                 where = true;
             }
 
             if (comboBox2.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Завод`.`Нуклід` = '" + comboBox2.getSelectedItem().toString() + "'\n";
+                que += "`Р—Р°РІРѕРґ`.`РќСѓРєР»С–Рґ` = '" + comboBox2.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -252,11 +240,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber2.getText().isEmpty()) {
-                    que += "`Завод`.`Кількість` >= \"" + firstNumber2.getText() + "\"\n";
+                    que += "`Р—Р°РІРѕРґ`.`РљС–Р»СЊРєС–СЃС‚СЊ` >= \"" + firstNumber2.getText() + "\"\n";
                     que += "AND ";
-                    que += "`Завод`.`Кількість` <= \"" + lastNumber2.getText() + "\"\n";
+                    que += "`Р—Р°РІРѕРґ`.`РљС–Р»СЊРєС–СЃС‚СЊ` <= \"" + lastNumber2.getText() + "\"\n";
                 } else
-                    que += "`Завод`.`Кількість` = \"" + firstNumber2.getText() + "\"\n";
+                    que += "`Р—Р°РІРѕРґ`.`РљС–Р»СЊРєС–СЃС‚СЊ` = \"" + firstNumber2.getText() + "\"\n";
                 where = true;
             }
 
@@ -269,32 +257,32 @@ public class mainFrame extends JFrame {
                 else que += "AND ";
                 if (dateChooser2.getDate() != null) {
                     date2 = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser2.getDate()));
-                    que += "`Завод`.`Дата виготовлення` >= \"" + date1 + "\"\n";
+                    que += "`Р—Р°РІРѕРґ`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` >= \"" + date1 + "\"\n";
                     que += "AND ";
-                    que += "`Завод`.`Дата виготовлення` <= \"" + date2 + "\"\n";
+                    que += "`Р—Р°РІРѕРґ`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` <= \"" + date2 + "\"\n";
                 } else
-                    que += "`Завод`.`Дата виготовлення` = \"" + date1 + "\"\n";
+                    que += "`Р—Р°РІРѕРґ`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` = \"" + date1 + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox3.getSelectedIndex()) {
                 case 0:
-                    que += " `Завод`.`Номер`";
+                    que += " `Р—Р°РІРѕРґ`.`РќРѕРјРµСЂ`";
                     break;
                 case 1:
-                    que += " `Категорія відходу`.`Категорія відходу`";
+                    que += " `РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ`.`РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ`";
                     break;
                 case 2:
-                    que += " `Радіонуклід`.`Назва`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`";
                     break;
                 case 3:
-                    que += " `Завод`.`Кількість`";
+                    que += " `Р—Р°РІРѕРґ`.`РљС–Р»СЊРєС–СЃС‚СЊ`";
                     break;
                 case 4:
-                    que += " `Завод`.`Дата виготовлення`";
+                    que += " `Р—Р°РІРѕРґ`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`";
                     break;
                 case 5:
-                    que += " `Завод`.`Примітки`";
+                    que += " `Р—Р°РІРѕРґ`.`РџСЂРёРјС–С‚РєРё`";
                     break;
             }
 
@@ -308,17 +296,17 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.табл0.setModel(model);
+            this.С‚Р°Р±Р»0.setModel(model);
 
         } catch (Exception exception) {
-            JOptionPane.showMessageDialog(null, exception.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exception.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void updateComboBox(ActionEvent e) {
         try {
             resultSet = statement
-                    .executeQuery("SELECT * FROM радіонуклід");
+                    .executeQuery("SELECT * FROM СЂР°РґС–РѕРЅСѓРєР»С–Рґ");
             comboBox2.addItem("-");
             comboBox5.addItem("-");
             comboBox8.addItem("-");
@@ -333,32 +321,32 @@ public class mainFrame extends JFrame {
                 comboBox14.addItem(str);
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void menuItem4ActionPerformed(ActionEvent e) {
-        if (JOptionPane.showConfirmDialog(null, "Ви впевенні, що бажаєте видалити всі дані з таблиці " + menuItem4.getText() + "?", "Увага!", JOptionPane.YES_NO_OPTION) == 0)
+        if (JOptionPane.showConfirmDialog(null, "Р’Рё РІРїРµРІРµРЅРЅС–, С‰Рѕ Р±Р°Р¶Р°С”С‚Рµ РІРёРґР°Р»РёС‚Рё РІСЃС– РґР°РЅС– Р· С‚Р°Р±Р»РёС†С– " + menuItem4.getText() + "?", "РЈРІР°РіР°!", JOptionPane.YES_NO_OPTION) == 0)
             truncateTable(menuItem4.getText());
     }
 
     private void menuItem5ActionPerformed(ActionEvent e) {
-        if (JOptionPane.showConfirmDialog(null, "Ви впевенні, що бажаєте видалити всі дані з таблиці " + menuItem5.getText() + "?", "Увага!", JOptionPane.YES_NO_OPTION) == 0)
+        if (JOptionPane.showConfirmDialog(null, "Р’Рё РІРїРµРІРµРЅРЅС–, С‰Рѕ Р±Р°Р¶Р°С”С‚Рµ РІРёРґР°Р»РёС‚Рё РІСЃС– РґР°РЅС– Р· С‚Р°Р±Р»РёС†С– " + menuItem5.getText() + "?", "РЈРІР°РіР°!", JOptionPane.YES_NO_OPTION) == 0)
             truncateTable(menuItem5.getText());
     }
 
     private void menuItem6ActionPerformed(ActionEvent e) {
-        if (JOptionPane.showConfirmDialog(null, "Ви впевенні, що бажаєте видалити всі дані з таблиці " + menuItem6.getText() + "?", "Увага!", JOptionPane.YES_NO_OPTION) == 0)
+        if (JOptionPane.showConfirmDialog(null, "Р’Рё РІРїРµРІРµРЅРЅС–, С‰Рѕ Р±Р°Р¶Р°С”С‚Рµ РІРёРґР°Р»РёС‚Рё РІСЃС– РґР°РЅС– Р· С‚Р°Р±Р»РёС†С– " + menuItem6.getText() + "?", "РЈРІР°РіР°!", JOptionPane.YES_NO_OPTION) == 0)
             truncateTable(menuItem6.getText());
     }
 
     private void menuItem7ActionPerformed(ActionEvent e) {
-        if (JOptionPane.showConfirmDialog(null, "Ви впевенні, що бажаєте видалити всі дані з таблиці " + menuItem7.getText() + "?", "Увага!", JOptionPane.YES_NO_OPTION) == 0)
+        if (JOptionPane.showConfirmDialog(null, "Р’Рё РІРїРµРІРµРЅРЅС–, С‰Рѕ Р±Р°Р¶Р°С”С‚Рµ РІРёРґР°Р»РёС‚Рё РІСЃС– РґР°РЅС– Р· С‚Р°Р±Р»РёС†С– " + menuItem7.getText() + "?", "РЈРІР°РіР°!", JOptionPane.YES_NO_OPTION) == 0)
             truncateTable(menuItem7.getText());
     }
 
     private void menuItem8ActionPerformed(ActionEvent e) {
-        if (JOptionPane.showConfirmDialog(null, "Ви впевенні, що бажаєте видалити всі дані з таблиці " + menuItem8.getText() + "?", "Увага!", JOptionPane.YES_NO_OPTION) == 0)
+        if (JOptionPane.showConfirmDialog(null, "Р’Рё РІРїРµРІРµРЅРЅС–, С‰Рѕ Р±Р°Р¶Р°С”С‚Рµ РІРёРґР°Р»РёС‚Рё РІСЃС– РґР°РЅС– Р· С‚Р°Р±Р»РёС†С– " + menuItem8.getText() + "?", "РЈРІР°РіР°!", JOptionPane.YES_NO_OPTION) == 0)
             truncateTable(menuItem8.getText());
     }
 
@@ -371,51 +359,51 @@ public class mainFrame extends JFrame {
             //open();
             String que = "SELECT ";
             if (checkBox7.isSelected())
-                que += "`ТРВ`.`Номер`, ";
+                que += "`РўР Р’`.`РќРѕРјРµСЂ`, ";
             if (checkBox8.isSelected())
-                que += "`Категорія активності`.`Категорія активності`, ";
+                que += "`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`, ";
             if (checkBox9.isSelected())
-                que += "`Радіонуклід`.`Назва`, ";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`, ";
             if (checkBox10.isSelected())
-                que += "`ТРВ`.`Кількість`, ";
+                que += "`РўР Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ`, ";
             if (checkBox11.isSelected())
-                que += " `Радіонуклід`.`Активність нукліда`, ";
+                que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`, ";
             if (checkBox12.isSelected())
-                que += "`ТРВ`.`Загальна активність`, ";
+                que += "`РўР Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ`, ";
             if (checkBox13.isSelected())
-                que += "`ТРВ`.`Дата виготовлення`, ";
+                que += "`РўР Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`, ";
             if (checkBox14.isSelected())
-                que += "`ТРВ`.`Примітки`, ";
+                que += "`РўР Р’`.`РџСЂРёРјС–С‚РєРё`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `ТРВ`\n";
+            que += " FROM `РўР Р’`\n";
 
-            que += "inner join `Категорія активності`\n" +
-                    "on `ТРВ`.`Категорія активності` = `Категорія активності`.`Номер`\n" +
-                    "inner join `Радіонуклід`\n" +
-                    "on `ТРВ`.`Нуклід` = `Радіонуклід`.`Номер`\n";
+            que += "inner join `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`\n" +
+                    "on `РўР Р’`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–` = `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РќРѕРјРµСЂ`\n" +
+                    "inner join `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`\n" +
+                    "on `РўР Р’`.`РќСѓРєР»С–Рґ` = `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ`\n";
 
             boolean where = false;
             if (!firstNumber3.getText().isEmpty()) {
                 if (!lastNumber3.getText().isEmpty()) {
-                    que += "WHERE `ТРВ`.`Номер` >= \"" + firstNumber3.getText() + "\"\n";
+                    que += "WHERE `РўР Р’`.`РќРѕРјРµСЂ` >= \"" + firstNumber3.getText() + "\"\n";
                     que += "AND ";
-                    que += "`ТРВ`.`Номер` <= \"" + lastNumber3.getText() + "\"\n";
+                    que += "`РўР Р’`.`РќРѕРјРµСЂ` <= \"" + lastNumber3.getText() + "\"\n";
                 } else
-                    que += "ТРВ `Завод`.`Номер` = \"" + firstNumber3.getText() + "\"\n";
+                    que += "РўР Р’ `Р—Р°РІРѕРґ`.`РќРѕРјРµСЂ` = \"" + firstNumber3.getText() + "\"\n";
                 where = true;
             }
 
             if (comboBox4.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Категорія активності`.`Категорія активності` = \"" + comboBox4.getSelectedItem().toString() + "\"\n";
+                que += "`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–` = \"" + comboBox4.getSelectedItem().toString() + "\"\n";
                 where = true;
             }
 
             if (comboBox5.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Назва` = '" + comboBox5.getSelectedItem().toString() + "'\n";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°` = '" + comboBox5.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -423,11 +411,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber4.getText().isEmpty()) {
-                    que += "`ТРВ`.`Кількість` >= \"" + firstNumber4.getText() + "\"\n";
+                    que += "`РўР Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` >= \"" + firstNumber4.getText() + "\"\n";
                     que += "AND ";
-                    que += "`ТРВ`.`Кількість` <= \"" + lastNumber4.getText() + "\"\n";
+                    que += "`РўР Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` <= \"" + lastNumber4.getText() + "\"\n";
                 } else
-                    que += "`ТРВ`.`Кількість` = \"" + firstNumber4.getText() + "\"\n";
+                    que += "`РўР Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` = \"" + firstNumber4.getText() + "\"\n";
                 where = true;
             }
 
@@ -435,11 +423,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber5.getText().isEmpty()) {
-                    que += "`Радіонуклід`.`Активність нукліда` >= \"" + firstNumber5.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` >= \"" + firstNumber5.getText() + "\"\n";
                     que += "AND ";
-                    que += "`Радіонуклід`.`Активність нукліда` <= \"" + lastNumber5.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` <= \"" + lastNumber5.getText() + "\"\n";
                 } else
-                    que += "`Радіонуклід`.`Активність нукліда` = \"" + firstNumber5.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` = \"" + firstNumber5.getText() + "\"\n";
                 where = true;
             }
 
@@ -447,11 +435,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber6.getText().isEmpty()) {
-                    que += "`ТРВ`.`Загальна активність` >= \"" + firstNumber6.getText() + "\"\n";
+                    que += "`РўР Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` >= \"" + firstNumber6.getText() + "\"\n";
                     que += "AND ";
-                    que += "`ТРВ`.`Загальна активність` <= \"" + lastNumber6.getText() + "\"\n";
+                    que += "`РўР Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` <= \"" + lastNumber6.getText() + "\"\n";
                 } else
-                    que += "`ТРВ`.`Загальна активність` = \"" + firstNumber6.getText() + "\"\n";
+                    que += "`РўР Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` = \"" + firstNumber6.getText() + "\"\n";
                 where = true;
             }
 
@@ -465,38 +453,38 @@ public class mainFrame extends JFrame {
                 else que += "AND ";
                 if (dateChooser4.getDate() != null) {
                     date2 = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser4.getDate()));
-                    que += "`ТРВ`.`Дата виготовлення` >= \"" + date1 + "\"\n";
+                    que += "`РўР Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` >= \"" + date1 + "\"\n";
                     que += "AND ";
-                    que += "`ТРВ`.`Дата виготовлення` <= \"" + date2 + "\"\n";
+                    que += "`РўР Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` <= \"" + date2 + "\"\n";
                 } else
-                    que += "`ТРВ`.`Дата виготовлення` = \"" + date1 + "\"\n";
+                    que += "`РўР Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` = \"" + date1 + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox6.getSelectedIndex()) {
                 case 0:
-                    que += " `ТРВ`.`Номер`";
+                    que += " `РўР Р’`.`РќРѕРјРµСЂ`";
                     break;
                 case 1:
-                    que += " `Категорія активності`.`Категорія активності`";
+                    que += " `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`";
                     break;
                 case 2:
-                    que += " `Радіонуклід`.`Назва`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`";
                     break;
                 case 3:
-                    que += " `ТРВ`.`Кількість`";
+                    que += " `РўР Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ`";
                     break;
                 case 4:
-                    que += " `Радіонуклід`.`Активність нукліда`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`";
                     break;
                 case 5:
-                    que += " `ТРВ`.`Загальна активність`";
+                    que += " `РўР Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ`";
                     break;
                 case 6:
-                    que += " `ТРВ`.`Дата виготовлення`";
+                    que += " `РўР Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`";
                     break;
                 case 7:
-                    que += " `ТРВ`.`Примітки`";
+                    que += " `РўР Р’`.`РџСЂРёРјС–С‚РєРё`";
                     break;
             }
 
@@ -510,44 +498,44 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.табл1.setModel(model);
+            this.С‚Р°Р±Р»1.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void deleteFromTRV(ActionEvent e) {
         try {
-            int[] i = табл1.getSelectedRows();
+            int[] i = С‚Р°Р±Р»1.getSelectedRows();
             String que;
             //open();
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM ТРВ WHERE Номер = " + Integer.parseInt(табл1.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM РўР Р’ WHERE РќРѕРјРµСЂ = " + Integer.parseInt(С‚Р°Р±Р»1.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             //close();
             refreshTableTRV(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
 
     private void updateInTRV(ActionEvent e) {
-        if (табл1.getSelectedRowCount() == 1)
-            new updateInTRV(Integer.parseInt(табл1.getValueAt(табл1.getSelectedRow(), 0).toString()));
+        if (С‚Р°Р±Р»1.getSelectedRowCount() == 1)
+            new updateInTRV(Integer.parseInt(С‚Р°Р±Р»1.getValueAt(С‚Р°Р±Р»1.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "Потрібно обрати один запис з таблиці", "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "РџРѕС‚СЂС–Р±РЅРѕ РѕР±СЂР°С‚Рё РѕРґРёРЅ Р·Р°РїРёСЃ Р· С‚Р°Р±Р»РёС†С–", "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
     }
 
     private void searchCleanerTRV(ActionEvent e) {
@@ -586,7 +574,7 @@ public class mainFrame extends JFrame {
             connect = DriverManager.getConnection(url + dbName, userName, password);
             System.out.println("Connection opened!");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
 
         }
         statement = connect.createStatement();
@@ -610,27 +598,27 @@ public class mainFrame extends JFrame {
             System.out.println("all closed!");
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
         return JFrame.EXIT_ON_CLOSE;
     }
 
     private void deleteFromRRV(ActionEvent e) {
         try {
-            int[] i = табл2.getSelectedRows();
+            int[] i = С‚Р°Р±Р»2.getSelectedRows();
             String que;
             //open();
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM РРВ WHERE Номер = " + Integer.parseInt(табл2.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM Р Р Р’ WHERE РќРѕРјРµСЂ = " + Integer.parseInt(С‚Р°Р±Р»2.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             //close();
             refreshTableRRV(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
@@ -640,10 +628,10 @@ public class mainFrame extends JFrame {
     }
 
     private void updateInRRV(ActionEvent e) {
-        if (табл2.getSelectedRowCount() == 1)
-            new updateInRRV(Integer.parseInt(табл2.getValueAt(табл2.getSelectedRow(), 0).toString()));
+        if (С‚Р°Р±Р»2.getSelectedRowCount() == 1)
+            new updateInRRV(Integer.parseInt(С‚Р°Р±Р»2.getValueAt(С‚Р°Р±Р»2.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "Потрібно обрати один запис з таблиці", "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "РџРѕС‚СЂС–Р±РЅРѕ РѕР±СЂР°С‚Рё РѕРґРёРЅ Р·Р°РїРёСЃ Р· С‚Р°Р±Р»РёС†С–", "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
     }
 
     private void refreshTableRRV(ActionEvent e) {
@@ -651,51 +639,51 @@ public class mainFrame extends JFrame {
             //open();
             String que = "SELECT ";
             if (checkBox17.isSelected())
-                que += "`РРВ`.`Номер`, ";
+                que += "`Р Р Р’`.`РќРѕРјРµСЂ`, ";
             if (checkBox18.isSelected())
-                que += "`Категорія активності`.`Категорія активності`, ";
+                que += "`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`, ";
             if (checkBox19.isSelected())
-                que += "`Радіонуклід`.`Назва`, ";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`, ";
             if (checkBox20.isSelected())
-                que += "`РРВ`.`Кількість`, ";
+                que += "`Р Р Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ`, ";
             if (checkBox21.isSelected())
-                que += " `Радіонуклід`.`Активність нукліда`, ";
+                que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`, ";
             if (checkBox22.isSelected())
-                que += "`РРВ`.`Загальна активність`, ";
+                que += "`Р Р Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ`, ";
             if (checkBox23.isSelected())
-                que += "`РРВ`.`Дата виготовлення`, ";
+                que += "`Р Р Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`, ";
             if (checkBox24.isSelected())
-                que += "`РРВ`.`Примітки`, ";
+                que += "`Р Р Р’`.`РџСЂРёРјС–С‚РєРё`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `РРВ`\n";
+            que += " FROM `Р Р Р’`\n";
 
-            que += "inner join `Категорія активності`\n" +
-                    "on `РРВ`.`Категорія активності` = `Категорія активності`.`Номер`\n" +
-                    "inner join `Радіонуклід`\n" +
-                    "on `РРВ`.`Нуклід` = `Радіонуклід`.`Номер`\n";
+            que += "inner join `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`\n" +
+                    "on `Р Р Р’`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–` = `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РќРѕРјРµСЂ`\n" +
+                    "inner join `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`\n" +
+                    "on `Р Р Р’`.`РќСѓРєР»С–Рґ` = `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ`\n";
 
             boolean where = false;
             if (!firstNumber7.getText().isEmpty()) {
                 if (!lastNumber7.getText().isEmpty()) {
-                    que += "WHERE `РРВ`.`Номер` >= \"" + firstNumber7.getText() + "\"\n";
+                    que += "WHERE `Р Р Р’`.`РќРѕРјРµСЂ` >= \"" + firstNumber7.getText() + "\"\n";
                     que += "AND ";
-                    que += "`РРВ`.`Номер` <= \"" + lastNumber7.getText() + "\"\n";
+                    que += "`Р Р Р’`.`РќРѕРјРµСЂ` <= \"" + lastNumber7.getText() + "\"\n";
                 } else
-                    que += "РРВ `Завод`.`Номер` = \"" + firstNumber7.getText() + "\"\n";
+                    que += "Р Р Р’ `Р—Р°РІРѕРґ`.`РќРѕРјРµСЂ` = \"" + firstNumber7.getText() + "\"\n";
                 where = true;
             }
 
             if (comboBox7.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Категорія активності`.`Категорія активності` = \"" + comboBox7.getSelectedItem().toString() + "\"\n";
+                que += "`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–` = \"" + comboBox7.getSelectedItem().toString() + "\"\n";
                 where = true;
             }
 
             if (comboBox8.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Назва` = '" + comboBox8.getSelectedItem().toString() + "'\n";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°` = '" + comboBox8.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -703,11 +691,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber8.getText().isEmpty()) {
-                    que += "`РРВ`.`Кількість` >= \"" + firstNumber8.getText() + "\"\n";
+                    que += "`Р Р Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` >= \"" + firstNumber8.getText() + "\"\n";
                     que += "AND ";
-                    que += "`РРВ`.`Кількість` <= \"" + lastNumber8.getText() + "\"\n";
+                    que += "`Р Р Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` <= \"" + lastNumber8.getText() + "\"\n";
                 } else
-                    que += "`РРВ`.`Кількість` = \"" + firstNumber8.getText() + "\"\n";
+                    que += "`Р Р Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` = \"" + firstNumber8.getText() + "\"\n";
                 where = true;
             }
 
@@ -715,11 +703,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber9.getText().isEmpty()) {
-                    que += "`Радіонуклід`.`Активність нукліда` >= \"" + firstNumber9.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` >= \"" + firstNumber9.getText() + "\"\n";
                     que += "AND ";
-                    que += "`Радіонуклід`.`Активність нукліда` <= \"" + lastNumber9.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` <= \"" + lastNumber9.getText() + "\"\n";
                 } else
-                    que += "`Радіонуклід`.`Активність нукліда` = \"" + firstNumber9.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` = \"" + firstNumber9.getText() + "\"\n";
                 where = true;
             }
 
@@ -727,11 +715,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber10.getText().isEmpty()) {
-                    que += "`РРВ`.`Загальна активність` >= \"" + firstNumber10.getText() + "\"\n";
+                    que += "`Р Р Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` >= \"" + firstNumber10.getText() + "\"\n";
                     que += "AND ";
-                    que += "`РРВ`.`Загальна активність` <= \"" + lastNumber10.getText() + "\"\n";
+                    que += "`Р Р Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` <= \"" + lastNumber10.getText() + "\"\n";
                 } else
-                    que += "`РРВ`.`Загальна активність` = \"" + firstNumber10.getText() + "\"\n";
+                    que += "`Р Р Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` = \"" + firstNumber10.getText() + "\"\n";
                 where = true;
             }
 
@@ -745,38 +733,38 @@ public class mainFrame extends JFrame {
                 else que += "AND ";
                 if (dateChooser6.getDate() != null) {
                     date2 = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser6.getDate()));
-                    que += "`РРВ`.`Дата виготовлення` >= \"" + date1 + "\"\n";
+                    que += "`Р Р Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` >= \"" + date1 + "\"\n";
                     que += "AND ";
-                    que += "`РРВ`.`Дата виготовлення` <= \"" + date2 + "\"\n";
+                    que += "`Р Р Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` <= \"" + date2 + "\"\n";
                 } else
-                    que += "`РРВ`.`Дата виготовлення` = \"" + date1 + "\"\n";
+                    que += "`Р Р Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` = \"" + date1 + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox9.getSelectedIndex()) {
                 case 0:
-                    que += " `РРВ`.`Номер`";
+                    que += " `Р Р Р’`.`РќРѕРјРµСЂ`";
                     break;
                 case 1:
-                    que += " `Категорія активності`.`Категорія активності`";
+                    que += " `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`";
                     break;
                 case 2:
-                    que += " `Радіонуклід`.`Назва`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`";
                     break;
                 case 3:
-                    que += " `РРВ`.`Кількість`";
+                    que += " `Р Р Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ`";
                     break;
                 case 4:
-                    que += " `Радіонуклід`.`Активність нукліда`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`";
                     break;
                 case 5:
-                    que += " `РРВ`.`Загальна активність`";
+                    que += " `Р Р Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ`";
                     break;
                 case 6:
-                    que += " `РРВ`.`Дата виготовлення`";
+                    que += " `Р Р Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`";
                     break;
                 case 7:
-                    que += " `РРВ`.`Примітки`";
+                    que += " `Р Р Р’`.`РџСЂРёРјС–С‚РєРё`";
                     break;
             }
 
@@ -790,16 +778,16 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.табл2.setModel(model);
+            this.С‚Р°Р±Р»2.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -808,51 +796,51 @@ public class mainFrame extends JFrame {
             //open();
             String que = "SELECT ";
             if (checkBox26.isSelected())
-                que += "`БРВ`.`Номер`, ";
+                que += "`Р‘Р Р’`.`РќРѕРјРµСЂ`, ";
             if (checkBox27.isSelected())
-                que += "`Категорія активності`.`Категорія активності`, ";
+                que += "`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`, ";
             if (checkBox28.isSelected())
-                que += "`Радіонуклід`.`Назва`, ";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`, ";
             if (checkBox29.isSelected())
-                que += "`БРВ`.`Кількість`, ";
+                que += "`Р‘Р Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ`, ";
             if (checkBox30.isSelected())
-                que += " `Радіонуклід`.`Активність нукліда`, ";
+                que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`, ";
             if (checkBox31.isSelected())
-                que += "`БРВ`.`Загальна активність`, ";
+                que += "`Р‘Р Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ`, ";
             if (checkBox32.isSelected())
-                que += "`БРВ`.`Дата виготовлення`, ";
+                que += "`Р‘Р Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`, ";
             if (checkBox33.isSelected())
-                que += "`БРВ`.`Примітки`, ";
+                que += "`Р‘Р Р’`.`РџСЂРёРјС–С‚РєРё`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `БРВ`\n";
+            que += " FROM `Р‘Р Р’`\n";
 
-            que += "inner join `Категорія активності`\n" +
-                    "on `БРВ`.`Категорія активності` = `Категорія активності`.`Номер`\n" +
-                    "inner join `Радіонуклід`\n" +
-                    "on `БРВ`.`Нуклід` = `Радіонуклід`.`Номер`\n";
+            que += "inner join `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`\n" +
+                    "on `Р‘Р Р’`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–` = `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РќРѕРјРµСЂ`\n" +
+                    "inner join `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`\n" +
+                    "on `Р‘Р Р’`.`РќСѓРєР»С–Рґ` = `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ`\n";
 
             boolean where = false;
             if (!firstNumber11.getText().isEmpty()) {
                 if (!lastNumber11.getText().isEmpty()) {
-                    que += "WHERE `БРВ`.`Номер` >= \"" + firstNumber11.getText() + "\"\n";
+                    que += "WHERE `Р‘Р Р’`.`РќРѕРјРµСЂ` >= \"" + firstNumber11.getText() + "\"\n";
                     que += "AND ";
-                    que += "`БРВ`.`Номер` <= \"" + lastNumber11.getText() + "\"\n";
+                    que += "`Р‘Р Р’`.`РќРѕРјРµСЂ` <= \"" + lastNumber11.getText() + "\"\n";
                 } else
-                    que += "БРВ `Завод`.`Номер` = \"" + firstNumber11.getText() + "\"\n";
+                    que += "Р‘Р Р’ `Р—Р°РІРѕРґ`.`РќРѕРјРµСЂ` = \"" + firstNumber11.getText() + "\"\n";
                 where = true;
             }
 
             if (comboBox10.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Категорія активності`.`Категорія активності` = \"" + comboBox10.getSelectedItem().toString() + "\"\n";
+                que += "`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–` = \"" + comboBox10.getSelectedItem().toString() + "\"\n";
                 where = true;
             }
 
             if (comboBox11.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Назва` = '" + comboBox11.getSelectedItem().toString() + "'\n";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°` = '" + comboBox11.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -860,11 +848,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber12.getText().isEmpty()) {
-                    que += "`БРВ`.`Кількість` >= \"" + firstNumber12.getText() + "\"\n";
+                    que += "`Р‘Р Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` >= \"" + firstNumber12.getText() + "\"\n";
                     que += "AND ";
-                    que += "`БРВ`.`Кількість` <= \"" + lastNumber12.getText() + "\"\n";
+                    que += "`Р‘Р Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` <= \"" + lastNumber12.getText() + "\"\n";
                 } else
-                    que += "`БРВ`.`Кількість` = \"" + firstNumber12.getText() + "\"\n";
+                    que += "`Р‘Р Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` = \"" + firstNumber12.getText() + "\"\n";
                 where = true;
             }
 
@@ -872,11 +860,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber13.getText().isEmpty()) {
-                    que += "`Радіонуклід`.`Активність нукліда` >= \"" + firstNumber13.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` >= \"" + firstNumber13.getText() + "\"\n";
                     que += "AND ";
-                    que += "`Радіонуклід`.`Активність нукліда` <= \"" + lastNumber13.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` <= \"" + lastNumber13.getText() + "\"\n";
                 } else
-                    que += "`Радіонуклід`.`Активність нукліда` = \"" + firstNumber13.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` = \"" + firstNumber13.getText() + "\"\n";
                 where = true;
             }
 
@@ -884,11 +872,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber14.getText().isEmpty()) {
-                    que += "`БРВ`.`Загальна активність` >= \"" + firstNumber14.getText() + "\"\n";
+                    que += "`Р‘Р Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` >= \"" + firstNumber14.getText() + "\"\n";
                     que += "AND ";
-                    que += "`БРВ`.`Загальна активність` <= \"" + lastNumber14.getText() + "\"\n";
+                    que += "`Р‘Р Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` <= \"" + lastNumber14.getText() + "\"\n";
                 } else
-                    que += "`БРВ`.`Загальна активність` = \"" + firstNumber14.getText() + "\"\n";
+                    que += "`Р‘Р Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` = \"" + firstNumber14.getText() + "\"\n";
                 where = true;
             }
 
@@ -902,38 +890,38 @@ public class mainFrame extends JFrame {
                 else que += "AND ";
                 if (dateChooser8.getDate() != null) {
                     date2 = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser8.getDate()));
-                    que += "`БРВ`.`Дата виготовлення` >= \"" + date1 + "\"\n";
+                    que += "`Р‘Р Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` >= \"" + date1 + "\"\n";
                     que += "AND ";
-                    que += "`БРВ`.`Дата виготовлення` <= \"" + date2 + "\"\n";
+                    que += "`Р‘Р Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` <= \"" + date2 + "\"\n";
                 } else
-                    que += "`БРВ`.`Дата виготовлення` = \"" + date1 + "\"\n";
+                    que += "`Р‘Р Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` = \"" + date1 + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox12.getSelectedIndex()) {
                 case 0:
-                    que += " `БРВ`.`Номер`";
+                    que += " `Р‘Р Р’`.`РќРѕРјРµСЂ`";
                     break;
                 case 1:
-                    que += " `Категорія активності`.`Категорія активності`";
+                    que += " `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`";
                     break;
                 case 2:
-                    que += " `Радіонуклід`.`Назва`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`";
                     break;
                 case 3:
-                    que += " `БРВ`.`Кількість`";
+                    que += " `Р‘Р Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ`";
                     break;
                 case 4:
-                    que += " `Радіонуклід`.`Активність нукліда`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`";
                     break;
                 case 5:
-                    que += " `БРВ`.`Загальна активність`";
+                    que += " `Р‘Р Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ`";
                     break;
                 case 6:
-                    que += " `БРВ`.`Дата виготовлення`";
+                    que += " `Р‘Р Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`";
                     break;
                 case 7:
-                    que += " `БРВ`.`Примітки`";
+                    que += " `Р‘Р Р’`.`РџСЂРёРјС–С‚РєРё`";
                     break;
             }
 
@@ -947,43 +935,43 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.табл3.setModel(model);
+            this.С‚Р°Р±Р»3.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void updateInBRV(ActionEvent e) {
-        if (табл3.getSelectedRowCount() == 1)
-            new updateInBRV(Integer.parseInt(табл3.getValueAt(табл3.getSelectedRow(), 0).toString()));
+        if (С‚Р°Р±Р»3.getSelectedRowCount() == 1)
+            new updateInBRV(Integer.parseInt(С‚Р°Р±Р»3.getValueAt(С‚Р°Р±Р»3.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "Потрібно обрати один запис з таблиці", "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "РџРѕС‚СЂС–Р±РЅРѕ РѕР±СЂР°С‚Рё РѕРґРёРЅ Р·Р°РїРёСЃ Р· С‚Р°Р±Р»РёС†С–", "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
 
     }
 
     private void deleteFromBRV(ActionEvent e) {
         try {
-            int[] i = табл3.getSelectedRows();
+            int[] i = С‚Р°Р±Р»3.getSelectedRows();
             String que;
             //open();
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM БРВ WHERE Номер = " + Integer.parseInt(табл3.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM Р‘Р Р’ WHERE РќРѕРјРµСЂ = " + Integer.parseInt(С‚Р°Р±Р»3.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             //close();
             refreshTableBRV(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
@@ -998,29 +986,29 @@ public class mainFrame extends JFrame {
 
     private void deleteFromDIV(ActionEvent e) {
         try {
-            int[] i = табл4.getSelectedRows();
+            int[] i = С‚Р°Р±Р»4.getSelectedRows();
             String que;
             //open();
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM ТРВ WHERE Номер = " + Integer.parseInt(табл4.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM РўР Р’ WHERE РќРѕРјРµСЂ = " + Integer.parseInt(С‚Р°Р±Р»4.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             //close();
             refreshTableDIV(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
 
     private void updateInDIV(ActionEvent e) {
-        if (табл4.getSelectedRowCount() == 1)
-            new updateInDIV(Integer.parseInt(табл4.getValueAt(табл4.getSelectedRow(), 0).toString()));
+        if (С‚Р°Р±Р»4.getSelectedRowCount() == 1)
+            new updateInDIV(Integer.parseInt(С‚Р°Р±Р»4.getValueAt(С‚Р°Р±Р»4.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "Потрібно обрати один запис з таблиці", "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "РџРѕС‚СЂС–Р±РЅРѕ РѕР±СЂР°С‚Рё РѕРґРёРЅ Р·Р°РїРёСЃ Р· С‚Р°Р±Р»РёС†С–", "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
 
     }
 
@@ -1029,51 +1017,51 @@ public class mainFrame extends JFrame {
             //open();
             String que = "SELECT ";
             if (checkBox35.isSelected())
-                que += "`ДІВ`.`Номер`, ";
+                que += "`Р”Р†Р’`.`РќРѕРјРµСЂ`, ";
             if (checkBox36.isSelected())
-                que += "`Категорія активності`.`Категорія активності`, ";
+                que += "`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`, ";
             if (checkBox37.isSelected())
-                que += "`Радіонуклід`.`Назва`, ";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`, ";
             if (checkBox38.isSelected())
-                que += "`ДІВ`.`Кількість`, ";
+                que += "`Р”Р†Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ`, ";
             if (checkBox39.isSelected())
-                que += " `Радіонуклід`.`Активність нукліда`, ";
+                que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`, ";
             if (checkBox40.isSelected())
-                que += "`ДІВ`.`Загальна активність`, ";
+                que += "`Р”Р†Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ`, ";
             if (checkBox41.isSelected())
-                que += "`ДІВ`.`Дата виготовлення`, ";
+                que += "`Р”Р†Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`, ";
             if (checkBox42.isSelected())
-                que += "`ДІВ`.`Примітки`, ";
+                que += "`Р”Р†Р’`.`РџСЂРёРјС–С‚РєРё`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `ДІВ`\n";
+            que += " FROM `Р”Р†Р’`\n";
 
-            que += "inner join `Категорія активності`\n" +
-                    "on `ДІВ`.`Категорія активності` = `Категорія активності`.`Номер`\n" +
-                    "inner join `Радіонуклід`\n" +
-                    "on `ДІВ`.`Нуклід` = `Радіонуклід`.`Номер`\n";
+            que += "inner join `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`\n" +
+                    "on `Р”Р†Р’`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–` = `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РќРѕРјРµСЂ`\n" +
+                    "inner join `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`\n" +
+                    "on `Р”Р†Р’`.`РќСѓРєР»С–Рґ` = `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ`\n";
 
             boolean where = false;
             if (!firstNumber15.getText().isEmpty()) {
                 if (!lastNumber15.getText().isEmpty()) {
-                    que += "WHERE `ДІВ`.`Номер` >= \"" + firstNumber15.getText() + "\"\n";
+                    que += "WHERE `Р”Р†Р’`.`РќРѕРјРµСЂ` >= \"" + firstNumber15.getText() + "\"\n";
                     que += "AND ";
-                    que += "`ДІВ`.`Номер` <= \"" + lastNumber15.getText() + "\"\n";
+                    que += "`Р”Р†Р’`.`РќРѕРјРµСЂ` <= \"" + lastNumber15.getText() + "\"\n";
                 } else
-                    que += "ДІВ `Завод`.`Номер` = \"" + firstNumber15.getText() + "\"\n";
+                    que += "Р”Р†Р’ `Р—Р°РІРѕРґ`.`РќРѕРјРµСЂ` = \"" + firstNumber15.getText() + "\"\n";
                 where = true;
             }
 
             if (comboBox13.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Категорія активності`.`Категорія активності` = \"" + comboBox13.getSelectedItem().toString() + "\"\n";
+                que += "`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–` = \"" + comboBox13.getSelectedItem().toString() + "\"\n";
                 where = true;
             }
 
             if (comboBox14.getSelectedIndex() != 0) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Назва` = '" + comboBox14.getSelectedItem().toString() + "'\n";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°` = '" + comboBox14.getSelectedItem().toString() + "'\n";
                 where = true;
             }
 
@@ -1081,11 +1069,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber16.getText().isEmpty()) {
-                    que += "`ДІВ`.`Кількість` >= \"" + firstNumber16.getText() + "\"\n";
+                    que += "`Р”Р†Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` >= \"" + firstNumber16.getText() + "\"\n";
                     que += "AND ";
-                    que += "`ДІВ`.`Кількість` <= \"" + lastNumber16.getText() + "\"\n";
+                    que += "`Р”Р†Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` <= \"" + lastNumber16.getText() + "\"\n";
                 } else
-                    que += "`ДІВ`.`Кількість` = \"" + firstNumber16.getText() + "\"\n";
+                    que += "`Р”Р†Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ` = \"" + firstNumber16.getText() + "\"\n";
                 where = true;
             }
 
@@ -1093,11 +1081,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber17.getText().isEmpty()) {
-                    que += "`Радіонуклід`.`Активність нукліда` >= \"" + firstNumber17.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` >= \"" + firstNumber17.getText() + "\"\n";
                     que += "AND ";
-                    que += "`Радіонуклід`.`Активність нукліда` <= \"" + lastNumber17.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` <= \"" + lastNumber17.getText() + "\"\n";
                 } else
-                    que += "`Радіонуклід`.`Активність нукліда` = \"" + firstNumber17.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` = \"" + firstNumber17.getText() + "\"\n";
                 where = true;
             }
 
@@ -1105,11 +1093,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber18.getText().isEmpty()) {
-                    que += "`ДІВ`.`Загальна активність` >= \"" + firstNumber18.getText() + "\"\n";
+                    que += "`Р”Р†Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` >= \"" + firstNumber18.getText() + "\"\n";
                     que += "AND ";
-                    que += "`ДІВ`.`Загальна активність` <= \"" + lastNumber18.getText() + "\"\n";
+                    que += "`Р”Р†Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` <= \"" + lastNumber18.getText() + "\"\n";
                 } else
-                    que += "`ДІВ`.`Загальна активність` = \"" + firstNumber18.getText() + "\"\n";
+                    que += "`Р”Р†Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ` = \"" + firstNumber18.getText() + "\"\n";
                 where = true;
             }
 
@@ -1123,38 +1111,38 @@ public class mainFrame extends JFrame {
                 else que += "AND ";
                 if (dateChooser10.getDate() != null) {
                     date2 = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser10.getDate()));
-                    que += "`ДІВ`.`Дата виготовлення` >= \"" + date1 + "\"\n";
+                    que += "`Р”Р†Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` >= \"" + date1 + "\"\n";
                     que += "AND ";
-                    que += "`ДІВ`.`Дата виготовлення` <= \"" + date2 + "\"\n";
+                    que += "`Р”Р†Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` <= \"" + date2 + "\"\n";
                 } else
-                    que += "`ДІВ`.`Дата виготовлення` = \"" + date1 + "\"\n";
+                    que += "`Р”Р†Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ` = \"" + date1 + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox15.getSelectedIndex()) {
                 case 0:
-                    que += " `ДІВ`.`Номер`";
+                    que += " `Р”Р†Р’`.`РќРѕРјРµСЂ`";
                     break;
                 case 1:
-                    que += " `Категорія активності`.`Категорія активності`";
+                    que += " `РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`.`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`";
                     break;
                 case 2:
-                    que += " `Радіонуклід`.`Назва`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`";
                     break;
                 case 3:
-                    que += " `ДІВ`.`Кількість`";
+                    que += " `Р”Р†Р’`.`РљС–Р»СЊРєС–СЃС‚СЊ`";
                     break;
                 case 4:
-                    que += " `Радіонуклід`.`Активність нукліда`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`";
                     break;
                 case 5:
-                    que += " `ДІВ`.`Загальна активність`";
+                    que += " `Р”Р†Р’`.`Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ`";
                     break;
                 case 6:
-                    que += " `ДІВ`.`Дата виготовлення`";
+                    que += " `Р”Р†Р’`.`Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`";
                     break;
                 case 7:
-                    que += " `ДІВ`.`Примітки`";
+                    que += " `Р”Р†Р’`.`РџСЂРёРјС–С‚РєРё`";
                     break;
             }
 
@@ -1168,16 +1156,16 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.табл4.setModel(model);
+            this.С‚Р°Р±Р»4.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -1186,26 +1174,26 @@ public class mainFrame extends JFrame {
             //open();
             String que = "SELECT ";
             if (checkBox44.isSelected())
-                que += "`Радіонуклід`.`Номер`, ";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ`, ";
             if (checkBox45.isSelected())
-                que += "`Радіонуклід`.`Назва`, ";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`, ";
             if (checkBox46.isSelected())
-                que += "`Радіонуклід`.`Скорочено`, ";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РЎРєРѕСЂРѕС‡РµРЅРѕ`, ";
             if (checkBox47.isSelected())
-                que += "`Радіонуклід`.`Номер порядку`, ";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ РїРѕСЂСЏРґРєСѓ`, ";
             if (checkBox48.isSelected())
-                que += "`Радіонуклід`.`Активність нукліда`, ";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`, ";
             que = que.substring(0, que.length() - 2);
-            que += " FROM `Радіонуклід`\n";
+            que += " FROM `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`\n";
 
             boolean where = false;
             if (!firstNumber19.getText().isEmpty()) {
                 if (!lastNumber19.getText().isEmpty()) {
-                    que += "WHERE `Радіонуклід`.`Номер` >= \"" + firstNumber19.getText() + "\"\n";
+                    que += "WHERE `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ` >= \"" + firstNumber19.getText() + "\"\n";
                     que += "AND ";
-                    que += "`Радіонуклід`.`Номер` <= \"" + lastNumber19.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ` <= \"" + lastNumber19.getText() + "\"\n";
                 } else
-                    que += "WHERE `Радіонуклід`.`Номер` = \"" + firstNumber19.getText() + "\"\n";
+                    que += "WHERE `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ` = \"" + firstNumber19.getText() + "\"\n";
                 where = true;
             }
 
@@ -1213,14 +1201,14 @@ public class mainFrame extends JFrame {
             if (!textField1.getText().isEmpty()) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Назва` = '" + textField1.getText() + "'\n";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°` = '" + textField1.getText() + "'\n";
                 where = true;
             }
 
             if (!textField2.getText().isEmpty()) {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
-                que += "`Радіонуклід`.`Скорочено` = \"" + textField2.getText() + "\"\n";
+                que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РЎРєРѕСЂРѕС‡РµРЅРѕ` = \"" + textField2.getText() + "\"\n";
                 where = true;
             }
 
@@ -1228,11 +1216,11 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber20.getText().isEmpty()) {
-                    que += "`Радіонуклід`.`Номер порядку` >= \"" + firstNumber20.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ РїРѕСЂСЏРґРєСѓ` >= \"" + firstNumber20.getText() + "\"\n";
                     que += "AND ";
-                    que += "`Радіонуклід`.`Номер порядку` <= \"" + lastNumber20.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ РїРѕСЂСЏРґРєСѓ` <= \"" + lastNumber20.getText() + "\"\n";
                 } else
-                    que += "`Радіонуклід`.`Номер порядку` = \"" + firstNumber20.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ РїРѕСЂСЏРґРєСѓ` = \"" + firstNumber20.getText() + "\"\n";
                 where = true;
             }
 
@@ -1240,29 +1228,29 @@ public class mainFrame extends JFrame {
                 if (!where) que += "WHERE ";
                 else que += "AND ";
                 if (!lastNumber21.getText().isEmpty()) {
-                    que += "`Радіонуклід`.`Активність нукліда` >= \"" + firstNumber21.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` >= \"" + firstNumber21.getText() + "\"\n";
                     que += "AND ";
-                    que += "`Радіонуклід`.`Активність нукліда` <= \"" + lastNumber21.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` <= \"" + lastNumber21.getText() + "\"\n";
                 } else
-                    que += "`Радіонуклід`.`Активність нукліда` = \"" + firstNumber21.getText() + "\"\n";
+                    que += "`Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°` = \"" + firstNumber21.getText() + "\"\n";
             }
 
             que += "ORDER BY ";
             switch (comboBox18.getSelectedIndex()) {
                 case 0:
-                    que += " `Радіонуклід`.`Номер`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ`";
                     break;
                 case 1:
-                    que += " `Радіонуклід`.`Назва`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќР°Р·РІР°`";
                     break;
                 case 2:
-                    que += " `Радіонуклід`.`Скорочено`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РЎРєРѕСЂРѕС‡РµРЅРѕ`";
                     break;
                 case 3:
-                    que += " `Радіонуклід`.`Номер порядку`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РќРѕРјРµСЂ РїРѕСЂСЏРґРєСѓ`";
                     break;
                 case 4:
-                    que += " `Радіонуклід`.`Активність нукліда`";
+                    que += " `Р Р°РґС–РѕРЅСѓРєР»С–Рґ`.`РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`";
                     break;
             }
 
@@ -1276,33 +1264,33 @@ public class mainFrame extends JFrame {
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
-            this.табл5.setModel(model);
+            this.С‚Р°Р±Р»5.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     private void deleteFromRADIO(ActionEvent e) {
         try {
-            int[] i = табл5.getSelectedRows();
+            int[] i = С‚Р°Р±Р»5.getSelectedRows();
             String que;
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM `Радіонуклід` WHERE Номер = " + Integer.parseInt(табл5.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM `Р Р°РґС–РѕРЅСѓРєР»С–Рґ` WHERE РќРѕРјРµСЂ = " + Integer.parseInt(С‚Р°Р±Р»5.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             refreshTableRADIO(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
@@ -1312,10 +1300,10 @@ public class mainFrame extends JFrame {
     }
 
     private void updateInRADIO(ActionEvent e) {
-        if (табл5.getSelectedRowCount() == 1)
-            new updateInRadio(Integer.parseInt(табл5.getValueAt(табл5.getSelectedRow(), 0).toString()));
+        if (С‚Р°Р±Р»5.getSelectedRowCount() == 1)
+            new updateInRadio(Integer.parseInt(С‚Р°Р±Р»5.getValueAt(С‚Р°Р±Р»5.getSelectedRow(), 0).toString()));
         else
-            JOptionPane.showMessageDialog(null, "Потрібно обрати один запис з таблиці", "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "РџРѕС‚СЂС–Р±РЅРѕ РѕР±СЂР°С‚Рё РѕРґРёРЅ Р·Р°РїРёСЃ Р· С‚Р°Р±Р»РёС†С–", "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
     }
 
     private void searchCleanerRADIO(ActionEvent e) {
@@ -1434,10 +1422,10 @@ public class mainFrame extends JFrame {
 
     private void addUSER(ActionEvent e) {
         if(textField3.getText() != "" && textField4.getText() != ""){
-            JOptionPane.showMessageDialog(null, "Нужно для начала ввести имя", "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "РќСѓР¶РЅРѕ РґР»СЏ РЅР°С‡Р°Р»Р° РІРІРµСЃС‚Рё РёРјСЏ", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         try {
-            String query = " INSERT INTO користувач (`Ім'я`, `Пароль`, `Група`)"
+            String query = " INSERT INTO РєРѕСЂРёСЃС‚СѓРІР°С‡ (`Р†Рј'СЏ`, `РџР°СЂРѕР»СЊ`, `Р“СЂСѓРїР°`)"
                     + " VALUES (?, ?, ?)";
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setString(1, textField3.getText());
@@ -1447,7 +1435,7 @@ public class mainFrame extends JFrame {
             preparedStmt.close();
         } catch (Exception exeption) {
             exeption.printStackTrace();
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РћРЁРР‘РљРђ!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -1458,20 +1446,20 @@ public class mainFrame extends JFrame {
             PreparedStatement prp;
             System.out.println(i.length);
             for (int I : i) {
-                que = "delete FROM `користувач` WHERE Номер = " + Integer.parseInt(table1.getValueAt(I, 0).toString()) + ";\n";
+                que = "delete FROM `РєРѕСЂРёСЃС‚СѓРІР°С‡` WHERE РќРѕРјРµСЂ = " + Integer.parseInt(table1.getValueAt(I, 0).toString()) + ";\n";
                 prp = connect.prepareStatement(que);
                 prp.execute();
             }
             refreshTableUSER(e);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
             close();
         }
     }
 
     private void updateUSER(ActionEvent e) {
         try {
-            String query = " UPDATE користувач SET `Ім'я` = ?, `Пароль` = ?, `Група` = ? WHERE `Номер` = ?";
+            String query = " UPDATE РєРѕСЂРёСЃС‚СѓРІР°С‡ SET `Р†Рј'СЏ` = ?, `РџР°СЂРѕР»СЊ` = ?, `Р“СЂСѓРїР°` = ? WHERE `РќРѕРјРµСЂ` = ?";
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setString(1, textField3.getText());
             preparedStmt.setString(2, textField4.getText());
@@ -1481,7 +1469,7 @@ public class mainFrame extends JFrame {
             //close();
         } catch (Exception exeption) {
             exeption.printStackTrace();
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РћРЁРР‘РљРђ!", JOptionPane.ERROR_MESSAGE);
             //close();
         }
     }
@@ -1489,23 +1477,23 @@ public class mainFrame extends JFrame {
     private void refreshTableUSER(ActionEvent e) {
         try {
             open();
-            String que = "select * from oblik_rao.користувач;";
+            String que = "select * from oblik_rao.РєРѕСЂРёСЃС‚СѓРІР°С‡;";
 
             System.out.println(que);
             resultSet = statement
                     .executeQuery(que);
 
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             TableModel model = DbUtils.resultSetToTableModel(resultSet);
             this.table1.setModel(model);
             /*----------------------------------------------------------------------
-            ----------------------- ОЧЕНЬ БЛЕАТЬ ВАЖНО!!!!! ------------------------
+            ----------------------- РћР§Р•РќР¬ Р‘Р›Р•РђРўР¬ Р’РђР–РќРћ!!!!! ------------------------
             /*--------------------------------------------------------------------*/
             //close();
         } catch (Exception exeption) {
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -1517,16 +1505,15 @@ public class mainFrame extends JFrame {
 
     private void menuItem1ActionPerformed(ActionEvent e) {
         ArrayList<JTable> t = new ArrayList<JTable>();
-        t.add(табл0);
-        t.add(табл1);
-        t.add(табл2);
-        t.add(табл3);
-        t.add(табл4);
-        t.add(табл5);
+        t.add(С‚Р°Р±Р»0);
+        t.add(С‚Р°Р±Р»1);
+        t.add(С‚Р°Р±Р»2);
+        t.add(С‚Р°Р±Р»3);
+        t.add(С‚Р°Р±Р»4);
+        t.add(С‚Р°Р±Р»5);
         export ex = new export(t);
         ex.setVisible(true);
     }
-
 
 
     private void menuItem3ActionPerformed(ActionEvent e) {
@@ -1534,19 +1521,19 @@ public class mainFrame extends JFrame {
         Double Rrao = 0.0;
         Double Brao = 0.0;
         Double Div = 0.0;
-        for(int i = 0; i < табл1.getRowCount(); i++){
-            Trao += Float.valueOf(табл1.getValueAt(i, 5).toString());
+        for(int i = 0; i < С‚Р°Р±Р»1.getRowCount(); i++){
+            Trao += Float.valueOf(С‚Р°Р±Р»1.getValueAt(i, 5).toString());
         }
-        for(int i = 0; i < табл2.getRowCount(); i++){
-            Rrao += Float.valueOf(табл2.getValueAt(i, 5).toString());
+        for(int i = 0; i < С‚Р°Р±Р»2.getRowCount(); i++){
+            Rrao += Float.valueOf(С‚Р°Р±Р»2.getValueAt(i, 5).toString());
         }
-        for(int i = 0; i < табл3.getRowCount(); i++){
-            Brao += Float.valueOf(табл3.getValueAt(i, 5).toString());
+        for(int i = 0; i < С‚Р°Р±Р»3.getRowCount(); i++){
+            Brao += Float.valueOf(С‚Р°Р±Р»3.getValueAt(i, 5).toString());
         }
-        for(int i = 0; i < табл4.getRowCount(); i++){
-            Div += Float.valueOf(табл4.getValueAt(i, 5).toString());
+        for(int i = 0; i < С‚Р°Р±Р»4.getRowCount(); i++){
+            Div += Float.valueOf(С‚Р°Р±Р»4.getValueAt(i, 5).toString());
         }
-       diag = new diagram("Діаграма",Trao, Rrao, Brao, Div);
+        Diagram diag = new Diagram("Р”С–Р°РіСЂР°РјР°",Trao, Rrao, Brao, Div);
         diag.pack();
         RefineryUtilities.centerFrameOnScreen(diag);
         diag.setVisible(true);
@@ -1567,9 +1554,9 @@ public class mainFrame extends JFrame {
     private JMenuItem menuItem8;
     private JMenuItem menuItem9;
     private JTabbedPane tabbedPane1;
-    private JPanel ЗАВОД;
+    private JPanel Р—РђР’РћР”;
     private JScrollPane scrollPane1;
-    public JTable табл0;
+    public JTable С‚Р°Р±Р»0;
     private JPanel panel6;
     private JPanel panel8;
     private JButton button4;
@@ -1607,9 +1594,9 @@ public class mainFrame extends JFrame {
     private JComboBox<String> comboBox3;
     private JCheckBox checkBox16;
     private JButton button3;
-    private JPanel ЗАВОД2;
+    private JPanel Р—РђР’РћР”2;
     private JScrollPane scrollPane3;
-    public JTable табл1;
+    public JTable С‚Р°Р±Р»1;
     private JPanel panel10;
     private JPanel panel11;
     private JButton button10;
@@ -1657,9 +1644,9 @@ public class mainFrame extends JFrame {
     private JComboBox<String> comboBox6;
     private JCheckBox checkBox15;
     private JButton button13;
-    private JPanel ЗАВОД3;
+    private JPanel Р—РђР’РћР”3;
     private JScrollPane scrollPane4;
-    public JTable табл2;
+    public JTable С‚Р°Р±Р»2;
     private JPanel panel16;
     private JPanel panel17;
     private JButton button15;
@@ -1707,9 +1694,9 @@ public class mainFrame extends JFrame {
     private JComboBox<String> comboBox9;
     private JCheckBox checkBox25;
     private JButton button19;
-    private JPanel ЗАВОД4;
+    private JPanel Р—РђР’РћР”4;
     private JScrollPane scrollPane5;
-    public JTable табл3;
+    public JTable С‚Р°Р±Р»3;
     private JPanel panel22;
     private JPanel panel23;
     private JButton button20;
@@ -1757,9 +1744,9 @@ public class mainFrame extends JFrame {
     private JComboBox<String> comboBox12;
     private JCheckBox checkBox34;
     private JButton button24;
-    private JPanel ЗАВОД5;
+    private JPanel Р—РђР’РћР”5;
     private JScrollPane scrollPane6;
-    public JTable табл4;
+    public JTable С‚Р°Р±Р»4;
     private JPanel panel29;
     private JPanel panel30;
     private JButton button25;
@@ -1807,9 +1794,9 @@ public class mainFrame extends JFrame {
     private JComboBox<String> comboBox15;
     private JCheckBox checkBox43;
     private JButton button29;
-    private JPanel ЗАВОД6;
+    private JPanel Р—РђР’РћР”6;
     private JScrollPane scrollPane7;
-    public JTable табл5;
+    public JTable С‚Р°Р±Р»5;
     private JPanel panel36;
     private JPanel panel37;
     private JButton button30;
@@ -1878,9 +1865,9 @@ public class mainFrame extends JFrame {
         menuItem8 = new JMenuItem();
         menuItem9 = new JMenuItem();
         tabbedPane1 = new JTabbedPane();
-        ЗАВОД = new JPanel();
+        Р—РђР’РћР” = new JPanel();
         scrollPane1 = new JScrollPane();
-        табл0 = new JTable();
+        С‚Р°Р±Р»0 = new JTable();
         panel6 = new JPanel();
         panel8 = new JPanel();
         button4 = new JButton();
@@ -1918,9 +1905,9 @@ public class mainFrame extends JFrame {
         comboBox3 = new JComboBox<>();
         checkBox16 = new JCheckBox();
         button3 = new JButton();
-        ЗАВОД2 = new JPanel();
+        Р—РђР’РћР”2 = new JPanel();
         scrollPane3 = new JScrollPane();
-        табл1 = new JTable();
+        С‚Р°Р±Р»1 = new JTable();
         panel10 = new JPanel();
         panel11 = new JPanel();
         button10 = new JButton();
@@ -1968,9 +1955,9 @@ public class mainFrame extends JFrame {
         comboBox6 = new JComboBox<>();
         checkBox15 = new JCheckBox();
         button13 = new JButton();
-        ЗАВОД3 = new JPanel();
+        Р—РђР’РћР”3 = new JPanel();
         scrollPane4 = new JScrollPane();
-        табл2 = new JTable();
+        С‚Р°Р±Р»2 = new JTable();
         panel16 = new JPanel();
         panel17 = new JPanel();
         button15 = new JButton();
@@ -2018,9 +2005,9 @@ public class mainFrame extends JFrame {
         comboBox9 = new JComboBox<>();
         checkBox25 = new JCheckBox();
         button19 = new JButton();
-        ЗАВОД4 = new JPanel();
+        Р—РђР’РћР”4 = new JPanel();
         scrollPane5 = new JScrollPane();
-        табл3 = new JTable();
+        С‚Р°Р±Р»3 = new JTable();
         panel22 = new JPanel();
         panel23 = new JPanel();
         button20 = new JButton();
@@ -2068,9 +2055,9 @@ public class mainFrame extends JFrame {
         comboBox12 = new JComboBox<>();
         checkBox34 = new JCheckBox();
         button24 = new JButton();
-        ЗАВОД5 = new JPanel();
+        Р—РђР’РћР”5 = new JPanel();
         scrollPane6 = new JScrollPane();
-        табл4 = new JTable();
+        С‚Р°Р±Р»4 = new JTable();
         panel29 = new JPanel();
         panel30 = new JPanel();
         button25 = new JButton();
@@ -2118,9 +2105,9 @@ public class mainFrame extends JFrame {
         comboBox15 = new JComboBox<>();
         checkBox43 = new JCheckBox();
         button29 = new JButton();
-        ЗАВОД6 = new JPanel();
+        Р—РђР’РћР”6 = new JPanel();
         scrollPane7 = new JScrollPane();
-        табл5 = new JTable();
+        С‚Р°Р±Р»5 = new JTable();
         panel36 = new JPanel();
         panel37 = new JPanel();
         button30 = new JButton();
@@ -2210,7 +2197,8 @@ public class mainFrame extends JFrame {
                 menu2.add(menuItem1);
 
                 //---- menuItem3 ----
-                menuItem3.setText("text");
+                menuItem3.setText("\u0414\u0456\u0430\u0433\u0440\u0430\u043c\u0430");
+                menuItem3.setFont(new Font("Verdana", Font.PLAIN, 12));
                 menuItem3.addActionListener(e -> menuItem3ActionPerformed(e));
                 menu2.add(menuItem3);
             }
@@ -2268,13 +2256,13 @@ public class mainFrame extends JFrame {
             tabbedPane1.setMinimumSize(new Dimension(502, 300));
             tabbedPane1.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-            //======== ЗАВОД ========
+            //======== Р—РђР’РћР” ========
             {
-                ЗАВОД.setMinimumSize(new Dimension(500, 200));
-                ЗАВОД.setPreferredSize(new Dimension(470, 200));
-                ЗАВОД.setFont(new Font("Verdana", Font.PLAIN, 12));
-                ЗАВОД.setMaximumSize(new Dimension(500, 200));
-                ЗАВОД.setLayout(new FormLayout(
+                Р—РђР’РћР”.setMinimumSize(new Dimension(500, 200));
+                Р—РђР’РћР”.setPreferredSize(new Dimension(470, 200));
+                Р—РђР’РћР”.setFont(new Font("Verdana", Font.PLAIN, 12));
+                Р—РђР’РћР”.setMaximumSize(new Dimension(500, 200));
+                Р—РђР’РћР”.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -2283,12 +2271,12 @@ public class mainFrame extends JFrame {
                     scrollPane1.setMinimumSize(new Dimension(700, 400));
                     scrollPane1.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- табл0 ----
-                    табл0.setMinimumSize(new Dimension(30, 204));
-                    табл0.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane1.setViewportView(табл0);
+                    //---- С‚Р°Р±Р»0 ----
+                    С‚Р°Р±Р»0.setMinimumSize(new Dimension(30, 204));
+                    С‚Р°Р±Р»0.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane1.setViewportView(С‚Р°Р±Р»0);
                 }
-                ЗАВОД.add(scrollPane1, CC.xy(1, 1));
+                Р—РђР’РћР”.add(scrollPane1, CC.xy(1, 1));
 
                 //======== panel6 ========
                 {
@@ -2370,7 +2358,7 @@ public class mainFrame extends JFrame {
                     }
                     panel6.add(panel2, CC.xy(1, 7));
                 }
-                ЗАВОД.add(panel6, CC.xy(3, 1));
+                Р—РђР’РћР”.add(panel6, CC.xy(3, 1));
 
                 //======== panel3 ========
                 {
@@ -2540,17 +2528,17 @@ public class mainFrame extends JFrame {
                     button3.addActionListener(e -> searchCleanerZAVOD(e));
                     panel3.add(button3, CC.xywh(1, 20, 7, 1));
                 }
-                ЗАВОД.add(panel3, CC.xy(5, 1));
+                Р—РђР’РћР”.add(panel3, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0417\u0430\u0432\u043e\u0434/\u043f\u043e\u0441\u0442\u0430\u0447\u0430\u043b\u044c\u043d\u0438\u043a \u0420\u0410\u0412", ЗАВОД);
+            tabbedPane1.addTab("\u0417\u0430\u0432\u043e\u0434/\u043f\u043e\u0441\u0442\u0430\u0447\u0430\u043b\u044c\u043d\u0438\u043a \u0420\u0410\u0412", Р—РђР’РћР”);
 
-            //======== ЗАВОД2 ========
+            //======== Р—РђР’РћР”2 ========
             {
-                ЗАВОД2.setMinimumSize(new Dimension(500, 200));
-                ЗАВОД2.setPreferredSize(new Dimension(470, 200));
-                ЗАВОД2.setFont(new Font("Verdana", Font.PLAIN, 12));
-                ЗАВОД2.setMaximumSize(new Dimension(500, 200));
-                ЗАВОД2.setLayout(new FormLayout(
+                Р—РђР’РћР”2.setMinimumSize(new Dimension(500, 200));
+                Р—РђР’РћР”2.setPreferredSize(new Dimension(470, 200));
+                Р—РђР’РћР”2.setFont(new Font("Verdana", Font.PLAIN, 12));
+                Р—РђР’РћР”2.setMaximumSize(new Dimension(500, 200));
+                Р—РђР’РћР”2.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -2559,12 +2547,12 @@ public class mainFrame extends JFrame {
                     scrollPane3.setMinimumSize(new Dimension(700, 400));
                     scrollPane3.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- табл1 ----
-                    табл1.setMinimumSize(new Dimension(30, 204));
-                    табл1.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane3.setViewportView(табл1);
+                    //---- С‚Р°Р±Р»1 ----
+                    С‚Р°Р±Р»1.setMinimumSize(new Dimension(30, 204));
+                    С‚Р°Р±Р»1.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane3.setViewportView(С‚Р°Р±Р»1);
                 }
-                ЗАВОД2.add(scrollPane3, CC.xy(1, 1));
+                Р—РђР’РћР”2.add(scrollPane3, CC.xy(1, 1));
 
                 //======== panel10 ========
                 {
@@ -2642,7 +2630,7 @@ public class mainFrame extends JFrame {
                     }
                     panel10.add(panel1, CC.xy(1, 7));
                 }
-                ЗАВОД2.add(panel10, CC.xy(3, 1));
+                Р—РђР’РћР”2.add(panel10, CC.xy(3, 1));
 
                 //======== panel14 ========
                 {
@@ -2882,17 +2870,17 @@ public class mainFrame extends JFrame {
                     button13.addActionListener(e -> searchCleanerTRV(e));
                     panel14.add(button13, CC.xywh(1, 24, 7, 1));
                 }
-                ЗАВОД2.add(panel14, CC.xy(5, 1));
+                Р—РђР’РћР”2.add(panel14, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0422\u0432\u0435\u0440\u0434\u0456 \u0420\u0410\u0412", ЗАВОД2);
+            tabbedPane1.addTab("\u0422\u0432\u0435\u0440\u0434\u0456 \u0420\u0410\u0412", Р—РђР’РћР”2);
 
-            //======== ЗАВОД3 ========
+            //======== Р—РђР’РћР”3 ========
             {
-                ЗАВОД3.setMinimumSize(new Dimension(500, 200));
-                ЗАВОД3.setPreferredSize(new Dimension(470, 200));
-                ЗАВОД3.setFont(new Font("Verdana", Font.PLAIN, 12));
-                ЗАВОД3.setMaximumSize(new Dimension(500, 200));
-                ЗАВОД3.setLayout(new FormLayout(
+                Р—РђР’РћР”3.setMinimumSize(new Dimension(500, 200));
+                Р—РђР’РћР”3.setPreferredSize(new Dimension(470, 200));
+                Р—РђР’РћР”3.setFont(new Font("Verdana", Font.PLAIN, 12));
+                Р—РђР’РћР”3.setMaximumSize(new Dimension(500, 200));
+                Р—РђР’РћР”3.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -2901,12 +2889,12 @@ public class mainFrame extends JFrame {
                     scrollPane4.setMinimumSize(new Dimension(700, 400));
                     scrollPane4.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- табл2 ----
-                    табл2.setMinimumSize(new Dimension(30, 204));
-                    табл2.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane4.setViewportView(табл2);
+                    //---- С‚Р°Р±Р»2 ----
+                    С‚Р°Р±Р»2.setMinimumSize(new Dimension(30, 204));
+                    С‚Р°Р±Р»2.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane4.setViewportView(С‚Р°Р±Р»2);
                 }
-                ЗАВОД3.add(scrollPane4, CC.xy(1, 1));
+                Р—РђР’РћР”3.add(scrollPane4, CC.xy(1, 1));
 
                 //======== panel16 ========
                 {
@@ -2984,7 +2972,7 @@ public class mainFrame extends JFrame {
                     }
                     panel16.add(panel5, CC.xy(1, 7));
                 }
-                ЗАВОД3.add(panel16, CC.xy(3, 1));
+                Р—РђР’РћР”3.add(panel16, CC.xy(3, 1));
 
                 //======== panel20 ========
                 {
@@ -3224,17 +3212,17 @@ public class mainFrame extends JFrame {
                     button19.addActionListener(e -> searchCleanerRRV(e));
                     panel20.add(button19, CC.xywh(1, 24, 7, 1));
                 }
-                ЗАВОД3.add(panel20, CC.xy(5, 1));
+                Р—РђР’РћР”3.add(panel20, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0420\u0456\u0434\u043a\u0456 \u0420\u0410\u0412", ЗАВОД3);
+            tabbedPane1.addTab("\u0420\u0456\u0434\u043a\u0456 \u0420\u0410\u0412", Р—РђР’РћР”3);
 
-            //======== ЗАВОД4 ========
+            //======== Р—РђР’РћР”4 ========
             {
-                ЗАВОД4.setMinimumSize(new Dimension(500, 200));
-                ЗАВОД4.setPreferredSize(new Dimension(470, 200));
-                ЗАВОД4.setFont(new Font("Verdana", Font.PLAIN, 12));
-                ЗАВОД4.setMaximumSize(new Dimension(500, 200));
-                ЗАВОД4.setLayout(new FormLayout(
+                Р—РђР’РћР”4.setMinimumSize(new Dimension(500, 200));
+                Р—РђР’РћР”4.setPreferredSize(new Dimension(470, 200));
+                Р—РђР’РћР”4.setFont(new Font("Verdana", Font.PLAIN, 12));
+                Р—РђР’РћР”4.setMaximumSize(new Dimension(500, 200));
+                Р—РђР’РћР”4.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -3243,12 +3231,12 @@ public class mainFrame extends JFrame {
                     scrollPane5.setMinimumSize(new Dimension(700, 400));
                     scrollPane5.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- табл3 ----
-                    табл3.setMinimumSize(new Dimension(30, 204));
-                    табл3.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane5.setViewportView(табл3);
+                    //---- С‚Р°Р±Р»3 ----
+                    С‚Р°Р±Р»3.setMinimumSize(new Dimension(30, 204));
+                    С‚Р°Р±Р»3.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane5.setViewportView(С‚Р°Р±Р»3);
                 }
-                ЗАВОД4.add(scrollPane5, CC.xy(1, 1));
+                Р—РђР’РћР”4.add(scrollPane5, CC.xy(1, 1));
 
                 //======== panel22 ========
                 {
@@ -3326,7 +3314,7 @@ public class mainFrame extends JFrame {
                     }
                     panel22.add(panel26, CC.xy(1, 7));
                 }
-                ЗАВОД4.add(panel22, CC.xy(3, 1));
+                Р—РђР’РћР”4.add(panel22, CC.xy(3, 1));
 
                 //======== panel27 ========
                 {
@@ -3559,17 +3547,17 @@ public class mainFrame extends JFrame {
                     button24.addActionListener(e -> searchCleanerBRV(e));
                     panel27.add(button24, CC.xywh(1, 24, 7, 1));
                 }
-                ЗАВОД4.add(panel27, CC.xy(5, 1));
+                Р—РђР’РћР”4.add(panel27, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0411\u0456\u043e\u043b\u043e\u0433\u0456\u0447\u043d\u0456 \u0420\u0410\u0412", ЗАВОД4);
+            tabbedPane1.addTab("\u0411\u0456\u043e\u043b\u043e\u0433\u0456\u0447\u043d\u0456 \u0420\u0410\u0412", Р—РђР’РћР”4);
 
-            //======== ЗАВОД5 ========
+            //======== Р—РђР’РћР”5 ========
             {
-                ЗАВОД5.setMinimumSize(new Dimension(500, 200));
-                ЗАВОД5.setPreferredSize(new Dimension(470, 200));
-                ЗАВОД5.setFont(new Font("Verdana", Font.PLAIN, 12));
-                ЗАВОД5.setMaximumSize(new Dimension(500, 200));
-                ЗАВОД5.setLayout(new FormLayout(
+                Р—РђР’РћР”5.setMinimumSize(new Dimension(500, 200));
+                Р—РђР’РћР”5.setPreferredSize(new Dimension(470, 200));
+                Р—РђР’РћР”5.setFont(new Font("Verdana", Font.PLAIN, 12));
+                Р—РђР’РћР”5.setMaximumSize(new Dimension(500, 200));
+                Р—РђР’РћР”5.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -3578,12 +3566,12 @@ public class mainFrame extends JFrame {
                     scrollPane6.setMinimumSize(new Dimension(700, 400));
                     scrollPane6.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- табл4 ----
-                    табл4.setMinimumSize(new Dimension(30, 204));
-                    табл4.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane6.setViewportView(табл4);
+                    //---- С‚Р°Р±Р»4 ----
+                    С‚Р°Р±Р»4.setMinimumSize(new Dimension(30, 204));
+                    С‚Р°Р±Р»4.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane6.setViewportView(С‚Р°Р±Р»4);
                 }
-                ЗАВОД5.add(scrollPane6, CC.xy(1, 1));
+                Р—РђР’РћР”5.add(scrollPane6, CC.xy(1, 1));
 
                 //======== panel29 ========
                 {
@@ -3661,7 +3649,7 @@ public class mainFrame extends JFrame {
                     }
                     panel29.add(panel33, CC.xy(1, 7));
                 }
-                ЗАВОД5.add(panel29, CC.xy(3, 1));
+                Р—РђР’РћР”5.add(panel29, CC.xy(3, 1));
 
                 //======== panel34 ========
                 {
@@ -3901,17 +3889,17 @@ public class mainFrame extends JFrame {
                     button29.addActionListener(e -> searchCleanerDIV(e));
                     panel34.add(button29, CC.xywh(1, 24, 7, 1));
                 }
-                ЗАВОД5.add(panel34, CC.xy(5, 1));
+                Р—РђР’РћР”5.add(panel34, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0414\u0436\u0435\u0440\u0435\u043b\u0430 \u0456\u043e\u043d\u0456\u0437\u0443\u044e\u0447\u043e\u0433\u043e \u0432\u0438\u043f\u0440\u043e\u043c\u0456\u043d\u044e\u0432\u0430\u043d\u043d\u044f", ЗАВОД5);
+            tabbedPane1.addTab("\u0414\u0436\u0435\u0440\u0435\u043b\u0430 \u0456\u043e\u043d\u0456\u0437\u0443\u044e\u0447\u043e\u0433\u043e \u0432\u0438\u043f\u0440\u043e\u043c\u0456\u043d\u044e\u0432\u0430\u043d\u043d\u044f", Р—РђР’РћР”5);
 
-            //======== ЗАВОД6 ========
+            //======== Р—РђР’РћР”6 ========
             {
-                ЗАВОД6.setMinimumSize(new Dimension(500, 200));
-                ЗАВОД6.setPreferredSize(new Dimension(470, 200));
-                ЗАВОД6.setFont(new Font("Verdana", Font.PLAIN, 12));
-                ЗАВОД6.setMaximumSize(new Dimension(500, 200));
-                ЗАВОД6.setLayout(new FormLayout(
+                Р—РђР’РћР”6.setMinimumSize(new Dimension(500, 200));
+                Р—РђР’РћР”6.setPreferredSize(new Dimension(470, 200));
+                Р—РђР’РћР”6.setFont(new Font("Verdana", Font.PLAIN, 12));
+                Р—РђР’РћР”6.setMaximumSize(new Dimension(500, 200));
+                Р—РђР’РћР”6.setLayout(new FormLayout(
                     "[320dlu,pref], $lcgap, default, $lcgap, 125dlu:grow",
                     "fill:225dlu:grow"));
 
@@ -3920,12 +3908,12 @@ public class mainFrame extends JFrame {
                     scrollPane7.setMinimumSize(new Dimension(700, 400));
                     scrollPane7.setFont(new Font("Verdana", Font.PLAIN, 12));
 
-                    //---- табл5 ----
-                    табл5.setMinimumSize(new Dimension(30, 204));
-                    табл5.setFont(new Font("Verdana", Font.PLAIN, 12));
-                    scrollPane7.setViewportView(табл5);
+                    //---- С‚Р°Р±Р»5 ----
+                    С‚Р°Р±Р»5.setMinimumSize(new Dimension(30, 204));
+                    С‚Р°Р±Р»5.setFont(new Font("Verdana", Font.PLAIN, 12));
+                    scrollPane7.setViewportView(С‚Р°Р±Р»5);
                 }
-                ЗАВОД6.add(scrollPane7, CC.xy(1, 1));
+                Р—РђР’РћР”6.add(scrollPane7, CC.xy(1, 1));
 
                 //======== panel36 ========
                 {
@@ -4003,7 +3991,7 @@ public class mainFrame extends JFrame {
                     }
                     panel36.add(panel40, CC.xy(1, 7));
                 }
-                ЗАВОД6.add(panel36, CC.xy(3, 1));
+                Р—РђР’РћР”6.add(panel36, CC.xy(3, 1));
 
                 //======== panel41 ========
                 {
@@ -4171,9 +4159,9 @@ public class mainFrame extends JFrame {
                     button34.addActionListener(e -> searchCleanerRADIO(e));
                     panel41.add(button34, CC.xywh(1, 20, 7, 1));
                 }
-                ЗАВОД6.add(panel41, CC.xy(5, 1));
+                Р—РђР’РћР”6.add(panel41, CC.xy(5, 1));
             }
-            tabbedPane1.addTab("\u0420\u0430\u0434\u0456\u043e\u043d\u0443\u043a\u043b\u0456\u0434\u0438", ЗАВОД6);
+            tabbedPane1.addTab("\u0420\u0430\u0434\u0456\u043e\u043d\u0443\u043a\u043b\u0456\u0434\u0438", Р—РђР’РћР”6);
 
             //======== panel43 ========
             {

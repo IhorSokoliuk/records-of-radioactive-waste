@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Sun Nov 30 17:12:18 EET 2014
  */
 
-package ГЛАВНОЕ_ОКНО.ЗАВОД;
+package Р“Р›РђР’РќРћР•_РћРљРќРћ.Р—РђР’РћР”;
 
 import com.jgoodies.forms.factories.CC;
 import com.jgoodies.forms.layout.FormLayout;
@@ -82,7 +82,7 @@ public class insertIntoZavod extends JFrame {
             //open();
 
             resultSet = statement
-                    .executeQuery("SELECT * FROM `категорія відходу`");
+                    .executeQuery("SELECT * FROM `РєР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ`");
             while (resultSet.next()) {
                 comboBox1.addItem(resultSet.getString(2));
             }
@@ -96,7 +96,7 @@ public class insertIntoZavod extends JFrame {
             //open();
 
             resultSet = statement
-                    .executeQuery("SELECT * FROM радіонуклід");
+                    .executeQuery("SELECT * FROM СЂР°РґС–РѕРЅСѓРєР»С–Рґ");
             while (resultSet.next()) {
                 String str = resultSet.getString(2) + " [ " + resultSet.getString(3) + ", " + resultSet.getString(4) + " ]";
                 comboBox2.addItem(str);
@@ -114,9 +114,9 @@ public class insertIntoZavod extends JFrame {
             if (dateChooser1.getDate().compareTo(Calendar.getInstance().getTime()) <= 0)
                 date = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser1.getDate()));
             else
-                throw new DateTimeException("\nНельзя путишествовать в будущее!\nДата добавления рад. отхода должна быть объявленна в прошлом!");
+                throw new DateTimeException("\nРќРµР»СЊР·СЏ РїСѓС‚РёС€РµСЃС‚РІРѕРІР°С‚СЊ РІ Р±СѓРґСѓС‰РµРµ!\nР”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ СЂР°Рґ. РѕС‚С…РѕРґР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РѕР±СЉСЏРІР»РµРЅРЅР° РІ РїСЂРѕС€Р»РѕРј!");
 
-            String query = " INSERT INTO завод (`Категорія відходу`, `Нуклід`, `Кількість`, `Дата виготовлення`, `Примітки`)"
+            String query = " INSERT INTO Р·Р°РІРѕРґ (`РљР°С‚РµРіРѕСЂС–СЏ РІС–РґС…РѕРґСѓ`, `РќСѓРєР»С–Рґ`, `РљС–Р»СЊРєС–СЃС‚СЊ`, `Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`, `РџСЂРёРјС–С‚РєРё`)"
                     + " VALUES (?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setInt(1, (comboBox1.getSelectedIndex() + 1));
@@ -130,7 +130,7 @@ public class insertIntoZavod extends JFrame {
             //close();
         } catch (Exception exeption) {
             exeption.printStackTrace();
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РћРЁРР‘РљРђ!", JOptionPane.ERROR_MESSAGE);
             //close();
         }
     }

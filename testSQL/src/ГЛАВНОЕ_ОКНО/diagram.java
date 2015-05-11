@@ -1,28 +1,22 @@
-package √À¿¬ÕŒ≈_Œ ÕŒ;
+package –ì–õ–ê–í–ù–û–ï_–û–ö–ù–û;
 
-/**
- * Created by Antony on 10.05.2015.
- */
+        import org.jfree.chart.ChartFactory;
+        import org.jfree.chart.ChartPanel;
+        import org.jfree.chart.JFreeChart;
+        import org.jfree.chart.plot.PiePlot3D;
+        import org.jfree.data.general.DefaultPieDataset;
+        import org.jfree.data.general.PieDataset;
+        import org.jfree.util.Rotation;
 
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot3D;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
-import org.jfree.ui.ApplicationFrame;
-import org.jfree.ui.RefineryUtilities;
-import org.jfree.util.Rotation;
+        import javax.swing.*;
 
-import javax.swing.*;
-
-public class diagram extends JDialog {
+public class Diagram extends JDialog {
     /**
      * Creates a new demo.
      *
      * @param title  the frame title.
      */
-    public diagram(final String title,Double a ,Double b ,Double c,Double d) {
+    public Diagram(final String title,Double a ,Double b ,Double c,Double d) {
 
         this.setTitle(title);
 
@@ -48,10 +42,10 @@ public class diagram extends JDialog {
     private PieDataset createSampleDataset(Double a ,Double b ,Double c,Double d) {
         Double sto = 100.0/(a+b+c+d);
         final DefaultPieDataset result = new DefaultPieDataset();
-        result.setValue("“‚Â‰≥ –¿¬ - " + String.format("%.0f",a) + " (" + String.format("%.1f",a * sto) + "%)", a);
-        result.setValue("–≥‰Í≥ –¿¬ - " + String.format("%.0f",b) + " (" + String.format("%.1f", b * sto) + "%)", b);
-        result.setValue("¡≥ÓÎÓ„≥˜Ì≥ –¿¬ - " + String.format("%.0f",c) + " (" + String.format("%.1f",c * sto) + "%)", c);
-        result.setValue("ƒ≤¬ - " + String.format("%.0f",d) + " (" + String.format("%.1f",d * sto) + "%)", d);
+        result.setValue("–¢–≤–µ—Ä–¥—ñ –†–ê–í - " + String.format("%.0f",a) + " (" + String.format("%.1f",a * sto) + "%)", a);
+        result.setValue("–†—ñ–¥–∫—ñ –†–ê–í - " + String.format("%.0f",b) + " (" + String.format("%.1f", b * sto) + "%)", b);
+        result.setValue("–ë—ñ–æ–ª–æ–≥—ñ—á–Ω—ñ –†–ê–í - " + String.format("%.0f",c) + " (" + String.format("%.1f",c * sto) + "%)", c);
+        result.setValue("–î–Ü–í - " + String.format("%.0f",d) + " (" + String.format("%.1f",d * sto) + "%)", d);
 
         return result;
 
@@ -78,7 +72,7 @@ public class diagram extends JDialog {
     private JFreeChart createChart(final PieDataset dataset) {
 
         final JFreeChart chart = ChartFactory.createPieChart3D(
-                "¬≥‰ÒÓÚÓÍ Á‡„‡Î¸ÌÓø ‡ÍÚË‚ÌÓÒÚ≥ Ì‡ ÒÍÎ‡‰‡ı",  // chart title
+                "–í—ñ–¥—Å–æ—Ç–æ–∫ –∑–∞–≥–∞–ª—å–Ω–æ—ó –∞–∫—Ç–∏–≤–Ω–æ—Å—Ç—ñ –Ω–∞ —Å–∫–ª–∞–¥–∞—Ö",  // chart title
                 dataset,                // data
                 true,                   // include legend
                 true,

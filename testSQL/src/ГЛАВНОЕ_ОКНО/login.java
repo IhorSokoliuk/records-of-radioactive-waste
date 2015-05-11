@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Mon Mar 23 09:24:15 EET 2015
  */
 
-package ГЛАВНОЕ_ОКНО;
+package Р“Р›РђР’РќРћР•_РћРљРќРћ;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -42,7 +42,7 @@ public class login extends JFrame {
             System.out.println("Connection opened!");
             statement = connect.createStatement();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
 
         }
 
@@ -66,43 +66,31 @@ public class login extends JFrame {
             System.out.println("all closed!");
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "Помилка!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex.fillInStackTrace(), "РџРѕРјРёР»РєР°!", JOptionPane.ERROR_MESSAGE);
         }
         return JFrame.EXIT_ON_CLOSE;
     }
 
     private void button1ActionPerformed(ActionEvent e){
-        logingo();
+        loginGo();
     }
 
-    private void thisWindowClosed(WindowEvent e) {
-        M.enable(true);
-        M.transferFocusUpCycle();
-    }
-
-    private void passwordField1KeyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_ENTER){
-            logingo();
-        }
-    }
-
-    private void logingo(){
+    private void loginGo(){
         open();
         int group = 0;
         try {
-            String str = "";
-            for(char c : passwordField1.getPassword()){
-                str += c;
-            }
-            String que = "SELECT `Користувач`.`Група` FROM `Користувач` WHERE `Користувач`.`Ім'я` = \"" + textField1.getText() + "\"AND `Користувач`.`Пароль` = \"" + str + "\";";
+            String pas = "";
+            for(int i = 0; i < passwordField1.getPassword().length; i++)
+                pas += passwordField1.getPassword()[i];
+            String que = "SELECT `РљРѕСЂРёСЃС‚СѓРІР°С‡`.`Р“СЂСѓРїР°` FROM `РљРѕСЂРёСЃС‚СѓРІР°С‡` WHERE `РљРѕСЂРёСЃС‚СѓРІР°С‡`.`Р†Рј'СЏ` = \"" + textField1.getText() + "\"AND `РљРѕСЂРёСЃС‚СѓРІР°С‡`.`РџР°СЂРѕР»СЊ` = \"" + pas + "\";";
             resultSet = statement.executeQuery(que);
             while (resultSet.next())
-                group = resultSet.getInt("Група");
+                group = resultSet.getInt("Р“СЂСѓРїР°");
         } catch (SQLException e1){
             JOptionPane.showMessageDialog(null, e1.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         try {
-            if(group == 0) {throw new RuntimeException("Нет такого пользователя");}
+            if(group == 0) {throw new RuntimeException("РќРµС‚ С‚Р°РєРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ");}
             else
             {
                 this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -121,6 +109,16 @@ public class login extends JFrame {
         }
         close();
     }
+
+    private void thisWindowClosed(WindowEvent e) {
+        M.enable(true);
+        M.transferFocusUpCycle();
+    }
+
+    private void passwordField1KeyPressed(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER){loginGo();}
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         label1 = new JLabel();

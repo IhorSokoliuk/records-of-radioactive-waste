@@ -2,7 +2,7 @@
  * Created by JFormDesigner on Sun Nov 30 17:12:18 EET 2014
  */
 
-package ГЛАВНОЕ_ОКНО.ДІВ;
+package Р“Р›РђР’РќРћР•_РћРљРќРћ.Р”Р†Р’;
 
 import com.jgoodies.forms.factories.CC;
 import com.jgoodies.forms.layout.FormLayout;
@@ -77,7 +77,7 @@ public class insertIntoDIV extends JFrame {
             open();
 
             resultSet = statement
-                    .executeQuery("SELECT * FROM радіонуклід");
+                    .executeQuery("SELECT * FROM СЂР°РґС–РѕРЅСѓРєР»С–Рґ");
             while (resultSet.next()) {
                 String str = resultSet.getString(2) + " [ " + resultSet.getString(3) + ", " + resultSet.getString(4) + " ]";
                 comboBox2.addItem(str);
@@ -95,7 +95,7 @@ public class insertIntoDIV extends JFrame {
             if (dateChooser1.getDate().compareTo(Calendar.getInstance().getTime()) <= 0)
                 date = Date.valueOf(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser1.getDate()));
             else
-                throw new DateTimeException("\nНельзя путишествовать в будущее!\nДата добавления рад. отхода должна быть объявленна в прошлом!");
+                throw new DateTimeException("\nРќРµР»СЊР·СЏ РїСѓС‚РёС€РµСЃС‚РІРѕРІР°С‚СЊ РІ Р±СѓРґСѓС‰РµРµ!\nР”Р°С‚Р° РґРѕР±Р°РІР»РµРЅРёСЏ СЂР°Рґ. РѕС‚С…РѕРґР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РѕР±СЉСЏРІР»РµРЅРЅР° РІ РїСЂРѕС€Р»РѕРј!");
 
             open();
 
@@ -106,7 +106,7 @@ public class insertIntoDIV extends JFrame {
             // textPane1.getText()
 
             resultSet = statement
-                    .executeQuery("SELECT * FROM радіонуклід WHERE `Номер` = " + (1 + comboBox2.getSelectedIndex()));
+                    .executeQuery("SELECT * FROM СЂР°РґС–РѕРЅСѓРєР»С–Рґ WHERE `РќРѕРјРµСЂ` = " + (1 + comboBox2.getSelectedIndex()));
             resultSet.next();
             int act = resultSet.getInt(5);
             int nukl = (1 + comboBox2.getSelectedIndex());
@@ -115,7 +115,7 @@ public class insertIntoDIV extends JFrame {
             if (zagAct < 1000000) cat = 2;
             if (zagAct < 10000) cat = 1;
 
-            String query = " INSERT INTO ДІВ (`Категорія активності`, `Кількість`, `Загальна активність`, `Нуклід`, `Активність нукліда`, `Дата виготовлення`, `Примітки`)"
+            String query = " INSERT INTO Р”Р†Р’ (`РљР°С‚РµРіРѕСЂС–СЏ Р°РєС‚РёРІРЅРѕСЃС‚С–`, `РљС–Р»СЊРєС–СЃС‚СЊ`, `Р—Р°РіР°Р»СЊРЅР° Р°РєС‚РёРІРЅС–СЃС‚СЊ`, `РќСѓРєР»С–Рґ`, `РђРєС‚РёРІРЅС–СЃС‚СЊ РЅСѓРєР»С–РґР°`, `Р”Р°С‚Р° РІРёРіРѕС‚РѕРІР»РµРЅРЅСЏ`, `РџСЂРёРјС–С‚РєРё`)"
                     + " VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStmt = connect.prepareStatement(query);
             preparedStmt.setInt(2, Integer.parseInt(formattedTextField1.getText()));
@@ -131,7 +131,7 @@ public class insertIntoDIV extends JFrame {
             //close();
         } catch (Exception exeption) {
             exeption.printStackTrace();
-            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, exeption.fillInStackTrace(), "РћРЁРР‘РљРђ!", JOptionPane.ERROR_MESSAGE);
             //close();
         }
     }
