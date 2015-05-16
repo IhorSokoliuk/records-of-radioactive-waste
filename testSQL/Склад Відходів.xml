@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="testsql" default="all">
+  
+  
+  <property file="Склад Відходів.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.bundle/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.ear"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.swc"/>
+    <include name="*.ane"/>
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.ibatis.classpath">
+    <pathelement location="${basedir}/lib/ibatis.jar"/>
+  </path>
+  
+  <path id="library.jcalendar-1.4.classpath">
+    <pathelement location="${basedir}/lib/jcalendar-1.4.jar"/>
+  </path>
+  
+  <path id="library.jfreechart-1.0.13.classpath">
+    <pathelement location="${basedir}/lib/jcommon-1.0.15.jar"/>
+    <pathelement location="${basedir}/lib/jfreechart-1.0.13.jar"/>
+  </path>
+  
+  <path id="library.jgoodies-common-javadoc.classpath">
+    <pathelement location="${basedir}/lib/jgoodies-common.jar"/>
+    <pathelement location="${basedir}/lib/jgoodies-forms.jar"/>
+  </path>
+  
+  <path id="library.jxl-2.6.12.classpath">
+    <pathelement location="${basedir}/lib/jxl-2.6.12.jar"/>
+  </path>
+  
+  <path id="library.mysql-connector-java-5.1.35.classpath">
+    <pathelement location="${basedir}/lib/mysql-connector-java-5.1.35.jar"/>
+  </path>
+  
+  <path id="library.rs2xml.classpath">
+    <pathelement location="${basedir}/lib/rs2xml.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module CursWork -->
+  
+  <dirname property="module.curswork.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.curswork" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.curswork" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.curswork" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.curswork" value="-encoding UTF-8 -source 8 ${compiler.args}"/>
+  
+  <property name="curswork.output.dir" value="${module.curswork.basedir}/out/production/CursWork"/>
+  <property name="curswork.testoutput.dir" value="${module.curswork.basedir}/out/test/CursWork"/>
+  
+  <path id="curswork.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="curswork.module.production.classpath">
+    <path refid="${module.jdk.classpath.curswork}"/>
+    <path refid="library.rs2xml.classpath"/>
+    <path refid="library.jxl-2.6.12.classpath"/>
+    <pathelement location="${basedir}/lib/itext-2.1.7.jar"/>
+    <path refid="library.jcalendar-1.4.classpath"/>
+    <path refid="library.jgoodies-common-javadoc.classpath"/>
+    <path refid="library.ibatis.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.35.classpath"/>
+    <pathelement location="${basedir}/lib/jfreechart-1.0.9.jar"/>
+    <path refid="library.jfreechart-1.0.13.classpath"/>
+  </path>
+  
+  <path id="curswork.runtime.production.module.classpath">
+    <pathelement location="${curswork.output.dir}"/>
+    <path refid="library.rs2xml.classpath"/>
+    <path refid="library.jxl-2.6.12.classpath"/>
+    <pathelement location="${basedir}/lib/itext-2.1.7.jar"/>
+    <path refid="library.jcalendar-1.4.classpath"/>
+    <path refid="library.jgoodies-common-javadoc.classpath"/>
+    <path refid="library.ibatis.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.35.classpath"/>
+    <pathelement location="${basedir}/lib/jfreechart-1.0.9.jar"/>
+    <path refid="library.jfreechart-1.0.13.classpath"/>
+  </path>
+  
+  <path id="curswork.module.classpath">
+    <path refid="${module.jdk.classpath.curswork}"/>
+    <pathelement location="${curswork.output.dir}"/>
+    <path refid="library.rs2xml.classpath"/>
+    <path refid="library.jxl-2.6.12.classpath"/>
+    <pathelement location="${basedir}/lib/itext-2.1.7.jar"/>
+    <path refid="library.jcalendar-1.4.classpath"/>
+    <path refid="library.jgoodies-common-javadoc.classpath"/>
+    <path refid="library.ibatis.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.35.classpath"/>
+    <pathelement location="${basedir}/lib/jfreechart-1.0.9.jar"/>
+    <path refid="library.jfreechart-1.0.13.classpath"/>
+  </path>
+  
+  <path id="curswork.runtime.module.classpath">
+    <pathelement location="${curswork.testoutput.dir}"/>
+    <pathelement location="${curswork.output.dir}"/>
+    <path refid="library.rs2xml.classpath"/>
+    <path refid="library.jxl-2.6.12.classpath"/>
+    <pathelement location="${basedir}/lib/itext-2.1.7.jar"/>
+    <path refid="library.jcalendar-1.4.classpath"/>
+    <path refid="library.jgoodies-common-javadoc.classpath"/>
+    <path refid="library.ibatis.classpath"/>
+    <path refid="library.mysql-connector-java-5.1.35.classpath"/>
+    <pathelement location="${basedir}/lib/jfreechart-1.0.9.jar"/>
+    <path refid="library.jfreechart-1.0.13.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.curswork">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.curswork">
+    <patternset refid="excluded.from.module.curswork"/>
+  </patternset>
+  
+  <path id="curswork.module.sourcepath">
+    <dirset dir="${module.curswork.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.curswork" depends="compile.module.curswork.production,compile.module.curswork.tests" description="Compile module CursWork"/>
+  
+  <target name="compile.module.curswork.production" depends="register.custom.compilers" description="Compile module CursWork; production classes">
+    <mkdir dir="${curswork.output.dir}"/>
+    <javac2 destdir="${curswork.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.curswork}/javac">
+      <compilerarg line="${compiler.args.curswork}"/>
+      <bootclasspath refid="curswork.module.bootclasspath"/>
+      <classpath refid="curswork.module.production.classpath"/>
+      <src refid="curswork.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.curswork"/>
+    </javac2>
+    
+    <copy todir="${curswork.output.dir}">
+      <fileset dir="${module.curswork.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.curswork.tests" depends="register.custom.compilers,compile.module.curswork.production" description="compile module CursWork; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.curswork" description="cleanup module">
+    <delete dir="${curswork.output.dir}"/>
+    <delete dir="${curswork.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.curswork" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.curswork" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.curswork:jar" value="${basedir}/out/artifacts/CursWork_jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.CursWork.jar" value="${artifacts.temp.dir}/CursWork.jar"/>
+  </target>
+  
+  <target name="artifact.curswork:jar" depends="init.artifacts, compile.module.curswork" description="Build &#39;CursWork:jar&#39; artifact">
+    <property name="artifact.temp.output.curswork:jar" value="${artifacts.temp.dir}/CursWork_jar"/>
+    <mkdir dir="${artifact.temp.output.curswork:jar}"/>
+    <jar destfile="${temp.jar.path.CursWork.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${curswork.output.dir}"/>
+      <zipfileset file="${basedir}/lib/mysql-connector-java-5.1.35.jar"/>
+      <zipfileset file="${basedir}/lib/ibatis.jar"/>
+      <zipfileset file="${basedir}/lib/jcalendar-1.4.jar"/>
+      <zipfileset file="${basedir}/lib/jfreechart-1.0.13.jar"/>
+      <zipfileset file="${basedir}/lib/jcommon-1.0.15.jar"/>
+      <zipfileset file="${basedir}/lib/jgoodies-common.jar"/>
+      <zipfileset file="${basedir}/lib/jgoodies-forms.jar"/>
+      <zipfileset file="${basedir}/lib/jxl-2.6.12.jar"/>
+      <zipfileset file="${basedir}/lib/rs2xml.jar"/>
+      <zipfileset file="${basedir}/lib/itext-2.1.7.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.CursWork.jar}" tofile="${artifact.temp.output.curswork:jar}/CursWork.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.curswork:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.curswork:jar}"/>
+    <copy todir="${artifact.output.curswork:jar}">
+      <fileset dir="${artifact.temp.output.curswork:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

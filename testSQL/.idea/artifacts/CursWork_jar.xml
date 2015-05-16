@@ -3,14 +3,14 @@
     <output-path>$PROJECT_DIR$/out/artifacts/CursWork_jar</output-path>
     <root id="archive" name="CursWork.jar">
       <element id="module-output" name="CursWork" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jxl-2.6.12.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jgoodies-forms.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jgoodies-common.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/rs2xml.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jdatepicker.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/ibatis.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/itext-2.1.7.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jcalendar-1.4.jar" path-in-jar="/" />
+      <element id="library" level="project" name="mysql-connector-java-5.1.35" />
+      <element id="library" level="project" name="ibatis" />
+      <element id="library" level="project" name="jcalendar-1.4" />
+      <element id="library" level="project" name="jfreechart-1.0.13" />
+      <element id="library" level="project" name="jgoodies-common-javadoc" />
+      <element id="library" level="project" name="jxl-2.6.12" />
+      <element id="library" level="project" name="rs2xml" />
+      <element id="file-copy" path="$PROJECT_DIR$/lib/itext-2.1.7.jar" />
     </root>
   </artifact>
 </component>

@@ -20,7 +20,7 @@
     <orderEntry type="library" name="jcalendar-1.4" level="project" />
     <orderEntry type="library" name="jgoodies-common-javadoc" level="project" />
     <orderEntry type="library" name="ibatis" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.35" level="project" />
+    <orderEntry type="library" exported="" name="mysql-connector-java-5.1.35" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
